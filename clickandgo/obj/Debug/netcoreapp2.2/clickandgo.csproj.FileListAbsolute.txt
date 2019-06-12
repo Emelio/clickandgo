@@ -1,0 +1,14 @@
+C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\bin\Debug\netcoreapp2.2\clickandgo.deps.json
+C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\bin\Debug\netcoreapp2.2\clickandgo.runtimeconfig.json
+C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\bin\Debug\netcoreapp2.2\clickandgo.runtimeconfig.dev.json
+C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\bin\Debug\netcoreapp2.2\clickandgo.dll
+C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\bin\Debug\netcoreapp2.2\clickandgo.pdb
+C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\obj\Debug\netcoreapp2.2\clickandgo.csproj.CoreCompileInputs.cache
+C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\obj\Debug\netcoreapp2.2\clickandgo.RazorAssemblyInfo.cache
+C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\obj\Debug\netcoreapp2.2\clickandgo.RazorAssemblyInfo.cs
+C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\obj\Debug\netcoreapp2.2\clickandgo.AssemblyInfoInputs.cache
+C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\obj\Debug\netcoreapp2.2\clickandgo.AssemblyInfo.cs
+C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\obj\Debug\netcoreapp2.2\clickandgo.RazorTargetAssemblyInfo.cache
+C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\obj\Debug\netcoreapp2.2\clickandgo.dll
+C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\obj\Debug\netcoreapp2.2\clickandgo.pdb
+C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\obj\Debug\netcoreapp2.2\clickandgo.csprojAssemblyReference.cache

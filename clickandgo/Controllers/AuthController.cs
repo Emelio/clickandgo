@@ -54,7 +54,7 @@ namespace clickandgo.Controllers
                 IMapper mapper = new Mapper(config);
                 Users dest = mapper.Map<RegisterDto, Users>(register);
 
-                await _userRepository.CreateUser(dest, register.Password);
+                await _userRepository.CreateUser(dest, register.Password, "owner");
 
                 return Ok(new { status = "success" });
             }
@@ -158,7 +158,7 @@ namespace clickandgo.Controllers
 
 
                 // add user to the system 
-                await _userRepository.CreateUser(userData, finalString);
+                await _userRepository.CreateUser(userData, finalString, "owner");
 
                 try
                 {

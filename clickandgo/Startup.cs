@@ -37,6 +37,7 @@ namespace clickandgo
    
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddTransient<IUsers, UserRepository>();
+            services.AddTransient<IDriver, DriverRepository>();
             services.AddTransient<IVehicle, VehicleRepository>();
             services.Configure<Settings>(options => {
                 options.ConnectionString = Configuration.GetSection("MongoDb:ConnectionString").Value;

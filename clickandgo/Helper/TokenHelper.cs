@@ -13,11 +13,19 @@ namespace clickandgo.Helper
         {
             var tokenString = token.Split(".");
 
-            byte[] data = Convert.FromBase64String(tokenString[1]);
+
+
+            byte[] data = DecodeUrlBase64(tokenString[1]);
             string decodedString = Encoding.UTF8.GetString(data);
             JsonJwtPayload jsonJwtPayload = JsonConvert.DeserializeObject<JsonJwtPayload>(decodedString);
 
             return jsonJwtPayload.nameid;
+        }
+
+        public static byte[] DecodeUrlBase64(string s)
+        {
+            s = s.Replace('-', '+').Replace('_', '/').PadRight(4 * ((s.Length + 3) / 4), '=');
+            return Convert.FromBase64String(s);
         }
     }
 

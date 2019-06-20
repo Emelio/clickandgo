@@ -20,13 +20,15 @@ namespace clickandgo.Controllers
         private readonly IConfiguration _config;
         private readonly IUsers _userRepository;
         private readonly IVehicle _vehicleRepository;
+        private readonly IDriver _driverRepository;
         private readonly TokenHelper _tokenHelper = new TokenHelper();
 
-        public OwnerController(IUsers userRepository, IConfiguration config, IVehicle vehicleRepository)
+        public OwnerController(IUsers userRepository, IConfiguration config, IVehicle vehicleRepository, IDriver driverRepository)
         {
             _config = config;
             _userRepository = userRepository;
             _vehicleRepository = vehicleRepository;
+            _driverRepository = driverRepository;
         }
 
         [Route("api/owner/addCar")]
@@ -114,5 +116,66 @@ namespace clickandgo.Controllers
             var result = await _vehicleRepository.RemoveVehicle(id);
             return Ok(result);
         }
+
+        [Route("api/owner/addDriver")]
+        [HttpPost]
+        public async Task<IActionResult> AddDriver([FromBody] AddDriverDto addDriver)
+        {
+            var token = Request.Headers["Authorization"];
+            string id = _tokenHelper.getUserFromToken(token);
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<AddDriverDto, Driver>();
+            });
+            IMapper mapper = new Mapper(config);
+            Driver driver = mapper.Map<AddDriverDto, Driver>(addDriver);
+
+            Address address = new Address();
+
+
+            address.Street = addDriver.StreetAddress;
+            address.City = addDriver.City;
+            address.District = addDriver.District;
+            address.Parish = addDriver.Parish;
+            address.Country = addDriver.Country;
+
+            driver.PrimaryId = id;
+
+            driver.Address = address;
+
+            await _driverRepository.CreateDriver(driver);
+
+            return Ok(new { status = "created" });
+        }
+
+        [Route("api/owner/getDriverList")]
+        [HttpGet]
+        public async Task<IActionResult> GetDriverList()
+        {
+            var token = Request.Headers["Authorization"];
+            string id = _tokenHelper.getUserFromToken(token);
+
+            List<Driver> drivers = await _driverRepository.GetDriverList(id);
+
+            return Ok(drivers);
+        }
+
+        [Route("api/owner/removeDriver/{id}")]
+        [HttpGet]
+        public async Task<IActionResult> RemoveDriver(string id)
+        {
+            var result = await _driverRepository.RemoveDriver(id); 
+            return Ok(result);
+        }
+
+
+        [Route("api/owner/assignDriver/{driverId}/{carId}")]
+        [HttpGet]
+        public async Task<IActionResult> AssignDriver(string driverId, string carId)
+        {
+            var result = await _driverRepository.AssignCar(carId, driverId);
+            return Ok(result);
+        } 
     }
 }

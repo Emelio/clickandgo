@@ -35,5 +35,13 @@ namespace clickandgo.Data
                 return _database.GetCollection<Vehicle>("vehicle");
             }
         }
+
+        public IMongoCollection<Driver> Driver
+        {
+            get
+            {
+                return _database.GetCollection<Driver>("driver");
+            }
+        }
     }
 }

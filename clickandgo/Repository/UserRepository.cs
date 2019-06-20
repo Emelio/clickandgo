@@ -31,7 +31,9 @@ namespace clickandgo.Repository
             return user; 
         }
 
-        public async Task<bool> CreateUser(Users users, string password)
+        
+
+        public async Task<bool> CreateUser(Users users, string password, string type)
         {
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
@@ -39,12 +41,19 @@ namespace clickandgo.Repository
             users.PasswordHash = passwordHash;
             users.PasswordSalt = passwordSalt;
 
-            users.Type = "owner";
+            users.Type = type;//"owner";
 
             await _context.Users.InsertOneAsync(users);
 
             return true; 
         }
+
+        public async Task<List<Users>> GetAllUsers()
+        {
+            List<Users> user = await _context.Users.Find(x => x.Type == "owner").ToListAsync();
+            return user; 
+        }
+
 
         public async Task<Users> LoginUser(string email, string password)
         {

@@ -65,7 +65,7 @@ namespace clickandgo.Controllers
         public async Task<IActionResult> GetSingleVehicle(string id)
         {
             Vehicle vehicle = await _vehicleRepository.GetVehicleSingle(id);
-            return Ok();
+            return Ok(vehicle);
         }
     }
 }

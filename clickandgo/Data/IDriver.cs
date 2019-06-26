@@ -16,6 +16,6 @@ namespace clickandgo.Data
 
         Task<dynamic> AssignCar(string carId, string driverId);
 
-        Task<List<Driver>> GetDriver(string id);
+        Task<Driver> GetDriver(string id);
     }
 }

@@ -27,15 +27,7 @@ namespace clickandgo.dto
 
         public string Collectorate { get; set; }
 
-        public string StreetAddress { get; set; }
-
-        public string District { get; set; }
-
-        public string City { get; set; }
-
-        public string Parish { get; set; }
-
-        public string Country { get; set; }
+        public Address Address;
 
         public DateTime DOB { get; set; }
 

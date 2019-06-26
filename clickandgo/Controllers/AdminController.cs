@@ -48,7 +48,7 @@ namespace clickandgo.Controllers
         [HttpGet]
         public async Task<IActionResult> GetSingleDriver(string id)
         {
-            List<Driver> driver = await _driverRepository.GetDriver(id);
+            Driver driver = await _driverRepository.GetDriver(id);
             return Ok(driver);
         }
 

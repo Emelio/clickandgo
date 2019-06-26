@@ -39,9 +39,9 @@ namespace clickandgo.Repository
             return drivers;
         }
 
-        public async Task<List<Driver>> GetDriver(string id)
+        public async Task<Driver> GetDriver(string id)
         {
-            List<Driver> driver = await _context.Driver.Find(x => x.PrimaryId == id).ToListAsync();
+            Driver driver = await _context.Driver.Find(x => x._id == ObjectId.Parse(id)).FirstOrDefaultAsync();
             return driver; 
         }
 

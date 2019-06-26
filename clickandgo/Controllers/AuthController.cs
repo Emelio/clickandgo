@@ -41,8 +41,6 @@ namespace clickandgo.Controllers
 
             Users user = await _userRepository.CheckUser(register.Email);
 
-
-
             if (user == null)
             {
                 Users userData = new Users();
@@ -56,7 +54,10 @@ namespace clickandgo.Controllers
 
                 await _userRepository.CreateUser(dest, register.Password, "owner");
 
-                return Ok(new { status = "success" });
+                // login user
+                var token = await LoginUser(register.Email, register.Password);
+
+                return Ok(new { status = "success", token = token });
             }
             else
             {

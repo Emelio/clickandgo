@@ -27,7 +27,7 @@ namespace clickandgo.dto
 
         public string Collectorate { get; set; }
 
-        public Address Address;
+        public Address Address { get; set; }
 
         public DateTime DOB { get; set; }
 

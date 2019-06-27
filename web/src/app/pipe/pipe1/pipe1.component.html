@@ -1,0 +1,33 @@
+<div class="register-photo">
+  <div class="form-container" style="width: 341px;margin-top: 9px;height: 524px;">
+      <form method="post" style="height: 519px;" (ngSubmit)='createOwnerOperator()' #paymentForm="ngForm">
+          <h2 class="text-center logo" style="margin-bottom: -5px;height: 53px;"><strong>Click &amp; Go</strong></h2>
+          <h2 class="text-center" style="width: 549px;"><strong>Enter these details to complete your profile.</strong></h2>
+          <div class="form-group">
+            <input class="form-control d-inline-flex" type="text" name="firstname" placeholder="First name" value='{{local.fname}}' style="background-color: rgba(201,200,200,0.24);width: 150px;">
+            <input class="form-control d-inline-flex" type="text" name="middlename" placeholder="Middle Name" [(ngModel)]="data.MiddleName" style="width: 150px;margin-left: 44px;">
+            <input class="form-control d-inline-flex" type="text" value='{{local.lname}}' name="lastname" placeholder="Last Name" style="width: 150px;margin-left: 44px;">
+            <input class="form-control d-inline-flex" type="email" name="streetaddress" placeholder="Street Address" [(ngModel)]="data.Address1" style="width: 150px;margin-left: 0px;">
+            <input class="form-control d-inline-flex" type="email" name="district" placeholder="District" [(ngModel)]="data.District" style="width: 150px;margin-left: 44px;">
+            <input class="form-control d-inline-flex" type="email" name="city" placeholder="City/Town" [(ngModel)]="data.City" style="width: 150px;margin-left: 44px;">
+            <input class="form-control d-inline-flex" type="email" name="parish" placeholder="Parish" [(ngModel)]="data.Parish" style="width: 150px;margin-left: 0px;">
+            <input class="form-control d-inline-flex" type="email" name="country" placeholder="Country" [(ngModel)]="data.Country" style="width: 150px;margin-left: 44px;">
+            <input class="form-control d-inline-flex" type="email" name="trn" placeholder="TRN" [(ngModel)]="data.Trn" style="width: 150px;margin-left: 44px;">
+            <input class="form-control d-inline-flex" type="email" name="policerecord" placeholder="Police Record No." style="width: 150px;margin-left: 0px;"> 
+           
+
+                  <select class="form-control d-inline-flex"  id="gender" name="gender" [(ngModel)]="data.Gender" style="width: 150px;margin-left: 20px"  >
+                      <option selected="true" [value]="undefined">Gender</option>
+                      <option *ngFor="let gender of genders" [value]="gender.value">{{gender.title}}</option>
+                  </select>
+                
+              <mat-form-field style="margin-left: 24px;">
+                  <input matInput [matDatepicker]="picker" [(ngModel)]="data.DOB" name='DOB' placeholder="Birth Date MM/DD/YYYY"> 
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+                  <button
+                      class="btn btn-primary btn-block d-inline-flex" type="submit" style="width: 162px;margin-top: 0px;margin-left: 43px;padding-left: 51px;">Continue</button>
+          </div></form>
+  </div>
+</div>

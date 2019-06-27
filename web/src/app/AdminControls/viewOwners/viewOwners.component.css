@@ -1,0 +1,10 @@
+section {
+    width: 1024px;
+    margin: 10px auto;
+    display: flex;
+}
+
+td {
+    padding: 10px;
+    
+}

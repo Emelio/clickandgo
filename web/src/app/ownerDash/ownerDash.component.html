@@ -1,0 +1,436 @@
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="exampleModalLongTitle"><strong>Register Your Motor Vehicle</strong></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" style="height: 519px;" (ngSubmit)='updateCarDetails($event)' #paymentForm="ngForm">
+                    <p  class="text-center">Please register your motor vehicle</p>
+                    <div class="form-group" >
+                      <div class='inputItems'>
+                          <label  for='Vehicle'>Type of Vehicle</label>
+
+                          <input class="form-control" type="text" name="Vehicle" id='Vehicle' placeholder="Type of Vehicle" [(ngModel)]="data.VehicleType" value='{{selectedCar.vehicleType}}' style="background-color: rgba(201,200,200,0.24);width: 150px;margin-top: 5px;">    
+                      </div>
+                      <div class='inputItems'>
+                          <label for='Make'>Make: </label>
+                          <input class="form-control " type="email" name="Make" id='Make' placeholder="Make" value='{{selectedCar.make}}' [(ngModel)]="data.Make" style="width: 150px;margin: 5px 0px">
+                          
+                      </div>
+
+                      <div class='inputItems'>
+                          <label for='Year'>Year: </label>
+                          <input class="form-control" type="email" name="Year" id='Year' placeholder="Year" value='{{selectedCar.year}}' [(ngModel)]="data.Year" style="width: 150px;margin: 5px 0px;">
+                      </div>
+                      
+                      <div class='inputItems'>
+                        <label for='Model'>Model: </label>
+                        <input class="form-control " type="email" id='Model' name="Model" placeholder="Model" value='{{selectedCar.model}}' [(ngModel)]="data.Model" style="width: 150px;margin: 5px 0px;">
+                      </div>
+
+                      <div class='inputItems'>
+                        <label for='Color'>District: </label>
+                        <input class="form-control " type="email" name="Color" id='Color' placeholder="Color" value='{{selectedCar.color}}' [(ngModel)]="data.Color" style="width: 150px;margin: 5px 0px;">
+                      
+                      </div>
+
+                      <div class='inputItems'>
+                          <label for='Body'>Body Type: </label>
+                          <input class="form-control" type="email" name="Body" id='Body' placeholder="Body Type" value='{{selectedCar.bodyType}}' [(ngModel)]="data.BodyType" style="width: 150px;margin: 5px 0px;">
+                      
+                      </div>
+
+                      <div class='inputItems'>
+                          <label for='Engine'>Engine value Number: </label>
+                          <input class="form-control " type="email" name="Engine" id='Engine' placeholder="Engine value Number" value='{{selectedCar.engineNumber}}' [(ngModel)]="data.EngineNumber" style="width: 150px;margin: 5px 0px;">
+                      
+                      </div>
+
+                      <div class='inputItems'>
+                          <label for='Chassis'>Chassis Number: </label>
+                          <input class="form-control " type="text" name="Chassis" id='Chassis' placeholder="Chassis Number" value='{{selectedCar.chassisNumber}}' [(ngModel)]="data.ChassisNumber" style="width: 150px;margin: 5px 0px;">
+                      
+                      </div>
+
+                      <div class='inputItems'>
+                          <label for='Plate'>Reg. Plate No.: </label>
+                          <input class="form-control" type="email" name="Plate" id='Plate' placeholder="Reg. Plate No." value='{{selectedCar.plateNumber}}' [(ngModel)]="data.PlateNumber" style="width: 150px;margin: 5px 0px;">
+                      
+                      </div>
+
+                      <div class='inputItems'>
+                          <label for='RegIssue'>Reg Issue Date: </label>
+                          <input class="form-control" type="text" [(ngModel)]="data.RegIssue" name='RegIssue' id='RegIssue' value='{{selectedCar.regIssue | date: "MM/dd/yyyy"}}' placeholder="Reg Issue Date" style="width: 150px;margin: 5px 0px;">
+                      
+                      </div>
+
+                      <div class='inputItems'>
+                        <label for='RegExpiry'>Reg Expire Date: </label>
+                        <input class="form-control " type="text" [(ngModel)]="data.RegExpire" name='RegExpiry' id='RegExpiry' value='{{selectedCar.regExpire | date: "MM/dd/yyyy"}}' placeholder="Reg Expire Date" style="width: 150px;margin: 5px 0px;">
+                      
+                      </div>
+
+                      <div  class='inputItems'>
+                          <label for='FitIssue'>Reg Expire Date: </label>
+                          <input class="form-control " type="text" [(ngModel)]="data.FitIssue" name='FitIssue' id='FitIssue' value='{{selectedCar.fitIssue | date: "MM/dd/yyyy"}}' placeholder="Fitness Issue Date" style="width: 150px;margin: 5px 0px;">
+                      
+                      </div>
+
+                      <div class='inputItems'>
+                          <label for='FitExpiry'>Fitness Expiration: </label>
+                          <input class="form-control " type="text" [(ngModel)]="data.FitExpiry"  name='FitExpiry' id='FitExpiry' value='{{selectedCar.fitExpiry | date: "MM/dd/yyyy"}}' placeholder="Fitness Expiration" style="width: 150px;margin: 5px 0px;">
+                      </div>
+
+                      <div class='inputItems'>
+                          <label for='InsuranceName'>Name of Insurance: </label>
+                          <input class="form-control " type="email" name="InsuranceName" id='InsuranceName' placeholder="Name of Insurance" value='{{selectedCar.insuranceName}}' [(ngModel)]="data.InsuranceName" style="width: 150px;margin: 5px 0px;">
+                      
+                      </div>
+
+                      <div class='inputItems'>
+                          <label for='PolicyNumber'>Policy Number: </label>
+                          <input class="form-control " type="email" name="PolicyNumber" id='PolicyNumber' placeholder="Policy Number" value='{{selectedCar.policyNumber}}' [(ngModel)]="data.PolicyNumber" style="width: 150px;margin: 5px 0px;">
+                      
+                      </div>
+
+                      <div class='inputItems'>
+                          <label for='PolicyIssueDate'>Policy Issue Date: </label>
+                          <input class="form-control " type="text" [(ngModel)]="data.PolicyIssueDate"  name='PolicyIssueDate' id='PolicyIssueDate' value='{{selectedCar.policyIssueDate | date: "MM/dd/yyyy"}}' placeholder="Policy Issue Date" style="width: 150px;margin: 5px 0px;">
+                      
+                      </div>
+
+                      <div class='inputItems'>
+                          <label for='PolicyExpiryDate'>Policy Expiry Date: </label>
+                          <input class="form-control" type="text" [(ngModel)]="data.PolicyExpiryDate"  name='PolicyExpiryDate' id='PolicyExpiryDate' value='{{selectedCar.policyExpiryDate | date: "MM/dd/yyyy"}}' [(ngModel)]="data.PolicyExpiryDate" placeholder="Policy Expiry Date" style="width: 150px;margin: 5px 0px;">
+                      </div>
+
+                      <div></div>
+                      
+                      <input class="btn btn-primary btn-block d-inline-flex" type="submit" value="Continue" style="width: 162px;margin-top: 22px;margin-left: 195px;padding-left: 51px;"></div></form>
+              </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Small modal -->
+
+
+  <!-- Modal -->
+<div class="modal fade" id="assignDr" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Choose a vehicle</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form >
+                <div class="form-row align-items-center">
+                  <div class="col-auto my-1">
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" (change)='assignDriverEvent($event)' >
+                      <option selected>Choose...</option>
+                      <option *ngFor='let unit of cars' value="{{unit._id}}">{{unit.make}}  {{unit.model}} {{unit.year}}</option>
+                    </select>
+                  </div>
+
+                  <div class="col-auto my-1">
+                    <a class="btn btn-primary" (click)='assignDriver("", "second")'>Select</a>
+                  </div>
+                </div>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+<div class="modal fade" id="carMatch" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">{{selectedDriver.firstName}} {{selectedDriver.lastName}}</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <h4>Assignments</h4>
+          <table style='width: 100%;'>
+              <tr>
+                  <th>Vehicle</th>
+                  <th>Plate Number</th>
+                  <th>Body Type</th>
+              </tr>
+              <tr>
+                  <td>{{selectedCar.make}} {{selectedCar.model}}</td>
+                  <td>{{selectedCar.plateNumber}}</td>
+                  <td>{{selectedCar.bodyType}}</td>
+              </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--Modal-->
+<!-- Modal -->
+<div class="modal fade" id="editDriver" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+        <div class="modal-dialog" role="document" style='max-width:695px'>
+          <div class="modal-content" >
+            
+            <div class="modal-body">
+                <div class='register-photo' style='background: none'>
+                    <div class="form-container" style="width: 341px;margin-top: -72px;height: 504px;">
+                            <form method="post" style="height: 509px;"  #driverForm="ngForm">
+                                <h2 class="text-center logo" style="margin-bottom: -16px;height: 53px;margin-top: -22px;"><strong>Click &amp; Go</strong></h2>
+                                <h2 class="text-center" style="width: 549px;"><strong>Update your Driver's Data</strong></h2>
+                                <h2 class="text-center" style="width: 549px;font-size: 11px;margin-bottom: -1px;margin-top: -23px;"><strong>Driver Information Must Match Driver's License</strong></h2>
+                                <div class="form-group">
+                                <mat-form-field >
+                                  <input matInput class=" d-inline-flex" type="email" name="firstname" [(ngModel)]="driverData.firstName" placeholder="First Name" style="width: 120px;">
+                                </mat-form-field>
+
+                                <mat-form-field >
+                                    <input matInput class=" d-inline-flex" type="email" name="middlename" [(ngModel)]="driverData.middleName" placeholder="Middle Name" style="width: 120px;">
+                                 
+                                </mat-form-field>
+
+                                <mat-form-field >
+                                        <input matInput class=" d-inline-flex" type="email" name="lastname" [(ngModel)]="driverData.lastName" placeholder="Last Name" style="width: 120px;">
+                                  
+                                </mat-form-field>
+
+                                   
+                                  <mat-form-field style="width: 150px;margin-left: 0px;">
+                                      <input matInput [matDatepicker]="picker2" [(ngModel)]="driverData.dateIssued" name='dateIssued' placeholder="Date Issued">
+                                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                      <mat-datepicker #picker2></mat-datepicker>
+                                  </mat-form-field>
+                    
+                                  <mat-form-field style="width: 150px;margin-left: 44px;">
+                                      <input matInput [matDatepicker]="picker3" [(ngModel)]="driverData.dateExpired" name='dateExpired' placeholder="Date Expired">
+                                      <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                                      <mat-datepicker #picker3></mat-datepicker>
+                                  </mat-form-field>
+                                  
+                                  <select class="form-control d-inline-flex"  id="gender" name="gender" [(ngModel)]="driverData.gender" style="width: 150px;margin-left: 20px"  >
+                                    <option selected="true" [value]="undefined">Gender</option>
+                                    <option *ngFor="let gender of genders" [value]="gender.value">{{gender.title}}</option>
+                                </select>
+                                  
+                                <mat-form-field >
+                                    <input matInput class="d-inline-flex" type="email" name="class" [(ngModel)]="driverData.class" placeholder="Class" style="width: 120px;">
+                                </mat-form-field>
+                                <mat-form-field >
+                                        <input matInput class="d-inline-flex" type="email" name="trn" [(ngModel)]="driverData.trn" placeholder="TRN" style="width: 150px;margin-left: 44px;">
+                                  
+                                </mat-form-field>
+
+                                <mat-form-field >
+                                        <input matInput class="d-inline-flex" type="email" name="policerecord" [(ngModel)]="driverData.collectorate" placeholder="Collectorate" style="width: 150px;">
+                                  
+                                </mat-form-field>
+
+                                <mat-form-field >
+                                        <input matInput class=" d-inline-flex" type="email" name="streetAddress" [(ngModel)]="driverData.address.street" placeholder="Street Address" style="width: 120px;">
+                                  
+                                </mat-form-field>
+
+                                <mat-form-field >
+                                        <input matInput class=" d-inline-flex" type="email" name="dob" [(ngModel)]="driverData.address.district" placeholder="District" style="width: 120px;">
+                                  
+                                </mat-form-field>
+
+                                <mat-form-field>
+                                        <input matInput class=" d-inline-flex" type="email" name="age" [(ngModel)]="driverData.address.city" placeholder="City/Town" style="width: 120px;">
+                                </mat-form-field>
+
+                                <mat-form-field>
+                                        <input matInput class=" d-inline-flex" type="email" name="age" [(ngModel)]="driverData.address.parish" placeholder="Parish" style="width: 150px;margin-left: 0px;">
+                                  
+                                </mat-form-field>
+                                  
+                                  <input class="form-control d-inline-flex" type="email" name="age" [(ngModel)]="driverData.address.country" placeholder="Country" style="width: 150px;margin-left: 44px;padding-left: 0px;">
+                                  <mat-form-field style="margin-left: 24px; width: 160px">
+                                      <input matInput [matDatepicker]="picker1" [(ngModel)]="data.DOB" name='dob' placeholder="Date of Birth">
+                                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                      <mat-datepicker #picker1></mat-datepicker>
+                                  </mat-form-field>
+                                  <input class="form-control d-inline-flex" type="email" name="age" [(ngModel)]="data.LicenseToDrive" placeholder="License to Drive" style="width: 300px;margin-left: 0px;">
+                                  
+                                  <p style="margin-bottom: -1px;margin-top: 17px;">Please confirm if you've had PPV on your lisence for 3 years or more, if no, you must enter the below information to be added to insurance.</p>
+                                  
+                                  <div class="form-check d-inline-flex">
+                                    <input class="form-check-input" type="radio" name='recordDate' id="formCheck-1"  [(ngModel)]="data.PPV" value='yes'><label class="form-check-label" for="formCheck-1"  >Yes</label></div>
+                                  <div class="form-check d-inline-flex" style="margin-left: 14px;">
+                                    <input class="form-check-input" type="radio" name='recordDate' id="formCheck-2"  [(ngModel)]="data.PPV" value='no'><label class="form-check-label" for="formCheck-2">No</label></div>
+                                    <input class="form-control d-inline-flex" type="email" name="timePoliceRecordIssue" [(ngModel)]="data.TimePoliceRecordIssue" placeholder="Issue Date" style="width: 150px;margin-left: 44px;">
+                                    <input class="form-control d-inline-flex" type="email" name="age" placeholder="Police Record No." [(ngModel)]="data.PoliceRecordNumber" style="width: 150px;margin-left: 44px;padding-left: 5px;">
+                                  <div class="form-check" style="margin-top: 15px;">
+                                    <input class="form-check-input" type="checkbox" id="formCheck-2" name='informationAccurate' [(ngModel)]="data.InformationAccurate" value='true'><label class="form-check-label"  for="formCheck-2">The above information is true and accurate to the totality of my knowledge</label></div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="formCheck-2" name='terms' [(ngModel)]="data.Terms" value='true'><label class="form-check-label" for="formCheck-2">I've read and accept the terms and conditions, privacy policy and cookies policy</label></div>
+                                    
+                                    <input class="btn btn-primary btn-block d-inline-flex" type="submit" value='Continue' style="width: 162px;margin-top: 22px;margin-left: 195px;padding-left: 51px;"></div></form>
+                        </div>
+                        </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+<div>
+    <div class="header-blue">
+        <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search" style="height: 55px;">
+            <div class="container" style='width: 1290; margin:10px auto'>
+                <a class="navbar-brand" href="#" style="margin-right: 0px;height: 60px;padding-bottom: 0px;padding-top: 18px;">
+                    <h2 class="text-center logo" style="margin-bottom: 0px;height: 43px;font-size: 14px;"><strong>Click &amp; Go</strong></h2>
+                </a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="navbar-brand" style="margin-right: 0px;height: 60px;padding-bottom: 0px;padding-top: 11px; padding-left: 25px">
+                        <a [routerLink]="['/pipe/pipe3']" style='cursor: pointer;color:white; font-weight: normal;
+                        font-size: 16px;'><i class="material-icons" style="font-size: 12px;color:white;">email</i>&nbsp; Add Driver</a>
+                </div>
+                <div class="navbar-brand" style="margin-right: 0px;height: 60px;padding-bottom: 0px;padding-top: 11px; padding-left: 25px">
+                        <a [routerLink]="['/pipe/pipe2']" style='cursor: pointer;color:white; font-weight: normal;
+                        font-size: 16px;'><i class="material-icons" style="font-size: 12px;color:white;"  routerLinkActive="router-link-active" >email</i>&nbsp; Add Vehicle</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown nav-item" style="margin-left: 229px;">
+                          <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" style="font-size: 12px;padding-left: 76px;">Welcome {{owner}}!</a>
+                            
+                          <div class="dropdown-menu" role="menu">
+                            <a class="dropdown-item" role="presentation" >Owner/Operator</a>
+                            <a class="dropdown-item" role="presentation" ><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></a>
+                                
+                            <div class="dropdown-divider" role="presentation" style="background-color: #180707;"> </div>
+                            <a class="dropdown-item" role="presentation" style="font-size: 16px;"><i class="material-icons" style="font-size: 12px;margin-bottom: 0px;margin-top: 0px;">dashboard</i>&nbsp; Dashboard</a>
+                            
+                            <a class="dropdown-item" role="presentation" [routerLink]="['/pipe/pipe2']" style='cursor: pointer;'><i class="material-icons" style="font-size: 12px;"  routerLinkActive="router-link-active" >email</i>&nbsp; Add Vehicle</a>
+                            <a class="dropdown-item" role="presentation" (click)='logout()' style='cursor: pointer;'><i class="material-icons" style="font-size: 12px;">email</i>&nbsp; Logout</a></div>
+                        </li>
+                    </ul>
+                    <form class="form-inline mr-auto" target="_self">
+                        <!-- <div class="form-group"><label for="search-field"><i class="fa fa-search" style="font-size: 12px;"></i></label><input class="form-control search-field" type="search" id="search-field" name="search"></div> -->
+                    </form>
+                    <span class="navbar-text"> <a class="login" href="#"></a><i class="far fa-bell" style="font-size: 12px;color: #ffffff;"></i></span></div>
+            </div>
+        </nav>
+    </div>
+</div>
+<p style="color: red; text-align: center" *ngIf='!approved'>Account under review, you will not be able to use the app untill approved</p>
+<section style='width: 1194px; margin: 0 auto'>
+<div class="d-inline-flex" style="width: 1194px; margin: 10px auto">
+    <div class="container" style="width: 753px;margin-left: 11px;margin-top: 8px;">
+        <div class="row" style="width: 757px;height: 254px;background-color: rgb(228,68,0);">
+            <div class="col fleet">
+                <h4 style="color: rgb(255,255,255);font-family: Actor, sans-serif;margin-top: 10px;">Registered Vehicles</h4>
+                <div class="table-responsive fleet-table scstyle-1 sc-overflow">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Plate No.</th>
+                                <th>Make/ Model</th>
+                                <th>Year</th>
+                                <th>Color</th>
+                                <th>Controls</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           <tr *ngFor="let unit of cars" >                             
+                                <a ><td>{{unit.plateNumber}}</td></a>
+                                <td>{{unit.make}}  {{unit.model}}</td>
+                                <td>{{unit.year}}</td>
+                                <td>{{unit.color}}</td>
+                                <td><i class="material-icons" (click)='removeCar(unit._id)' style="font-size: 18px; cursor: pointer;">delete</i><i class="material-icons" (click)='findSelectedCar(unit._id)' data-toggle="modal" data-target=".bd-example-modal-lg"style="font-size: 18px; cursor: pointer; padding-left:10px">edit</i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-12 fleet" style="background-color: #cd3606;height: 160px;margin-top: 8px;">
+                <div class="d-inline-flex" style="width: 319px;color: rgb(255,255,255);"><canvas data-bs-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;January&quot;,&quot;Feburary&quot;,&quot;March&quot;,&quot;April&quot;,&quot;May&quot;,&quot;June&quot;,&quot;July&quot;,&quot;August&quot;,&quot;September&quot;,&quot;October&quot;,&quot;November&quot;,&quot;December&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Earnings&quot;,&quot;backgroundColor&quot;:&quot;#00f4f4&quot;,&quot;borderColor&quot;:&quot;rgba(78,115,223,0)&quot;,&quot;data&quot;:[&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;],&quot;fill&quot;:false}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:false,&quot;position&quot;:&quot;right&quot;,&quot;reverse&quot;:false},&quot;title&quot;:{&quot;display&quot;:true,&quot;text&quot;:&quot;Earnings&quot;,&quot;fontColor&quot;:&quot;rgba(251,251,251,0.62)&quot;,&quot;fontFamily&quot;:&quot;Actor, sans-serif&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.1)&quot;,&quot;zeroLineColor&quot;:&quot;rgba(255,255,255,0.1)&quot;,&quot;drawBorder&quot;:true,&quot;drawTicks&quot;:true,&quot;borderDash&quot;:[&quot;0&quot;],&quot;zeroLineBorderDash&quot;:[&quot;0&quot;],&quot;drawOnChartArea&quot;:true},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;rgba(255,255,255,0.38)&quot;,&quot;beginAtZero&quot;:true}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.1)&quot;,&quot;zeroLineColor&quot;:&quot;rgba(255,255,255,0.1)&quot;,&quot;drawBorder&quot;:true,&quot;drawTicks&quot;:true,&quot;borderDash&quot;:[&quot;0&quot;],&quot;zeroLineBorderDash&quot;:[&quot;0&quot;],&quot;drawOnChartArea&quot;:true},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;rgba(255,255,255,0.38)&quot;,&quot;beginAtZero&quot;:true}}]}}}"></canvas></div>
+                
+        </div>
+    </div>
+</div>
+
+<div class="container" style="width: 400px;margin-left: 13px;margin-top: 9px;">
+    <div class="row" style="width: 402px;height: 254px;background-color: #14c686;">
+        <div class="col-md-12" style="width: 756px;">
+            <h4 style="color: rgb(255,255,255);font-family: Actor, sans-serif;margin-top: 10px;">Driver Statuses</h4>
+        </div>
+        <div class="col">
+            <div><canvas data-bs-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Available&quot;,&quot;Online&quot;,&quot;Offline&quot;,&quot;On Route&quot;,&quot;Off Route&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Online&quot;,&quot;backgroundColor&quot;:&quot;#0c770a&quot;,&quot;borderColor&quot;:&quot;rgba(78,115,223,0)&quot;,&quot;data&quot;:[&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;],&quot;fill&quot;:false}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:false},&quot;title&quot;:{},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.11)&quot;,&quot;zeroLineColor&quot;:&quot;rgba(255,255,255,0.11)&quot;,&quot;drawBorder&quot;:false},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;rgba(255,255,255,0.57)&quot;}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.11)&quot;,&quot;zeroLineColor&quot;:&quot;rgba(255,255,255,0.11)&quot;,&quot;drawBorder&quot;:false},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;rgba(255,255,255,0.57)&quot;}}]}}}"></canvas></div>
+        </div>
+        <div class="col-md-12" style="width: 756px;height: 180px;margin-top: 2px;background-color: #12843f;">
+            <div style="width: 331px;margin-top: 11px;margin-left: 18px;"><canvas data-bs-chart="{&quot;type&quot;:&quot;horizontalBar&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Online&quot;,&quot;Offline&quot;,&quot;On Route&quot;,&quot;Off Route&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Online/Offline&quot;,&quot;backgroundColor&quot;:&quot;#8c0968&quot;,&quot;borderColor&quot;:&quot;rgba(78,115,223,0)&quot;,&quot;borderWidth&quot;:&quot;0px&quot;,&quot;data&quot;:[&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:false,&quot;position&quot;:&quot;right&quot;,&quot;reverse&quot;:false},&quot;title&quot;:{&quot;fontColor&quot;:&quot;#ffffff&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.1)&quot;,&quot;zeroLineColor&quot;:&quot;rgba(255,255,255,0.1)&quot;},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#ffffff&quot;,&quot;beginAtZero&quot;:true}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.1)&quot;,&quot;zeroLineColor&quot;:&quot;rgba(255,255,255,0.1)&quot;},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#ffffff&quot;,&quot;beginAtZero&quot;:true}}]}}}"></canvas></div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div style="height: 20px"></div>
+<div class="d-inline-flex" style="width: 1194px;    margin-top: 135px;">
+    <div class="d-inline-flex" style="width: 1194px;">
+        <div class="container" style="width: 753px;margin-left: 11px;margin-top: 8px;">
+            <div class="row" style="width: 757px;height: 254px;background-color: rgb(228,68,0);">
+                <div class="col fleet">
+                    <h4 style="color: rgb(255,255,255);font-family: Actor, sans-serif;margin-top: 10px;">Registered Drivers</h4>
+                    <div class="table-responsive fleet-table scstyle-1 sc-overflow">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Driver</th>
+                                    <th>Class</th>
+                                    <th>Collectorate</th>
+                                    <th>Control</th>                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let unit of drivers" > 
+                                    <td>{{unit.firstName}}  {{unit.lastName}}</td>
+                                    <td>{{unit.class}}</td>
+                                    <td>{{unit.collectorate}}</td>
+                                    <td><i class="material-icons" (click)='removeDriver(unit._id)' style="font-size: 18px; cursor: pointer;">delete</i>
+                                        <i class="material-icons" data-toggle="modal" data-target="#carMatch" (click)='getCar(unit._id)'  style="font-size: 18px; cursor: pointer;margin-left: 10px;">remove_red_eye</i>
+                                        <i class="material-icons" (click)='assignDriver(unit._id, "first")' data-toggle="modal" data-target="#assignDr" style="font-size: 20px; margin-left: 10px; cursor: pointer;">add</i>
+                                        <i class="material-icons" data-toggle="modal" (click)='editDriver(unit._id)' data-toggle="modal" data-target="#editDriver" style="font-size: 18px; cursor: pointer; padding-left:10px">edit</i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-12 fleet" style="background-color: #cd3606;height: 160px;margin-top: 8px;">
+                    <div class="d-inline-flex" style="width: 319px;color: rgb(255,255,255);"><canvas data-bs-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;2019&quot;,&quot;2020&quot;,&quot;2021&quot;,&quot;2022&quot;,&quot;2023&quot;,&quot;2024&quot;,&quot;2025&quot;,&quot;2026&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Earnings&quot;,&quot;backgroundColor&quot;:&quot;#00f4f4&quot;,&quot;borderColor&quot;:&quot;rgba(78,115,223,0)&quot;,&quot;data&quot;:[&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;],&quot;fill&quot;:false}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false,&quot;position&quot;:&quot;right&quot;,&quot;reverse&quot;:false},&quot;title&quot;:{&quot;display&quot;:true,&quot;text&quot;:&quot;Earning&quot;,&quot;fontColor&quot;:&quot;rgba(251,251,251,0.62)&quot;,&quot;fontFamily&quot;:&quot;Actor, sans-serif&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.1)&quot;,&quot;zeroLineColor&quot;:&quot;rgba(255,255,255,0.1)&quot;,&quot;drawBorder&quot;:true,&quot;drawTicks&quot;:true,&quot;borderDash&quot;:[&quot;0&quot;],&quot;zeroLineBorderDash&quot;:[&quot;0&quot;],&quot;drawOnChartArea&quot;:true},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;rgba(255,255,255,0.38)&quot;,&quot;beginAtZero&quot;:true}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.1)&quot;,&quot;zeroLineColor&quot;:&quot;rgba(255,255,255,0.1)&quot;,&quot;drawBorder&quot;:true,&quot;drawTicks&quot;:true,&quot;borderDash&quot;:[&quot;0&quot;],&quot;zeroLineBorderDash&quot;:[&quot;0&quot;],&quot;drawOnChartArea&quot;:true},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;rgba(255,255,255,0.38)&quot;,&quot;beginAtZero&quot;:true}}]}}}"></canvas></div>
+                    <div
+                        class="d-inline-flex" style="width: 301px;margin-left: 67px;color: rgb(255,255,255);"><canvas data-bs-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Montego Bay&quot;,&quot;Kingston&quot;,&quot;Falmouth&quot;,&quot;Hanover&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Driver Location&quot;,&quot;backgroundColor&quot;:&quot;#ede304&quot;,&quot;borderColor&quot;:&quot;rgba(78,115,223,0)&quot;,&quot;data&quot;:[&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;],&quot;fill&quot;:false,&quot;borderWidth&quot;:&quot;0&quot;}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:false,&quot;position&quot;:&quot;left&quot;,&quot;reverse&quot;:false},&quot;title&quot;:{&quot;display&quot;:true,&quot;text&quot;:&quot;Driver Location&quot;,&quot;fontColor&quot;:&quot;rgba(255,255,255,0.65)&quot;,&quot;fontFamily&quot;:&quot;Actor, sans-serif&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:true,&quot;drawOnChartArea&quot;:true},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;rgba(255,255,255,0.59)&quot;,&quot;beginAtZero&quot;:true}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:true},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;rgba(255,255,255,0.59)&quot;,&quot;beginAtZero&quot;:true}}]}}}"></canvas></div>
+            </div>
+        </div>
+    </div>
+</div></div></section>
+
+<footer id="footerpad" style="padding-top: 20px;background-color: rgb(0,0,0);margin-top: 85px;">
+    <section style='width: 1194px; margin: 0 auto'>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-8 mx-auto">
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span></a></li>
+                    <li class="list-inline-item"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x fa-inverse"></i></span></a></li>
+                    <li class="list-inline-item"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-instagram fa-stack-1x fa-inverse"></i></span></a></li>
+                    <li class="list-inline-item"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-pinterest fa-stack-1x fa-inverse"></i></span></a></li>
+                </ul><p class="copyright text-muted text-center">Copyright &copy; Click & Go 2019 | Web Design by Mystic Lights Studios</p></div>
+        </div>
+    </div>
+</section>
+</footer>

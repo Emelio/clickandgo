@@ -9,7 +9,7 @@ export class CommunicatorService {
 
   baseUrl = 'http://clickandgoja.com/api/';
   secondBase = 'http://localhost:5000';
-  registerUrl =   this.secondBase + 'users/register';
+  registerUrl =   this.baseUrl + 'users/register';
   loginUrl =      this.baseUrl + 'users/login/';
   createUrl =     this.baseUrl + 'users/adminCreateOwner';
   updateUserUrl = this.baseUrl + 'users/createOwner';
@@ -110,6 +110,7 @@ register(data: any) {
       map((response: any) => {
         if (response) {
           return response;
+          console.log(response);
         }
       })
   );

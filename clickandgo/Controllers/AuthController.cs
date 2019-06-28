@@ -33,6 +33,13 @@ namespace clickandgo.Controllers
         }
 
         [AllowAnonymous]
+        [Route("api/users/verify/{code}/{email}")]
+        public async Task<IActionResult> VerifyAccount(string code, string email)
+        {
+            return Ok();
+        }
+
+        [AllowAnonymous]
         [Route("api/users/register")]
         [HttpPost]
         public async Task<IActionResult> CreateUser([FromBody] RegisterDto register)
@@ -57,7 +64,36 @@ namespace clickandgo.Controllers
                 // login user
                 var token = await LoginUser(register.Email, register.Password);
 
-                return Ok(new { status = "success", token = token });
+                string baseString = register.Email + ":" + register.Password;
+                var newBaseString = Base64Encode(baseString);
+
+                
+
+                // send email
+                try
+                {
+                    MailMessage mail = new MailMessage();
+                    SmtpClient SmtpServer = new SmtpClient("mail.clickandgoja.com");
+
+                    mail.From = new MailAddress("admin@clickandgoja.com");
+                    mail.To.Add(register.Email);
+                    mail.Subject = "New Account";
+                    mail.Body = "Please click on this link to activate account <a href='http://clickandgoja.com/api/users/verify/"+ GetStringSha256Hash(newBaseString) + "/"+ register.Email + "'>verify</a>";
+
+                    SmtpServer.Port = 25;
+                    SmtpServer.Credentials = new System.Net.NetworkCredential("admin@clickandgoja.com", "clickandgoja");
+                    SmtpServer.EnableSsl = false;
+
+                    SmtpServer.Send(mail);
+                }
+                catch (Exception ex)
+                {
+                    return Ok(new { status = ex.ToString() });
+                }
+            
+
+            return Ok(new { status = "success", token });
+
             }
             else
             {
@@ -114,7 +150,25 @@ namespace clickandgo.Controllers
                 });
             }
 
-            
+
+        }
+
+        [Route("api/users/getUser")]
+        [HttpGet]
+        public async Task<IActionResult> GetUser()
+        {
+            var token = Request.Headers["Authorization"];
+            string id = _tokenHelper.getUserFromToken(token);
+
+            Users user = await _userRepository.CheckUserById(id);
+            return Ok(user);
+        }
+
+        // Generate a random number between two numbers
+        public int RandomNumber(int min, int max)
+        {
+            Random random = new Random();
+            return random.Next(min, max);
         }
 
         [Route("api/users/adminCreateOwner")]
@@ -135,7 +189,7 @@ namespace clickandgo.Controllers
                 IMapper mapper = new Mapper(config);
                 Users userData = mapper.Map<OwnerDto, Users>(owner);
 
-                Address address = new Address();
+                Models.Address address = new Models.Address();
 
 
                 address.Street = owner.Address1;
@@ -204,7 +258,7 @@ namespace clickandgo.Controllers
             user.Stage = owner.Stage;
             user.Gender = owner.Gender;
 
-            Address address = new Address();
+            Models.Address address = new Models.Address();
 
             address.Street = owner.Address1;
             address.City = owner.City;
@@ -229,6 +283,32 @@ namespace clickandgo.Controllers
             Users user = await _userRepository.CheckUserById(id);
 
             return Ok(new { stage = user.Stage });
+        }
+
+        //encode
+        public static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+            return System.Convert.ToBase64String(plainTextBytes);
+        }
+
+        public static string Base64Decode(string base64EncodedData)
+        {
+            var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
+            return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+        }
+
+        public string GetStringSha256Hash(string text)
+        {
+            if (String.IsNullOrEmpty(text))
+                return String.Empty;
+
+            using (var sha = new System.Security.Cryptography.SHA256Managed())
+            {
+                byte[] textData = System.Text.Encoding.UTF8.GetBytes(text);
+                byte[] hash = sha.ComputeHash(textData);
+                return BitConverter.ToString(hash).Replace("-", String.Empty);
+            }
         }
     }
   

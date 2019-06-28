@@ -20,6 +20,18 @@ export class Pipe1Component implements OnInit {
     this.local.fname = localStorage.getItem('fname');
     this.local.lname = localStorage.getItem('lname');
     this.local.email = localStorage.getItem('email');
+
+    this.checkUser();
+  }
+
+  checkUser(){
+    this.communicate.getSingleUser().subscribe(next => {
+      console.log(next);
+
+      if (next.verified == '' || next.verified == null) {
+        console.log("show screen");
+      }
+    });
   }
 
   createOwnerOperator() {

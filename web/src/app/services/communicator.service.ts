@@ -8,10 +8,12 @@ import { map } from 'rxjs/operators';
 export class CommunicatorService {
 
   baseUrl = 'http://clickandgoja.com/api/';
-  registerUrl =   this.baseUrl + 'users/register';
+  secondBase = 'http://localhost:5000';
+  registerUrl =   this.secondBase + 'users/register';
   loginUrl =      this.baseUrl + 'users/login/';
   createUrl =     this.baseUrl + 'users/adminCreateOwner';
   updateUserUrl = this.baseUrl + 'users/createOwner';
+  getUserUrl =    this.baseUrl + 'api/users/getUser/';
   checkStageUrl = this.baseUrl + 'owner/checkStage';
   addcar =        this.baseUrl + 'owner/addCar';
   updatecar =     this.baseUrl + 'owner/updateCar';
@@ -32,6 +34,18 @@ constructor(private http:HttpClient) { }
 
 getSingleDriver(id) {
   return this.http.get(this.getSingleDriverData + id, {headers: this.header}).pipe(
+    map((response: any) => {
+      if (response) {
+        
+        return response;
+      }
+    })
+  );
+}
+
+getSingleUser() {
+
+  return this.http.get(this.getUserUrl, {headers: this.header}).pipe(
     map((response: any) => {
       if (response) {
         

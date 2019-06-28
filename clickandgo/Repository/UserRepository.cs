@@ -31,11 +31,11 @@ namespace clickandgo.Repository
             return user; 
         }
 
-        public async Task<dynamic> SetVerificationCode(string code, string id)
+        public async Task<dynamic> SetVerificationCode(string code, string email)
         {
-            var filter = Builders<Users>.Filter.Eq(x => x._id, ObjectId.Parse(id));
-            var update = Builders<Users>.Update.Set(x => x.VerificationCode, code);
-            var result = _context.Users.UpdateOneAsync(filter, update).Result;
+            var filter = Builders<Users>.Filter.Eq(x => x.Email, email);
+            var update = Builders<Users>.Update.Set(x => x.VerificationCode, code).Set(x => x.Verified, "false");
+            var result = await _context.Users.UpdateOneAsync(filter, update);
             return result;
         }
 

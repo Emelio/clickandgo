@@ -31,6 +31,7 @@ export class RegisterComponent implements OnInit {
 
         this.communicate.register(this.data).subscribe(next => {
           if (next.status == 'success') {
+            console.log(next);
             this.alertify.success('Account Created Successfully');
             localStorage.setItem('token', next.token.value.token);
             this.router.navigate(['/pipe/pipe1']);

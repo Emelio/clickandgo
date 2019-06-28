@@ -28,9 +28,6 @@ export class Pipe1Component implements OnInit {
     this.communicate.getSingleUser().subscribe(next => {
       console.log(next);
 
-      if (next.verified == '' || next.verified == null) {
-        console.log("show screen");
-      }
     });
   }
 

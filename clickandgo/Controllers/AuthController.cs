@@ -66,8 +66,13 @@ namespace clickandgo.Controllers
 
                 string baseString = register.Email + ":" + register.Password;
                 var newBaseString = Base64Encode(baseString);
+                var code = GetStringSha256Hash(newBaseString);
 
-                
+
+                // store crytic code in database 
+
+                await _userRepository.SetVerificationCode(code, register.Email);
+
 
                 // send email
                 try
@@ -78,6 +83,7 @@ namespace clickandgo.Controllers
                     mail.From = new MailAddress("admin@clickandgoja.com");
                     mail.To.Add(register.Email);
                     mail.Subject = "New Account";
+                    mail.IsBodyHtml = true;
                     mail.Body = "Please click on this link to activate account <a href='http://clickandgoja.com/api/users/verify/"+ GetStringSha256Hash(newBaseString) + "/"+ register.Email + "'>verify</a>";
 
                     SmtpServer.Port = 25;
@@ -85,6 +91,7 @@ namespace clickandgo.Controllers
                     SmtpServer.EnableSsl = false;
 
                     SmtpServer.Send(mail);
+                    return Ok(new { status = "success", token });
                 }
                 catch (Exception ex)
                 {
@@ -92,7 +99,7 @@ namespace clickandgo.Controllers
                 }
             
 
-            return Ok(new { status = "success", token });
+            
 
             }
             else
@@ -161,7 +168,7 @@ namespace clickandgo.Controllers
             string id = _tokenHelper.getUserFromToken(token);
 
             Users user = await _userRepository.CheckUserById(id);
-            return Ok(user);
+            return Ok(new { status = user.Verified});
         }
 
         // Generate a random number between two numbers
@@ -221,7 +228,7 @@ namespace clickandgo.Controllers
                     SmtpClient SmtpServer = new SmtpClient("mail.clickandgoja.com");
 
                     mail.From = new MailAddress("admin@clickandgoja.com");
-                    mail.To.Add("campbellemelio@gmail.com");
+                    mail.To.Add(userData.Email);
                     mail.Subject = "New Account";
                     mail.Body = "Your email is "+userData.Email+" and your password is "+finalString;
 

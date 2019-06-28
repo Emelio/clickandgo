@@ -13,7 +13,7 @@ export class CommunicatorService {
   loginUrl =      this.baseUrl + 'users/login/';
   createUrl =     this.baseUrl + 'users/adminCreateOwner';
   updateUserUrl = this.baseUrl + 'users/createOwner';
-  getUserUrl =    this.baseUrl + 'api/users/getUser/';
+  getUserUrl =    this.secondBase + 'api/users/getUser';
   checkStageUrl = this.baseUrl + 'owner/checkStage';
   addcar =        this.baseUrl + 'owner/addCar';
   updatecar =     this.baseUrl + 'owner/updateCar';
@@ -48,6 +48,7 @@ getSingleUser() {
   return this.http.get(this.getUserUrl, {headers: this.header}).pipe(
     map((response: any) => {
       if (response) {
+        console.log(response);
         
         return response;
       }

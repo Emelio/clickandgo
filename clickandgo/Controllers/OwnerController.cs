@@ -131,14 +131,14 @@ namespace clickandgo.Controllers
             IMapper mapper = new Mapper(config);
             Driver driver = mapper.Map<AddDriverDto, Driver>(addDriver);
 
-            Address address = new Address();
+            Models.Address address = new Models.Address();
 
 
-            address.Street = addDriver.StreetAddress;
-            address.City = addDriver.City;
-            address.District = addDriver.District;
-            address.Parish = addDriver.Parish;
-            address.Country = addDriver.Country;
+            address.Street = addDriver.Address.StreetAddress;
+            address.City = addDriver.Address.City;
+            address.District = addDriver.Address.District;
+            address.Parish = addDriver.Address.Parish;
+            address.Country = addDriver.Address.Country;
 
             driver.PrimaryId = id;
 

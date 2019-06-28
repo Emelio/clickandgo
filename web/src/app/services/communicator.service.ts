@@ -8,7 +8,8 @@ import { map } from 'rxjs/operators';
 export class CommunicatorService {
 
   baseUrl = 'http://clickandgoja.com/api/';
-  registerUrl =   this.baseUrl + 'users/register';
+  secondBaseUrl = 'http://localhost:5000/api/';
+  registerUrl =   this.secondBaseUrl + 'users/register';
   loginUrl =      this.baseUrl + 'users/login/';
   createUrl =     this.baseUrl + 'users/adminCreateOwner';
   updateUserUrl = this.baseUrl + 'users/createOwner';
@@ -96,6 +97,7 @@ register(data: any) {
       map((response: any) => {
         if (response) {
           return response;
+          console.log(response);
         }
       })
   );

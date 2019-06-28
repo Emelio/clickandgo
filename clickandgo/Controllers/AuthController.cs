@@ -57,7 +57,29 @@ namespace clickandgo.Controllers
                 // login user
                 var token = await LoginUser(register.Email, register.Password);
 
-                return Ok(new { status = "success", token = token });
+                
+
+                try
+                {
+                    MailMessage mail = new MailMessage();
+                    SmtpClient SmtpServer = new SmtpClient("mail.clickandgoja.com");
+
+                    mail.From = new MailAddress("admin@clickandgoja.com");
+                    mail.To.Add(register.Email);
+                    mail.Subject = "New Account";
+                    mail.Body = "Please click on the following link to activate <a href='http://clickandgoja.com/api/users/validate/'></a> ";
+
+                    SmtpServer.Port = 25;
+                    SmtpServer.Credentials = new System.Net.NetworkCredential("admin@clickandgoja.com", "clickandgoja");
+                    SmtpServer.EnableSsl = false;
+
+                    SmtpServer.Send(mail);
+                    return Ok(new { status = "success", token = token });
+                }
+                catch (Exception ex)
+                {
+                    return Ok(new { status = ex.ToString() });
+                }
             }
             else
             {
@@ -135,7 +157,7 @@ namespace clickandgo.Controllers
                 IMapper mapper = new Mapper(config);
                 Users userData = mapper.Map<OwnerDto, Users>(owner);
 
-                Address address = new Address();
+                Models.Address address = new Models.Address();
 
 
                 address.Street = owner.Address1;
@@ -167,7 +189,7 @@ namespace clickandgo.Controllers
                     SmtpClient SmtpServer = new SmtpClient("mail.clickandgoja.com");
 
                     mail.From = new MailAddress("admin@clickandgoja.com");
-                    mail.To.Add(userData.Email);
+                    mail.To.Add("campbellemelio@gmail.com");
                     mail.Subject = "New Account";
                     mail.Body = "Your email is "+userData.Email+" and your password is "+finalString;
 
@@ -204,7 +226,7 @@ namespace clickandgo.Controllers
             user.Stage = owner.Stage;
             user.Gender = owner.Gender;
 
-            Address address = new Address();
+            Models.Address address = new Models.Address();
 
             address.Street = owner.Address1;
             address.City = owner.City;

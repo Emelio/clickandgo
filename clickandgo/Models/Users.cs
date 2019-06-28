@@ -36,5 +36,9 @@ namespace clickandgo.Models
         public string Type { get; set; }
 
         public string Stage { get; set; }
+
+        public string Verified { get; set; }
+
+        public string VerificationCode { get; set; }
     }
 }

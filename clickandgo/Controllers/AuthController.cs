@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
@@ -36,7 +37,28 @@ namespace clickandgo.Controllers
         [Route("api/users/verify/{code}/{email}")]
         public async Task<IActionResult> VerifyAccount(string code, string email)
         {
-            return Ok();
+            Users user = await _userRepository.CheckUser(email);
+
+            if (user != null)
+            {
+                if (user.VerificationCode == code)
+                {
+                    await _userRepository.UpdateVerificationCode(code, email);
+
+                    return Ok(new { status = "success" });
+                    
+                }
+                else
+                {
+
+                    return Ok(new { status = "fail" });
+                }
+            }
+            else {
+                return Ok(new { status = "noUser"});
+            }
+
+            
         }
 
         [AllowAnonymous]
@@ -84,7 +106,7 @@ namespace clickandgo.Controllers
                     mail.To.Add(register.Email);
                     mail.Subject = "New Account";
                     mail.IsBodyHtml = true;
-                    mail.Body = "Please click on this link to activate account <a href='http://clickandgoja.com/api/users/verify/"+ GetStringSha256Hash(newBaseString) + "/"+ register.Email + "'>verify</a>";
+                    mail.Body = "Please click on this link to activate account <a href='http://clickandgoja.com/verification/" + GetStringSha256Hash(newBaseString) + "/"+ register.Email + "'>verify</a>";
 
                     SmtpServer.Port = 25;
                     SmtpServer.Credentials = new System.Net.NetworkCredential("admin@clickandgoja.com", "clickandgoja");

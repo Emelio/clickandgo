@@ -21,6 +21,8 @@ export class RegisterComponent implements OnInit {
 
   register() {
 
+    console.log('hi');
+
     if (this.data.Agree === true) {
 
       if (this.data.Password == this.data.Password1) {

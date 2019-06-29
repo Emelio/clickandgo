@@ -13,20 +13,29 @@ export class Pipe1Component implements OnInit {
   local: any = {};
   data: any = {};
   genders: any = [{ title: 'Male', value: 'male' }, { title: 'Female', value: 'female' }];
+  verification: any; 
 
   constructor(private communicate: CommunicatorService, private router: Router, private alertify: AlertifyService) { }
 
   ngOnInit() {
+    this.checkUser();
     this.local.fname = localStorage.getItem('fname');
     this.local.lname = localStorage.getItem('lname');
     this.local.email = localStorage.getItem('email');
 
-    this.checkUser();
+    
   }
 
-  checkUser(){
+  checkUser() {
+    
     this.communicate.getSingleUser().subscribe(next => {
       console.log(next);
+
+      if(next.status == 'false') {
+        this.verification = false;
+      } else {
+        this.verification = true;
+      }
 
     });
   }

@@ -10,6 +10,7 @@ import { Pipe2Component } from './pipe/pipe2/pipe2.component';
 import { Pipe3Component } from './pipe/pipe3/pipe3.component';
 import { ViewOwnersComponent } from './AdminControls/viewOwners/viewOwners.component';
 import { TermsComponent } from './terms/terms.component';
+import { VerificationComponent } from './verification/verification.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'terms',
     component: TermsComponent
+  },
+  {
+    path: 'verification/:code/:email',
+    component: VerificationComponent
   },
   {
     path: 'register',

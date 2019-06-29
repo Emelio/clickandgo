@@ -39,6 +39,14 @@ namespace clickandgo.Repository
             return result;
         }
 
+        public async Task<dynamic> UpdateVerificationCode(string code, string email)
+        {
+            var filter = Builders<Users>.Filter.Eq(x => x.Email, email);
+            var update = Builders<Users>.Update.Set(x => x.Verified, "true");
+            var result = await _context.Users.UpdateOneAsync(filter, update);
+            return result;
+        }
+
         public async Task<bool> CreateUser(Users users, string password, string type)
         {
             byte[] passwordHash, passwordSalt;

@@ -1,4 +1,10 @@
 <div class="register-photo">
+    <div class="form-container" style="width: 341px;margin-top: 9px;height: 524px; background-color: white">
+        <p style='padding: 50px; text-align: center'>Please click on the link in your email for verification. </p>
+    </div>
+</div>
+
+<div class="register-photo" *ngIf="verification">
   <div class="form-container" style="width: 341px;margin-top: 9px;height: 524px;">
       <form method="post" style="height: 519px;" (ngSubmit)='createOwnerOperator()' #paymentForm="ngForm">
           <h2 class="text-center logo" style="margin-bottom: -5px;height: 53px;"><strong>Click &amp; Go</strong></h2>

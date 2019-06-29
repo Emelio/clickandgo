@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ecampbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo.csproj": {}
+    "C:\\Users\\Emelio Campbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo\\clickandgo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ecampbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo.csproj": {
+    "C:\\Users\\Emelio Campbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo\\clickandgo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ecampbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo.csproj",
+        "projectUniqueName": "C:\\Users\\Emelio Campbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo\\clickandgo.csproj",
         "projectName": "clickandgo",
-        "projectPath": "C:\\Users\\ecampbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo.csproj",
-        "packagesPath": "C:\\Users\\ecampbell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ecampbell\\Documents\\GitHub\\clickandgo\\clickandgo\\obj\\",
+        "projectPath": "C:\\Users\\Emelio Campbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo\\clickandgo.csproj",
+        "packagesPath": "C:\\Users\\Emelio Campbell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Emelio Campbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\ecampbell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Emelio Campbell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

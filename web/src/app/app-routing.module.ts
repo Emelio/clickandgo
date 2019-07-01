@@ -14,6 +14,10 @@ import { VerificationComponent } from './verification/verification.component';
 
 const routes: Routes = [
   {
+    path: 'verification/:code/:email',
+    component: VerificationComponent
+  },
+  {
     path: 'pipe',
     children: [
       {
@@ -43,10 +47,7 @@ const routes: Routes = [
     path: 'terms',
     component: TermsComponent
   },
-  {
-    path: 'verification/:code/:email',
-    component: VerificationComponent
-  },
+  
   {
     path: 'register',
     component: RegisterComponent

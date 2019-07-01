@@ -26,7 +26,7 @@ export class CommunicatorService {
   getAllOwnersData = this.baseUrl + 'admin/getAllOwners';
   getSingleDriverData = this.baseUrl + 'admin/getSingleDriver/';
 
-  verifyUserFromEmail = this.baseUrl + 'api/users/verify/{code}/{email}';
+  verifyUserFromEmail = this.baseUrl + 'users/verify/';
 
   readonly token = localStorage.getItem('token');
   readonly header = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
@@ -46,7 +46,7 @@ getSingleDriver(id) {
 }
 
 verifyUser(code, email) {
-  return this.http.get(this.getSingleDriverData + code + "/" + email, {headers: this.header}).pipe(
+  return this.http.get(this.verifyUserFromEmail + code + "/" + email, {headers: this.header}).pipe(
     map((response: any) => {
       if (response) {
         

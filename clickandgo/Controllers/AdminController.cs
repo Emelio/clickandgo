@@ -67,5 +67,13 @@ namespace clickandgo.Controllers
             Vehicle vehicle = await _vehicleRepository.GetVehicleSingle(id);
             return Ok(vehicle);
         }
+
+        [Route("api/admin/getAllVehicles/{id}")]
+        [HttpGet]
+        public async Task<IActionResult> GetAllVehicles(string id)
+        {
+            List<Vehicle> cars = await _vehicleRepository.GetVehicleDataAsync(id);
+            return Ok(cars);
+        }
     }
 }

@@ -53,5 +53,18 @@ constructor(private http: HttpClient) { }
     );
   }
 
+  getAllVehicles(id){
+    let url = this.baseUrl + 'admin/getAllVehicles/' + id;
+
+    return this.http.get(url, {headers: this.header}).pipe(
+      map((response: any) => {
+        if (response) {
+          
+          return response;
+        }
+      })
+    );
+  }
+
 
 }

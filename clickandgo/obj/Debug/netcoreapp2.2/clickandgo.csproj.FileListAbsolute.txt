@@ -25,3 +25,4 @@ C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\obj\D
 C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\obj\Debug\netcoreapp2.2\clickandgo.RazorTargetAssemblyInfo.cache
 C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\obj\Debug\netcoreapp2.2\clickandgo.dll
 C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\obj\Debug\netcoreapp2.2\clickandgo.pdb
+C:\Users\Emelio Campbell\Documents\GitHub\clickandgo\clickandgo\clickandgo\obj\Debug\netcoreapp2.2\clickandgo.csprojAssemblyReference.cache

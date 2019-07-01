@@ -13,6 +13,7 @@ export class ViewOwnersComponent implements OnInit {
   selectedDriver: any = {}
   selectedDriverage: number;
   selectedVehicle: any = {};
+  listOfCars: any = [];
 
   constructor(private adminServ: AdminConnectionsService, ) { }
 
@@ -31,6 +32,11 @@ export class ViewOwnersComponent implements OnInit {
       this.drivers = next;
       console.log(this.drivers);
     });
+
+    this.adminServ.getAllVehicles(id).subscribe(next => {
+      console.log(next);
+      this.listOfCars = next;
+    });
   }
 
   showUsers(id) {
@@ -43,7 +49,7 @@ export class ViewOwnersComponent implements OnInit {
       let age = today.getFullYear() - dob.getFullYear();
       this.selectedDriverage = age;
 
-      this.adminServ.getCarById(element.vehicleID).subscribe(next => {
+      this.adminServ.getCarById(element._id).subscribe(next => {
         console.log(next);
         this.selectedVehicle = next; 
       });

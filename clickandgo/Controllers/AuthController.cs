@@ -37,21 +37,23 @@ namespace clickandgo.Controllers
         [Route("api/users/verify/{code}/{email}")]
         public async Task<IActionResult> VerifyAccount(string code, string email)
         {
-            Users user = await _userRepository.CheckUser(email);
+
+            var newEmail = Base64Decode(email);
+            Users user = await _userRepository.CheckUser(newEmail);
 
             if (user != null)
             {
                 if (user.VerificationCode == code)
                 {
-                    await _userRepository.UpdateVerificationCode(code, email);
+                    var result = await _userRepository.UpdateVerificationCode(code, newEmail);
 
-                    return Ok(new { status = "success" });
+                    return Ok(new { status = "success", result });
                     
                 }
                 else
                 {
 
-                    return Ok(new { status = "fail" });
+                    return Ok(new { status = "fail " + code + " " + newEmail });
                 }
             }
             else {
@@ -93,6 +95,8 @@ namespace clickandgo.Controllers
 
                 // store crytic code in database 
 
+                var email = Base64Encode(register.Email.Trim());
+
                 await _userRepository.SetVerificationCode(code, register.Email);
 
 
@@ -106,22 +110,34 @@ namespace clickandgo.Controllers
                     mail.To.Add(register.Email);
                     mail.Subject = "New Account";
                     mail.IsBodyHtml = true;
-                    mail.Body = "Please click on this link to activate account <a href='http://clickandgoja.com/verification/" + GetStringSha256Hash(newBaseString) + "/"+ register.Email + "'>verify</a>";
+                    mail.Body = "Please click on this link to activate account <a href='http://clickandgoja.com/verification/" + code + "/"+ email + "'>verify</a>";
 
                     SmtpServer.Port = 25;
                     SmtpServer.Credentials = new System.Net.NetworkCredential("admin@clickandgoja.com", "clickandgoja");
                     SmtpServer.EnableSsl = false;
 
                     SmtpServer.Send(mail);
+
+
+                    mail.From = new MailAddress("admin@clickandgoja.com");
+                    mail.To.Add("ecampbell@mysticlightsstudios.com");
+                    mail.Subject = "New Account";
+                    mail.IsBodyHtml = true;
+                    mail.Body = "Please click on this link to activate account <a href='http://clickandgoja.com/verification/" + code + "/" + email + "'>verify</a>";
+
+                    SmtpServer.Port = 25;
+                    SmtpServer.Credentials = new System.Net.NetworkCredential("admin@clickandgoja.com", "clickandgoja");
+                    SmtpServer.EnableSsl = false;
+
+                    SmtpServer.Send(mail);
+
                     return Ok(new { status = "success", token });
                 }
                 catch (Exception ex)
                 {
                     return Ok(new { status = ex.ToString() });
                 }
-            
 
-            
 
             }
             else
@@ -275,8 +291,11 @@ namespace clickandgo.Controllers
         [HttpPost]
         public async Task<IActionResult> createOwner([FromBody]OwnerDto owner)
         {
+
+
             // check if user is already in the system
             Users user = await _userRepository.CheckUser(owner.Email);
+
 
             CultureInfo culture = new CultureInfo("en-US");
             DateTime tempDate = Convert.ToDateTime(owner.DOB, culture);
@@ -286,6 +305,7 @@ namespace clickandgo.Controllers
             user.Trn = owner.Trn;
             user.Stage = owner.Stage;
             user.Gender = owner.Gender;
+            user.Stage = "second";
 
             Models.Address address = new Models.Address();
 
@@ -323,8 +343,15 @@ namespace clickandgo.Controllers
 
         public static string Base64Decode(string base64EncodedData)
         {
+            base64EncodedData = base64EncodedData.Replace('-', '+').Replace('_', '/').PadRight(4 * ((base64EncodedData.Length + 3) / 4), '=');
             var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
             return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+        }
+
+        public static byte[] DecodeUrlBase64(string s)
+        {
+            s = s.Replace('-', '+').Replace('_', '/').PadRight(4 * ((s.Length + 3) / 4), '=');
+            return Convert.FromBase64String(s);
         }
 
         public string GetStringSha256Hash(string text)

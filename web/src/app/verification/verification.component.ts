@@ -11,6 +11,7 @@ export class VerificationComponent implements OnInit {
 
   code: any;
   email: any;
+  verified: any;
 
   constructor(private route: ActivatedRoute, private communicate: CommunicatorService) { }
 
@@ -19,10 +20,13 @@ export class VerificationComponent implements OnInit {
     this.email = this.route.snapshot.paramMap.get('email');
 
     this.communicate.verifyUser(this.code, this.email).subscribe(next => {
-      console.log(next);
+      console.log(next.status);
+
+      if (next.status == 'success') {
+        this.verified = true;
+      }
     });
 
-    console.log(this.code);
   }
   
 

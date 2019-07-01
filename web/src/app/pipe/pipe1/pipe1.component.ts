@@ -29,14 +29,45 @@ export class Pipe1Component implements OnInit {
   checkUser() {
     
     this.communicate.getSingleUser().subscribe(next => {
-      console.log(next);
+      console.log(next.status);
 
       if(next.status == 'false') {
         this.verification = false;
-      } else {
+      } else if(next.status == 'true') {
         this.verification = true;
       }
 
+    });
+  }
+
+  checkStage() {
+    this.communicate.checkUserStage().subscribe(next => {
+
+      switch (next.stage) {
+        case 'first':
+          this.router.navigate(['/pipe/pipe1']);
+
+          break;
+
+        case 'second':
+
+
+          this.router.navigate(['/pipe/pipe2']);
+          break;
+
+          case 'third':
+
+
+            this.router.navigate(['/pipe/pipe3']);
+            break;  
+
+        case 'approved':
+          this.router.navigate(['/pipe/pipe3']);
+          break;
+      
+        default:
+          break;
+      }
     });
   }
 
@@ -51,7 +82,8 @@ export class Pipe1Component implements OnInit {
       console.log(next);
 
       if(next.status == 'updated') {
-         this.router.navigate(['/pipe/pipe2']);
+
+        this.checkStage();
 
       }
 

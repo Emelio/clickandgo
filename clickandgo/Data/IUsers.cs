@@ -16,6 +16,8 @@ namespace clickandgo.Data
 
         Task<List<Users>> GetAllUsers();
 
+        Task<dynamic> UpdateVerificationCode(string code, string email);
+
         Task<dynamic> SetVerificationCode(string code, string email);
 
         Task<Users> UpdateUserAddress(Address address);

@@ -8,12 +8,12 @@ import { map } from 'rxjs/operators';
 export class CommunicatorService {
 
   baseUrl = 'http://clickandgoja.com/api/';
-  secondBase = 'http://localhost:5000';
+  secondBase = 'http://localhost:5000/api/';
   registerUrl =   this.baseUrl + 'users/register';
   loginUrl =      this.baseUrl + 'users/login/';
   createUrl =     this.baseUrl + 'users/adminCreateOwner';
   updateUserUrl = this.baseUrl + 'users/createOwner';
-  getUserUrl =    this.secondBase + 'api/users/getUser';
+  getUserUrl =    this.baseUrl + 'users/getUser';
   checkStageUrl = this.baseUrl + 'owner/checkStage';
   addcar =        this.baseUrl + 'owner/addCar';
   updatecar =     this.baseUrl + 'owner/updateCar';
@@ -25,6 +25,8 @@ export class CommunicatorService {
   assignCarToDriver = this.baseUrl + 'owner/assignDriver/';
   getAllOwnersData = this.baseUrl + 'admin/getAllOwners';
   getSingleDriverData = this.baseUrl + 'admin/getSingleDriver/';
+
+  verifyUserFromEmail = this.baseUrl + 'users/verify/';
 
   readonly token = localStorage.getItem('token');
   readonly header = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
@@ -43,12 +45,25 @@ getSingleDriver(id) {
   );
 }
 
+verifyUser(code, email) {
+  return this.http.get(this.verifyUserFromEmail + code + "/" + email, {headers: this.header}).pipe(
+    map((response: any) => {
+      if (response) {
+        
+        return response;
+      }
+    })
+  );
+}
+
 getSingleUser() {
 
   return this.http.get(this.getUserUrl, {headers: this.header}).pipe(
     map((response: any) => {
+      console.log(response);
       if (response) {
         console.log(response);
+
         
         return response;
       }

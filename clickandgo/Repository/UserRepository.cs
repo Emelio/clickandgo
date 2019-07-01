@@ -34,7 +34,15 @@ namespace clickandgo.Repository
         public async Task<dynamic> SetVerificationCode(string code, string email)
         {
             var filter = Builders<Users>.Filter.Eq(x => x.Email, email);
-            var update = Builders<Users>.Update.Set(x => x.VerificationCode, code).Set(x => x.Verified, "false");
+            var update = Builders<Users>.Update.Set(x => x.VerificationCode, code).Set(x => x.Verified, "false").Set(x => x.Stage, "first");
+            var result = await _context.Users.UpdateOneAsync(filter, update);
+            return result;
+        }
+
+        public async Task<dynamic> UpdateVerificationCode(string code, string email)
+        {
+            var filter = Builders<Users>.Filter.Eq(x => x.Email, email);
+            var update = Builders<Users>.Update.Set(x => x.Verified, "true");
             var result = await _context.Users.UpdateOneAsync(filter, update);
             return result;
         }

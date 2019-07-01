@@ -49,14 +49,21 @@ export class OwnerDashComponent implements OnInit {
 
       switch (next.stage) {
         case 'first':
-          this.router.navigate(['/pipe/pipe2']);
+          this.router.navigate(['/pipe/pipe1']);
 
           break;
 
         case 'second':
 
           this.owner = next.firstName + ' ' + next.lastName;
+          this.router.navigate(['/pipe/pipe2']);
           break;
+
+          case 'third':
+
+            this.owner = next.firstName + ' ' + next.lastName;
+            this.router.navigate(['/pipe/pipe3']);
+            break;  
 
         case 'approved':
           this.approved = true;
@@ -161,8 +168,6 @@ export class OwnerDashComponent implements OnInit {
     this.communicate.getSingleDriver(id).subscribe(next => {
       this.selectedDriver = next;
       this.driverData = next;
-
-      console.log(next);
       console.log(this.driverData);
     })
   }

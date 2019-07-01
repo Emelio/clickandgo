@@ -18,6 +18,7 @@ import { ViewOwnersComponent } from './AdminControls/viewOwners/viewOwners.compo
 import { NavComponent } from './Frags/nav/nav.component';
 import { FooterComponent } from './Frags/footer/footer.component';
 import { TermsComponent } from './terms/terms.component';
+import { VerificationComponent } from './verification/verification.component';
 
 
 @NgModule({
@@ -29,15 +30,15 @@ import { TermsComponent } from './terms/terms.component';
       OwnerComponent,
       OwnerDashComponent,
       TermsComponent,
-      //pipes\nPipe1Component,
+      //pipes\\nPipe1Component,
       Pipe1Component,
       Pipe2Component,
       Pipe3Component,
-      //admincontrols\nViewOwnersComponent,
+      //admincontrols\\nViewOwnersComponent,
       NavComponent,
       FooterComponent,
-      ViewOwnersComponent 
-
+      ViewOwnersComponent,
+      VerificationComponent
    ],
    imports: [
       BrowserModule,

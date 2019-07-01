@@ -51,6 +51,10 @@ namespace clickandgo.Controllers
                     await _userRepository.UpdateStage("second", id);
                     return Ok(new { status = "update Stage" });
                 }
+                if (user.Stage == "second") {
+                    await _userRepository.UpdateStage("third", id);
+                    return Ok(new { status = "update Stage" });
+                }
             }
 
            
@@ -124,27 +128,24 @@ namespace clickandgo.Controllers
             var token = Request.Headers["Authorization"];
             string id = _tokenHelper.getUserFromToken(token);
 
+            Driver driver = new Driver();
+
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<AddDriverDto, Driver>();
             });
             IMapper mapper = new Mapper(config);
-            Driver driver = mapper.Map<AddDriverDto, Driver>(addDriver);
-
-            Models.Address address = new Models.Address();
-
-
-            address.Street = addDriver.Address.StreetAddress;
-            address.City = addDriver.Address.City;
-            address.District = addDriver.Address.District;
-            address.Parish = addDriver.Address.Parish;
-            address.Country = addDriver.Address.Country;
+            driver = mapper.Map<AddDriverDto, Driver>(addDriver);
 
             driver.PrimaryId = id;
 
-            driver.Address = address;
-
             await _driverRepository.CreateDriver(driver);
+
+            Users user = await _userRepository.CheckUserById(id);
+
+            user.Stage = "final";
+
+            await _userRepository.UpdateUserMainAsync(user.Email, user);
 
             return Ok(new { status = "created" });
         }

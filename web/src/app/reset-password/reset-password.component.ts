@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CommunicatorService } from '../services/communicator.service';
+import { AlertifyService } from '../services/alertify.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -8,12 +10,18 @@ import { Component, OnInit } from '@angular/core';
 export class ResetPasswordComponent implements OnInit {
 
   data: any ={};
-  constructor() { }
+  constructor(private communicate: CommunicatorService, private alertify: AlertifyService) { }
 
   ngOnInit() {
   }
 
   reset(){
-    
+    this.communicate.forgotpassword(this.data).subscribe(next =>{
+      if(next){
+        this.alertify.message('Check email for reset link');
+      }else{
+        this.alertify.error('failed to verify email try again');
+      }
+    })
   }
 }

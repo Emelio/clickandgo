@@ -90,10 +90,12 @@ namespace clickandgo.Controllers
         }
 
         
-        [Route("api/owner/updateDriver/{driverID}")]
-        public async Task<IActionResult> UpdateDriverData([FromBody]UpdateDriver driverDto, string driverID)
+        [Route("api/owner/updateDriver")]
+        [HttpPost]
+        public async Task<IActionResult> UpdateDriverData([FromBody]UpdateDriver driverDto)
         {
-            if(await _driverRepository.UpdateDriver(driverDto,driverID))
+
+            if(await _driverRepository.UpdateDriver(driverDto))
                 return Ok();
             return BadRequest();
         }

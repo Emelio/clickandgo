@@ -41,7 +41,7 @@ export class UpdateDriver {
 
     vehicleID: string;
 
-    _id: string;
+    driverID: string;
 
     deserialize(input: any): this {
         Object.assign(this, input);

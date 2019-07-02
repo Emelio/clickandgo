@@ -8,6 +8,8 @@ namespace clickandgo.dto
 {
     public class UpdateDriver
     {
+        public string driverID { get; set; }
+
         public string FirstName { get; set; }
 
         public string MiddleName { get; set; }

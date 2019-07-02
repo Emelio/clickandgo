@@ -32,6 +32,8 @@ export class OwnerDashComponent implements OnInit {
     this.checkStage();
     this.getVehicleList();
     this.getDriverList();
+
+    console.log(this.selectedDriver);
   }
   
   findSelectedCar(id) {
@@ -88,7 +90,7 @@ export class OwnerDashComponent implements OnInit {
       this.drivers = next;
 
     });
-  }ng
+  }
 
   logout() {
     localStorage.removeItem('token');
@@ -170,12 +172,19 @@ export class OwnerDashComponent implements OnInit {
       this.selectedDriver = next;
       this.driverData = next;
       localStorage.setItem('drvID',next._id);
+
+      console.log(this.selectedDriver);
     })
   }
 
   updateDriver(){
     const driverID= localStorage.getItem('drvID');
-    this.communicate.updateDriver(this.driverData,driverID).subscribe(next =>{
+    
+    this.driverData.driverID = driverID;
+
+    console.log(this.driverData);
+
+    this.communicate.updateDriver(this.driverData).subscribe(next =>{
       localStorage.removeItem('drvID');
       window.location.reload();
     });

@@ -28,14 +28,16 @@ namespace clickandgo.Repository
             return result;
         }
 
-        public async Task<bool> UpdateDriver(UpdateDriver driver,string driverID)
+        public async Task<bool> UpdateDriver(UpdateDriver driver)
         {
-            var filter = Builders<Driver>.Filter.Eq("_id",ObjectId.Parse(driverID));
+            var filter = Builders<Driver>.Filter.Eq("_id", ObjectId.Parse(driver.driverID));
             var update = Builders<Driver>.Update.Set("Address", driver.Address).Set("Class", driver.Class)
                                                 .Set("Collectorate", driver.Collectorate)
                                                 .Set("DateExpired", driver.DateExpired)
                                                 .Set("DateIssued", driver.DateIssued)
                                                 .Set("DOB", driver.DOB)
+                                                .Set("Gender", driver.Gender)
+                                                .Set("LicenseToDrive", driver.LicenseToDrive)
                                                 .Set("FirstName", driver.FirstName)
                                                 .Set("LastName", driver.LastName)
                                                 .Set("MiddleName", driver.MiddleName)

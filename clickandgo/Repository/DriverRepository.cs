@@ -1,4 +1,5 @@
 ﻿using clickandgo.Data;
+using clickandgo.dto;
 using clickandgo.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
@@ -25,6 +26,25 @@ namespace clickandgo.Repository
             var update = Builders<Driver>.Update.Set(x => x.VehicleID, carId);
             var result = await _context.Driver.UpdateOneAsync(x => x._id == ObjectId.Parse(driverId), update);
             return result;
+        }
+
+        public async Task<bool> UpdateDriver(UpdateDriver driver,string driverID)
+        {
+            var filter = Builders<Driver>.Filter.Eq("_id",ObjectId.Parse(driverID));
+            var update = Builders<Driver>.Update.Set("Address", driver.Address).Set("Class", driver.Class)
+                                                .Set("Collectorate", driver.Collectorate)
+                                                .Set("DateExpired", driver.DateExpired)
+                                                .Set("DateIssued", driver.DateIssued)
+                                                .Set("DOB", driver.DOB)
+                                                .Set("FirstName", driver.FirstName)
+                                                .Set("LastName", driver.LastName)
+                                                .Set("MiddleName", driver.MiddleName)
+                                                .Set("PoliceRecordNumber", driver.PoliceRecordNumber)
+                                                //.Set("PPV", driver.PPV)
+                                                .Set("TimePoliceRecordIssue", driver.TimePoliceRecordIssue)
+                                                .Set("Trn", driver.Trn);
+            var result= await _context.Driver.UpdateOneAsync(filter, update);
+            return result.IsAcknowledged;
         }
 
         public async Task<bool> CreateDriver(Driver driver)

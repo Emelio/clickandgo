@@ -3,13 +3,13 @@ import { CommunicatorService } from '../services/communicator.service';
 import { Router } from '@angular/router';
 import { UpdateDriver } from '../model/updateDriver';
 
+
 @Component({
   selector: 'app-ownerDash',
   templateUrl: './ownerDash.component.html',
   styleUrls: ['./ownerDash.component.css']
 })
 export class OwnerDashComponent implements OnInit {
-
   approved = false;
   cars: any = [];
   drivers: any = [];
@@ -28,6 +28,7 @@ export class OwnerDashComponent implements OnInit {
 
   ngOnInit() {
 
+    
     this.checkStage();
     this.getVehicleList();
     this.getDriverList();
@@ -168,8 +169,16 @@ export class OwnerDashComponent implements OnInit {
     this.communicate.getSingleDriver(id).subscribe(next => {
       this.selectedDriver = next;
       this.driverData = next;
-      console.log(this.driverData);
+      localStorage.setItem('drvID',next._id);
     })
+  }
+
+  updateDriver(){
+    const driverID= localStorage.getItem('drvID');
+    this.communicate.updateDriver(this.driverData,driverID).subscribe(next =>{
+      localStorage.removeItem('drvID');
+      window.location.reload();
+    });
   }
 
 

@@ -1,5 +1,6 @@
 import { Address } from './Address';
 
+
 export class UpdateDriver {
 
     firstName: string;
@@ -24,7 +25,7 @@ export class UpdateDriver {
 
     address: Address = new Address();
 
-    dOB: Date;
+    dob: Date;
 
     licenseToDrive: string;
 

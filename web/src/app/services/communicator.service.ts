@@ -25,7 +25,7 @@ export class CommunicatorService {
   assignCarToDriver = this.baseUrl + 'owner/assignDriver/';
   getAllOwnersData = this.baseUrl + 'admin/getAllOwners';
   getSingleDriverData = this.baseUrl + 'admin/getSingleDriver/';
-
+  updateDriverDetails= this.baseUrl + 'owner/updateDriver/';
   verifyUserFromEmail = this.baseUrl + 'users/verify/';
 
   readonly token = localStorage.getItem('token');
@@ -219,4 +219,7 @@ removeCar(id) {
   );
 }
 
+updateDriver(data:any, driverId){
+  return this.http.post(this.updateDriverDetails+driverId, data,{headers: this.header});
+}
 }

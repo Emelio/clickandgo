@@ -1,4 +1,5 @@
-﻿using clickandgo.Models;
+﻿using clickandgo.dto;
+using clickandgo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,6 @@ namespace clickandgo.Data
         Task<dynamic> AssignCar(string carId, string driverId);
 
         Task<Driver> GetDriver(string id);
+        Task<bool> UpdateDriver(UpdateDriver driver,string driverID);
     }
 }

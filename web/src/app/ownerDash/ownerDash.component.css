@@ -131,3 +131,5 @@ h5 {
       -webkit-text-fill-color: transparent;
     }
     
+    /*ng-deep may be depreciated this was done to get the datepicker on the modal */
+    ::ng-deep .cdk-overlay-container{ z-index:2000; }

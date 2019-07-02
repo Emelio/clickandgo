@@ -11,11 +11,17 @@ import { Pipe3Component } from './pipe/pipe3/pipe3.component';
 import { ViewOwnersComponent } from './AdminControls/viewOwners/viewOwners.component';
 import { TermsComponent } from './terms/terms.component';
 import { VerificationComponent } from './verification/verification.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
     path: 'verification/:code/:email',
     component: VerificationComponent
+  },
+  {
+    path: 'forgotpassword/:code/:email',
+    component: ForgotPasswordComponent
   },
   {
     path: 'pipe',
@@ -63,6 +69,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'resetpassword',
+    component: ResetPasswordComponent
   },
   {
     path: 'dash',

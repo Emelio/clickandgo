@@ -27,6 +27,7 @@ export class CommunicatorService {
   getSingleDriverData = this.baseUrl + 'admin/getSingleDriver/';
   updateDriverDetails = this.baseUrl + 'owner/updateDriver';
   verifyUserFromEmail = this.baseUrl + 'users/verify/';
+  resetpassword= this.baseUrl + 'users/resetpassword/';
 
   readonly token = localStorage.getItem('token');
   readonly header = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
@@ -221,5 +222,9 @@ removeCar(id) {
 
 updateDriver(data: any) {
   return this.http.post(this.updateDriverDetails, data, {headers: this.header});
+}
+
+resetPassword(data:any){
+  return this.http.post(this.resetpassword,data);
 }
 }

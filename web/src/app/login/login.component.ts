@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
   checkStage() {
     this.communicate.checkUserStage().subscribe(next => {
 
+      console.log(next)
+
       switch (next.stage) {
         case 'first':
           this.router.navigate(['/pipe/pipe1']);
@@ -74,7 +76,7 @@ export class LoginComponent implements OnInit {
 
               this.checkStage();
 
-            //window.location.href = '/ownerDash';
+            window.location.href = '/ownerDash';
             break;
         
           default:

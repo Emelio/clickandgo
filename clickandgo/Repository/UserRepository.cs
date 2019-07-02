@@ -62,6 +62,18 @@ namespace clickandgo.Repository
             return true; 
         }
 
+        public async Task<bool> UpdatePassword(string email,string password)
+        {
+            byte[] passwordHash, passwordSalt;
+            CreatePasswordHash(password, out passwordHash, out passwordSalt);
+
+            var filter = Builders<Users>.Filter.Eq(x => x.Email, email);
+            var update = Builders<Users>.Update.Set(x => x.PasswordSalt, passwordSalt).Set(x=> x.PasswordHash,passwordHash);
+            var result = await _context.Users.UpdateOneAsync(filter, update);
+
+            return result.IsAcknowledged;
+        }
+
         public async Task<List<Users>> GetAllUsers()
         {
             List<Users> user = await _context.Users.Find(x => x.Type == "owner").ToListAsync();

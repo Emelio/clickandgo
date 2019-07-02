@@ -47,7 +47,7 @@ namespace clickandgo.Controllers
                 {
                     var result = await _userRepository.UpdateVerificationCode(code, newEmail);
 
-                    return Ok(new { status = "success", result });
+                    return Ok(new { status = "success", result, email= newEmail });
                     
                 }
                 else
@@ -147,6 +147,65 @@ namespace clickandgo.Controllers
 
             //add user to database and return user information
             //return NotFound();
+        }
+
+        [AllowAnonymous]
+        [Route("api/users/resetpassword")]
+        [HttpPost]
+        public async Task<IActionResult> UpdatePassword([FromBody] UpdateUserPassword updateUserPassword)
+        {
+            var user = await _userRepository.CheckUser(updateUserPassword.Email);
+            if(user != null)
+            {
+               if(await _userRepository.UpdatePassword(updateUserPassword.Email, updateUserPassword.Password))
+                {
+                    return Ok(true);
+                }
+                else
+                {
+                    return BadRequest(false);
+                }
+            }
+
+            return Ok(false);
+        }
+
+        [AllowAnonymous]
+        [Route("api/users/forgotpassword/{email}")]
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(string email)
+        {
+            var user = await _userRepository.CheckUser(email);
+            
+            if (user != null)
+            {
+                string baseString = email;
+                var newBaseString = Base64Encode(baseString);
+                var code = GetStringSha256Hash(newBaseString);
+                await _userRepository.SetVerificationCode(code, email); // this should be a sha hash
+                try
+                {
+                    MailMessage mail = new MailMessage();
+                    SmtpClient SmtpServer = new SmtpClient("mail.clickandgoja.com");
+
+                    mail.From = new MailAddress("admin@clickandgoja.com");
+                    mail.To.Add(email); // when testing, it is advised to hard code your email here so you can get the emails
+                    mail.Subject = "Reset Password link";
+                    mail.IsBodyHtml = true;
+                    mail.Body = "Please click on this link to change password <a href='http://localhost:4200/forgotpassword/" + code + "/" + Base64Encode(email) + "'>verify</a>"; // email must be base64 before transit
+
+                    SmtpServer.Port = 25;
+                    SmtpServer.Credentials = new System.Net.NetworkCredential("admin@clickandgoja.com", "clickandgoja");
+                    SmtpServer.EnableSsl = false;
+
+                    SmtpServer.Send(mail);
+                    return Ok(true);
+                }catch(Exception e)
+                {
+                    return BadRequest(e);
+                }
+            }
+            return BadRequest();
         }
 
         [AllowAnonymous]

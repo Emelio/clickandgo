@@ -19,6 +19,8 @@ import { NavComponent } from './Frags/nav/nav.component';
 import { FooterComponent } from './Frags/footer/footer.component';
 import { TermsComponent } from './terms/terms.component';
 import { VerificationComponent } from './verification/verification.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -30,15 +32,17 @@ import { VerificationComponent } from './verification/verification.component';
       OwnerComponent,
       OwnerDashComponent,
       TermsComponent,
-      //pipes\\nPipe1Component,
+      //pipes\\\\\\\\nPipe1Component,
       Pipe1Component,
       Pipe2Component,
       Pipe3Component,
-      //admincontrols\\nViewOwnersComponent,
+      //admincontrols\\\\\\\\nViewOwnersComponent,
       NavComponent,
       FooterComponent,
       ViewOwnersComponent,
-      VerificationComponent
+      VerificationComponent,
+      ResetPasswordComponent,
+      ForgotPasswordComponent
    ],
    imports: [
       BrowserModule,

@@ -27,5 +27,8 @@ namespace clickandgo.Data
         Task<bool> UpdateUserMainAsync(string type, Users data);
 
         Task<Users> CheckUser(string email);
+
+        Task<bool> UpdatePassword(string email, string password);
+
     }
 }

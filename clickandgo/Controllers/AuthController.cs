@@ -192,7 +192,7 @@ namespace clickandgo.Controllers
                     mail.To.Add(email); // when testing, it is advised to hard code your email here so you can get the emails
                     mail.Subject = "Reset Password link";
                     mail.IsBodyHtml = true;
-                    mail.Body = "Please click on this link to change password <a href='http://localhost:4200/forgotpassword/" + code + "/" + Base64Encode(email) + "'>verify</a>"; // email must be base64 before transit
+                    mail.Body = "Please click on this link to change password <a href='http://clickandgoja.com/forgotpassword/" + code + "/" + Base64Encode(email) + "'>verify</a>"; // email must be base64 before transit
 
                     SmtpServer.Port = 25;
                     SmtpServer.Credentials = new System.Net.NetworkCredential("admin@clickandgoja.com", "clickandgoja");

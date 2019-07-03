@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommunicatorService } from '../services/communicator.service';
+import { AlertifyService } from '../services/alertify.service';
 
 @Component({
   selector: 'app-dash',
@@ -13,7 +14,7 @@ export class DashComponent implements OnInit {
   selectedDriver: any = {};
   diverCount;
 
-  constructor(private router: Router, private communicate: CommunicatorService) { }
+  constructor(private router: Router, private communicate: CommunicatorService, private alertify: AlertifyService) { }
 
   ngOnInit() {
     this.getOwners();
@@ -50,6 +51,18 @@ export class DashComponent implements OnInit {
     this.communicate.getSingleDriver(userID).subscribe(next => {
       this.selectedDriver = next;
     });
+  }
+
+  deleteOwner(id){
+    if(confirm('Are you sure you want to delete user?')){
+      this.communicate.deleteUser(id).subscribe(next =>{
+        if(next){
+          window.location.reload();
+        }else{
+          this.alertify.error(JSON.stringify(next));
+        }
+      });
+    }
   }
 
 }

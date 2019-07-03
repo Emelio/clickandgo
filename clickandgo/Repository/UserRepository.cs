@@ -131,6 +131,14 @@ namespace clickandgo.Repository
             return true;
         }
 
+        public async Task<bool> DeleteUser(string Id)
+        {
+            var filter = Builders<Users>.Filter.Eq(s => s._id, ObjectId.Parse(Id));
+            var result =await _context.Users.DeleteOneAsync(filter);
+
+            return result.IsAcknowledged;
+        }
+
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using (var hmac = new System.Security.Cryptography.HMACSHA512())
@@ -157,5 +165,7 @@ namespace clickandgo.Repository
                 return true;
             };
         }
+
+        
     }
 }

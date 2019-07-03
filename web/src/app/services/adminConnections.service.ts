@@ -8,7 +8,6 @@ import { map } from 'rxjs/operators';
 export class AdminConnectionsService {
 
   baseUrl = 'http://clickandgoja.com/api/';
-
   readonly token = localStorage.getItem('token');
   readonly header = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
 

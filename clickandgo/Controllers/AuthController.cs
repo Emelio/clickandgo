@@ -393,6 +393,8 @@ namespace clickandgo.Controllers
             return Ok(new { stage = user.Stage });
         }
 
+
+
         //encode
         public static string Base64Encode(string plainText)
         {

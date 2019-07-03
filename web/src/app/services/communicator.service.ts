@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,7 @@ export class CommunicatorService {
   verifyUserFromEmail = this.baseUrl + 'users/verify/';
   resetpassword= this.baseUrl + 'users/resetpassword/';
   forgetpassword =this.baseUrl + 'users/forgotpassword/'
+  deleteOwner =this.secondBase +'admin/removeDriver/';
   readonly token = localStorage.getItem('token');
   readonly header = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
 
@@ -230,5 +232,9 @@ resetPassword(data:any){
 
 forgotpassword(data:any){
   return this.http.post(this.forgetpassword + data.email,null);
+}
+
+deleteUser(id){
+  return this.http.post(this.deleteOwner + id,null);
 }
 }

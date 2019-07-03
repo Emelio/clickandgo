@@ -75,5 +75,33 @@ namespace clickandgo.Controllers
             List<Vehicle> cars = await _vehicleRepository.GetVehicleDataAsync(id);
             return Ok(cars);
         }
+
+        [Route("api/admin/removeDriver/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> RemoveOwner(string id)
+        {
+            var user =await  _userRepository.CheckUserById(id);
+
+            if(user != null)
+            {
+                if( await _driverRepository.RemoveOwnerDrivers(user._id.ToString()))
+                {
+                    if( await _userRepository.DeleteUser(id))
+                    {
+                        return Ok(true);
+                    }
+                    else
+                    {
+                        return BadRequest("Failed to delete Owner");
+                    }
+
+                }
+                else
+                {
+                    return BadRequest("Failed to delete Driver");
+                }
+            }
+            return BadRequest("Failed");
+        }
     }
 }

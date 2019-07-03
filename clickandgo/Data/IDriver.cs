@@ -19,5 +19,7 @@ namespace clickandgo.Data
 
         Task<Driver> GetDriver(string id);
         Task<bool> UpdateDriver(UpdateDriver driver);
+
+        Task<bool> RemoveOwnerDrivers(string primaryId);
     }
 }

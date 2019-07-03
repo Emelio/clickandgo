@@ -72,5 +72,12 @@ namespace clickandgo.Repository
             var result = await _context.Driver.DeleteOneAsync(x => x._id == ObjectId.Parse(id));
             return result;
         }
+
+        public async Task<bool> RemoveOwnerDrivers(string primaryId)
+        {
+            var result = await _context.Driver.DeleteManyAsync(x => x.PrimaryId == primaryId);
+
+            return result.IsAcknowledged;
+        }
     }
 }

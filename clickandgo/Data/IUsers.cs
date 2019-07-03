@@ -32,5 +32,7 @@ namespace clickandgo.Data
 
         Task<bool> UpdatePassword(string email, string password);
 
+        Task<bool> DeleteUser(string Id);
+
     }
 }

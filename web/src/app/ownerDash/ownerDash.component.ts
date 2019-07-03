@@ -28,8 +28,7 @@ export class OwnerDashComponent implements OnInit {
 
   ngOnInit() {
 
-    
-    this.checkStage();
+  
     this.getVehicleList();
     this.getDriverList();
 
@@ -47,36 +46,7 @@ export class OwnerDashComponent implements OnInit {
   }
   
   // check user stage
-  checkStage() {
-    this.communicate.checkUserStage().subscribe(next => {
 
-      switch (next.stage) {
-        case 'first':
-          this.router.navigate(['/pipe/pipe1']);
-
-          break;
-
-        case 'second':
-
-          this.owner = next.firstName + ' ' + next.lastName;
-          this.router.navigate(['/pipe/pipe2']);
-          break;
-
-          case 'third':
-
-            this.owner = next.firstName + ' ' + next.lastName;
-            this.router.navigate(['/pipe/pipe3']);
-            break;  
-
-        case 'approved':
-          this.approved = true;
-          break;
-      
-        default:
-          break;
-      }
-    });
-  }
 
   getVehicleList() {
     this.communicate.carList().subscribe(next => {

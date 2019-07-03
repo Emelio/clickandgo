@@ -182,7 +182,7 @@ namespace clickandgo.Controllers
                 string baseString = email;
                 var newBaseString = Base64Encode(baseString);
                 var code = GetStringSha256Hash(newBaseString);
-                await _userRepository.SetVerificationCode(code, email); // this should be a sha hash
+                await _userRepository.SetVerificationCodeReset(code, email); // this should be a sha hash
                 try
                 {
                     MailMessage mail = new MailMessage();

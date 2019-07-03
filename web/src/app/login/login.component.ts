@@ -40,12 +40,18 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/pipe/pipe3']);
             break;  
 
+            case 'final':
+
+
+              window.location.href = '/ownerDash';
+              break;    
+
         case 'approved':
           this.router.navigate(['/pipe/pipe3']);
           break;
       
         default:
-            window.location.href = '/ownerDash';
+           // window.location.href = '/ownerDash';
           break;
       }
     });
@@ -73,10 +79,10 @@ export class LoginComponent implements OnInit {
           case 'owner':
 
               localStorage.setItem('email', this.data.Email);
+              localStorage.setItem('token', next.token);
 
               this.checkStage();
 
-            window.location.href = '/ownerDash';
             break;
         
           default:

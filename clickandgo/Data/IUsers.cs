@@ -20,6 +20,8 @@ namespace clickandgo.Data
 
         Task<dynamic> SetVerificationCode(string code, string email);
 
+        Task<dynamic> SetVerificationCodeReset(string code, string email);
+
         Task<Users> UpdateUserAddress(Address address);
 
         Task<bool> UpdateStage(string stage, string id);

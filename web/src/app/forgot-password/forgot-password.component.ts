@@ -36,7 +36,7 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.data.Password == this.data.Password1) {
       this.communicate.resetPassword(this.data).subscribe(next =>{
         if(next){
-          this.router.navigateByUrl('/login');
+          window.location.href = '/login';
           this.alertify.success('sucessfully reset password');
         }else{
           this.alertify.error("failed to update password");

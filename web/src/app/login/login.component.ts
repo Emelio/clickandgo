@@ -71,6 +71,7 @@ export class LoginComponent implements OnInit {
           case 'owner':
 
               localStorage.setItem('email', this.data.Email);
+              localStorage.setItem('token', next.token);
 
               this.checkStage();
 

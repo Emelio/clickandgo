@@ -176,7 +176,10 @@ CreateOwnerCar(data: any) {
 }
 
 checkUserStage() {
-  return this.http.get(this.checkStageUrl, {headers: this.header}).pipe(
+  const token = localStorage.getItem('token');
+  const header = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+
+  return this.http.get(this.checkStageUrl, {headers: header}).pipe(
     map((response: any) => {
       if (response) {
         return response;

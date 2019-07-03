@@ -46,7 +46,7 @@
 
                       <div class='inputItems'>
                           <label for='Engine'>Engine value Number: </label>
-                          <input class="form-control " type="email" name="Engine" id='Engine' placeholder="Engine value Number" value='{{selectedCar.engineNumber}}' [(ngModel)]="data.EngineNumber" style="width: 150px;margin: 5px 0px;">
+                          <input class="form-control " type="email" name="Engine" id='Engine' placeholder="Engine Number" value='{{selectedCar.engineNumber}}' [(ngModel)]="data.EngineNumber" style="width: 150px;margin: 5px 0px;">
                       
                       </div>
 
@@ -57,32 +57,31 @@
                       </div>
 
                       <div class='inputItems'>
-                          <label for='Plate'>Reg. Plate No.: </label>
-                          <input class="form-control" type="email" name="Plate" id='Plate' placeholder="Reg. Plate No." value='{{selectedCar.plateNumber}}' [(ngModel)]="data.PlateNumber" style="width: 150px;margin: 5px 0px;">
+                        <label for='PolicyExpiryDate'>Policy Expiry Date: </label>
+                        <input class="form-control" type="text" [(ngModel)]="data.PolicyExpiryDate"  name='PolicyExpiryDate' id='PolicyExpiryDate' value='{{selectedCar.policyExpiryDate | date: "MM/dd/yyyy"}}' [(ngModel)]="data.PolicyExpiryDate" placeholder="Policy Expiry Date" style="width: 150px;margin: 5px 0px;">
+                    </div>
+
+                      <div class='inputItems'>
+                          <label for='RegIssue'>Registration Issue Date: </label>
+                          <input class="form-control" type="text" [(ngModel)]="data.RegIssue" name='RegIssue' id='RegIssue' value='{{selectedCar.regIssue | date: "MM/dd/yyyy"}}' placeholder="Registration Issue Date" style="width: 150px;margin: 5px 0px;">
                       
                       </div>
 
                       <div class='inputItems'>
-                          <label for='RegIssue'>Reg Issue Date: </label>
-                          <input class="form-control" type="text" [(ngModel)]="data.RegIssue" name='RegIssue' id='RegIssue' value='{{selectedCar.regIssue | date: "MM/dd/yyyy"}}' placeholder="Reg Issue Date" style="width: 150px;margin: 5px 0px;">
-                      
-                      </div>
-
-                      <div class='inputItems'>
-                        <label for='RegExpiry'>Reg Expire Date: </label>
-                        <input class="form-control " type="text" [(ngModel)]="data.RegExpire" name='RegExpiry' id='RegExpiry' value='{{selectedCar.regExpire | date: "MM/dd/yyyy"}}' placeholder="Reg Expire Date" style="width: 150px;margin: 5px 0px;">
+                        <label for='RegExpiry'>Registration Expire Date: </label>
+                        <input class="form-control " type="text" [(ngModel)]="data.RegExpire" name='RegExpiry' id='RegExpiry' value='{{selectedCar.regExpire | date: "MM/dd/yyyy"}}' placeholder="Registration Expire Date" style="width: 150px;margin: 5px 0px;">
                       
                       </div>
 
                       <div  class='inputItems'>
-                          <label for='FitIssue'>Reg Expire Date: </label>
+                          <label for='FitIssue'>Fitness Issue Date: </label>
                           <input class="form-control " type="text" [(ngModel)]="data.FitIssue" name='FitIssue' id='FitIssue' value='{{selectedCar.fitIssue | date: "MM/dd/yyyy"}}' placeholder="Fitness Issue Date" style="width: 150px;margin: 5px 0px;">
                       
                       </div>
 
                       <div class='inputItems'>
-                          <label for='FitExpiry'>Fitness Expiration: </label>
-                          <input class="form-control " type="text" [(ngModel)]="data.FitExpiry"  name='FitExpiry' id='FitExpiry' value='{{selectedCar.fitExpiry | date: "MM/dd/yyyy"}}' placeholder="Fitness Expiration" style="width: 150px;margin: 5px 0px;">
+                          <label for='FitExpiry'>Fitness Expiration Date: </label>
+                          <input class="form-control " type="text" [(ngModel)]="data.FitExpiry"  name='FitExpiry' id='FitExpiry' value='{{selectedCar.fitExpiry | date: "MM/dd/yyyy"}}' placeholder="Fitness Expiration Date" style="width: 150px;margin: 5px 0px;">
                       </div>
 
                       <div class='inputItems'>
@@ -92,21 +91,23 @@
                       </div>
 
                       <div class='inputItems'>
-                          <label for='PolicyNumber'>Policy Number: </label>
-                          <input class="form-control " type="email" name="PolicyNumber" id='PolicyNumber' placeholder="Policy Number" value='{{selectedCar.policyNumber}}' [(ngModel)]="data.PolicyNumber" style="width: 150px;margin: 5px 0px;">
+                          <label for='PolicyNumber'>Insurance Policy Number: </label>
+                          <input class="form-control " type="email" name="PolicyNumber" id='PolicyNumber' placeholder="Insurance Policy Number" value='{{selectedCar.policyNumber}}' [(ngModel)]="data.PolicyNumber" style="width: 150px;margin: 5px 0px;">
                       
                       </div>
 
                       <div class='inputItems'>
-                          <label for='PolicyIssueDate'>Policy Issue Date: </label>
-                          <input class="form-control " type="text" [(ngModel)]="data.PolicyIssueDate"  name='PolicyIssueDate' id='PolicyIssueDate' value='{{selectedCar.policyIssueDate | date: "MM/dd/yyyy"}}' placeholder="Policy Issue Date" style="width: 150px;margin: 5px 0px;">
+                          <label for='PolicyIssueDate'>Insurance Policy Issue Date: </label>
+                          <input class="form-control " type="text" [(ngModel)]="data.PolicyIssueDate"  name='PolicyIssueDate' id='PolicyIssueDate' value='{{selectedCar.policyIssueDate | date: "MM/dd/yyyy"}}' placeholder="Insurance Policy Issue Date" style="width: 150px;margin: 5px 0px;">
                       
                       </div>
 
                       <div class='inputItems'>
-                          <label for='PolicyExpiryDate'>Policy Expiry Date: </label>
-                          <input class="form-control" type="text" [(ngModel)]="data.PolicyExpiryDate"  name='PolicyExpiryDate' id='PolicyExpiryDate' value='{{selectedCar.policyExpiryDate | date: "MM/dd/yyyy"}}' [(ngModel)]="data.PolicyExpiryDate" placeholder="Policy Expiry Date" style="width: 150px;margin: 5px 0px;">
-                      </div>
+                        <label for='Plate'>Registration Plate No.: </label>
+                        <input class="form-control" type="email" name="Plate" id='Plate' placeholder="Registration Plate No." value='{{selectedCar.plateNumber}}' [(ngModel)]="data.PlateNumber" style="width: 150px;margin: 5px 0px;">
+                    
+                    </div>
+
 
                       <div></div>
                       

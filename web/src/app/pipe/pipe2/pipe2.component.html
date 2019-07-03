@@ -13,16 +13,16 @@
               <input class="form-control d-inline-flex" type="email" name="Body" placeholder="Body Type" [(ngModel)]="data.BodyType" style="width: 150px;margin-left: 20px;">
               <input class="form-control d-inline-flex" type="email" name="country" placeholder="Engine Number" [(ngModel)]="data.EngineNumber" style="width: 150px;margin-left: 20px;">
               <input class="form-control d-inline-flex" type="email" name="trn" placeholder="Chassis Number" [(ngModel)]="data.ChassisNumber" style="width: 150px;margin-left: 20px;">
-              <input class="form-control d-inline-flex" type="email" name="Plate" placeholder="Reg. Plate No." [(ngModel)]="data.PlateNumber" style="width: 150px;margin-left: 20px;">
+              <input class="form-control d-inline-flex" type="email" name="Plate" placeholder="Registration Plate No." [(ngModel)]="data.PlateNumber" style="width: 150px;margin-left: 20px;">
               
               <mat-form-field style="margin-left: 24px; width: 160px">
-                  <input matInput [matDatepicker]="picker1" [(ngModel)]="data.RegIssue" name='RegIssue' placeholder="Reg Issue Date">
+                  <input matInput [matDatepicker]="picker1" [(ngModel)]="data.RegIssue" name='RegIssue' placeholder="Registration Issue Date">
                   <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                   <mat-datepicker #picker1></mat-datepicker>
               </mat-form-field>
               
               <mat-form-field style="margin-left: 24px; width: 120px">
-                  <input matInput [matDatepicker]="picker2" [(ngModel)]="data.RegExpire" name='RegExpiry' placeholder="Reg Expire Date">
+                  <input matInput [matDatepicker]="picker2" [(ngModel)]="data.RegExpire" name='RegExpiry' placeholder="Registration Expire Date">
                   <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                   <mat-datepicker #picker2></mat-datepicker>
               </mat-form-field>
@@ -34,7 +34,7 @@
               </mat-form-field>
 
               <mat-form-field style="margin-left: 24px; width: 160px">
-                  <input matInput [matDatepicker]="picker4" [(ngModel)]="data.FitExpiry"  name='FitExpiry' placeholder="Fitness Expiration">
+                  <input matInput [matDatepicker]="picker4" [(ngModel)]="data.FitExpiry"  name='FitExpiry' placeholder="Fitness Expiration Date">
                   <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
                   <mat-datepicker #picker4></mat-datepicker>
               </mat-form-field>
@@ -42,16 +42,16 @@
               
             
               <input class="form-control d-inline-flex" type="email" name="InsuranceName" placeholder="Name of Insurance" [(ngModel)]="data.InsuranceName" style="width: 150px;margin-left: 20px;padding-left: 0px;">
-              <input class="form-control d-inline-flex" type="email" name="PolicyNumber" placeholder="Policy Number" [(ngModel)]="data.PolicyNumber" style="width: 150px;margin-left: 20px;">
+              <input class="form-control d-inline-flex" type="email" name="PolicyNumber" placeholder="Insurance Policy Number" [(ngModel)]="data.PolicyNumber" style="width: 150px;margin-left: 20px;">
 
               <mat-form-field style="margin-left: 24px; width: 160px">
-                  <input matInput [matDatepicker]="picker5" [(ngModel)]="data.PolicyIssueDate"  name='FitExpiry' placeholder="Policy Issue Date">
+                  <input matInput [matDatepicker]="picker5" [(ngModel)]="data.PolicyIssueDate"  name='FitExpiry' placeholder="Insurance Policy Issue Date">
                   <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
                   <mat-datepicker #picker5></mat-datepicker>
               </mat-form-field>
 
               <mat-form-field style="margin-left: 24px; width: 160px">
-                  <input matInput [matDatepicker]="picker6" [(ngModel)]="data.PolicyExpiryDate"  name='FitExpiry' [(ngModel)]="data.PolicyExpiryDate" placeholder="Policy Expiry Date">
+                  <input matInput [matDatepicker]="picker6" [(ngModel)]="data.PolicyExpiryDate"  name='FitExpiry' [(ngModel)]="data.PolicyExpiryDate" placeholder="Insurance Policy Expiry Date">
                   <mat-datepicker-toggle matSuffix [for]="picker6"></mat-datepicker-toggle>
                   <mat-datepicker #picker6></mat-datepicker>
               </mat-form-field>

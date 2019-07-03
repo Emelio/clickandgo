@@ -30,7 +30,7 @@ export class CommunicatorService {
   verifyUserFromEmail = this.baseUrl + 'users/verify/';
   resetpassword= this.baseUrl + 'users/resetpassword/';
   forgetpassword =this.baseUrl + 'users/forgotpassword/'
-  deleteOwner =this.secondBase +'admin/removeDriver/';
+  deleteOwner =this.baseUrl +'admin/removeDriver/';
   readonly token = localStorage.getItem('token');
   readonly header = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
 

@@ -84,7 +84,7 @@ namespace clickandgo.Controllers
 
             if(user != null)
             {
-                if( await _driverRepository.RemoveOwnerDrivers(user._id.ToString()))
+                if( await _driverRepository.RemoveOwnerDrivers(user._id.ToString()) && await _vehicleRepository.RemoveVehicle(user._id.ToString()))
                 {
                     if( await _userRepository.DeleteUser(id))
                     {

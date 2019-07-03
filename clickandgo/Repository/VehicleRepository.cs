@@ -44,7 +44,11 @@ namespace clickandgo.Repository
             var result = await _context.Vehicle.DeleteOneAsync(x => x._id == ObjectId.Parse(id));
             return result;
         }
-
+        public async Task<bool> RemoveOwnerVehicles(string ownerId)
+        {
+            var result = await _context.Vehicle.DeleteManyAsync(x => x.OwnerId == ownerId);
+            return result.IsAcknowledged;
+        }
         public async Task<bool> UpdateVehicle(Vehicle vehicle, string id)
         {
             var filter = Builders<Vehicle>.Filter.Eq(x => x._id, ObjectId.Parse(id));

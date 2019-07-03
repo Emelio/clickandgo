@@ -17,5 +17,6 @@ namespace clickandgo.Data
         Task<dynamic> RemoveVehicle(string id);
 
         Task<bool> UpdateVehicle(Vehicle vehicle, string id);
+        Task<bool> RemoveOwnerVehicles(string ownerId);
     }
 }

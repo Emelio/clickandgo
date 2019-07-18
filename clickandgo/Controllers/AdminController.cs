@@ -44,6 +44,20 @@ namespace clickandgo.Controllers
             return Ok(drivers);
         }
 
+        [Route("api/admin/setApprovedStatus/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> ChangeApprovalStatus(string id, string status)
+        {
+             Users user = await _userRepository.CheckUserById(id);
+             if(user !=null){
+                 if(await _userRepository.UpdateApprovalStatus(id,status)){
+                     return Ok();
+                 }else{
+                     return BadRequest("failed to update status");
+                 }
+             }
+             return BadRequest("user not found");
+        }
         [Route("api/admin/getSingleDriver/{id}")]
         [HttpGet]
         public async Task<IActionResult> GetSingleDriver(string id)

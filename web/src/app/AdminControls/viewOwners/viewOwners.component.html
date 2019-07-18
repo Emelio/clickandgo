@@ -23,6 +23,31 @@
             <td>Police Record <br> Number: </td>
             <td>{{usersData.policeRecordNumber}}</td>
           </tr>
+          <tr>
+            <td>
+              Approval Status:
+            </td>
+            <td>
+              <div class="form-check">
+                <input class="form-check-input" (click)="updateApprovalStatus('approved')" type="radio" name="approvalStatus" id="approved" value="Approved" checked>
+                <label class="form-check-label" for="approved">
+                  Approved
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" (click)="updateApprovalStatus('unapproved')" type="radio" name="approvalStatus" id="unapproved" value="Unapproved">
+                <label class="form-check-label" for="unapproved">
+                  Unapproved
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" (click)="updateApprovalStatus('hold')" type="radio" name="approvalStatus" id="hold" value="hold">
+                <label class="form-check-label" for="hold">
+                  Hold
+                </label>
+              </div>
+            </td>
+          </tr>
         </table>
       </div>
     </div>

@@ -40,5 +40,7 @@ namespace clickandgo.Models
         public string Verified { get; set; }
 
         public string VerificationCode { get; set; }
+
+        public string ApprovalStatus { get; set; }="hold";
     }
 }

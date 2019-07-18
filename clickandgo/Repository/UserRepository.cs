@@ -89,7 +89,14 @@ namespace clickandgo.Repository
             return user; 
         }
 
+        public async Task<bool> UpdateApprovalStatus(string id, string status)
+        {
+            var filter = Builders<Users>.Filter.Eq(x => x._id, ObjectId.Parse(id));
+            var update = Builders<Users>.Update.Set(x => x.ApprovalStatus,status);
+            var result = await _context.Users.UpdateOneAsync(filter, update);
 
+            return result.IsAcknowledged;
+        }
         public async Task<Users> LoginUser(string email, string password)
         {
             Users user = await _context.Users.Find(x => x.Email == email).FirstOrDefaultAsync();

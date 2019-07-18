@@ -65,5 +65,8 @@ constructor(private http: HttpClient) { }
     );
   }
 
+  updateApprovalStatus(id,status){
+    return this.http.post('', status);
+  }
 
 }

@@ -34,5 +34,7 @@ namespace clickandgo.Data
 
         Task<bool> DeleteUser(string Id);
 
+        Task<bool> UpdateApprovalStatus(string id, string status);
+
     }
 }

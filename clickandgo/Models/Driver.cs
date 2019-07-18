@@ -52,5 +52,7 @@ namespace clickandgo.Models
         public string Terms { get; set; }
 
         public string status { get; set; }
+
+        
     }
 }

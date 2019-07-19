@@ -29,19 +29,19 @@
             </td>
             <td>
               <div class="form-check">
-                <input class="form-check-input" (click)="updateApprovalStatus('approved')" type="radio" name="approvalStatus" id="approved" value="Approved" checked>
+                <input class="form-check-input" checked="userData.approvalStatus==='approved'" (click)="updateApprovalStatus('approved')" type="radio" name="approvalStatus" id="approved" value="Approved" >
                 <label class="form-check-label" for="approved">
                   Approved
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" (click)="updateApprovalStatus('unapproved')" type="radio" name="approvalStatus" id="unapproved" value="Unapproved">
+                <input class="form-check-input" checked="userData.approvalStatus==='unapproved'"  (click)="updateApprovalStatus('unapproved')" type="radio" name="approvalStatus" id="unapproved" value="Unapproved">
                 <label class="form-check-label" for="unapproved">
                   Unapproved
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" (click)="updateApprovalStatus('hold')" type="radio" name="approvalStatus" id="hold" value="hold">
+                <input class="form-check-input" checked="userData.approvalStatus==='hold'" (click)="updateApprovalStatus('hold')" type="radio" name="approvalStatus" id="hold" value="hold">
                 <label class="form-check-label" for="hold">
                   Hold
                 </label>

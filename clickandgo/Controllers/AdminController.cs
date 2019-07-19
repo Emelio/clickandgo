@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using clickandgo.Data;
+using clickandgo.dto;
 using clickandgo.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -44,13 +46,14 @@ namespace clickandgo.Controllers
             return Ok(drivers);
         }
 
+        //[AllowAnonymous]
         [Route("api/admin/setApprovedStatus/{id}")]
         [HttpPost]
-        public async Task<IActionResult> ChangeApprovalStatus(string id, string status)
+        public async Task<IActionResult> ChangeApprovalStatus([FromBody]ApprovalStatusDto status, string id)
         {
              Users user = await _userRepository.CheckUserById(id);
              if(user !=null){
-                 if(await _userRepository.UpdateApprovalStatus(id,status)){
+                 if(await _userRepository.UpdateApprovalStatus(id,status.Status)){
                      return Ok();
                  }else{
                      return BadRequest("failed to update status");

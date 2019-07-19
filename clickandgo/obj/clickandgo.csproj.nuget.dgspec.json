@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo.csproj": {}
+    "C:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo.csproj": {}
   },
   "projects": {
-    "c:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo.csproj": {
+    "C:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo.csproj",
+        "projectUniqueName": "C:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo.csproj",
         "projectName": "clickandgo",
-        "projectPath": "c:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo.csproj",
+        "projectPath": "C:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo.csproj",
         "packagesPath": "C:\\Users\\scoll\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\clickandgo\\obj\\",
+        "outputPath": "C:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\clickandgo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

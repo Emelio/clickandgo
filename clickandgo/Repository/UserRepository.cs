@@ -91,6 +91,7 @@ namespace clickandgo.Repository
 
         public async Task<bool> UpdateApprovalStatus(string id, string status)
         {
+        
             var filter = Builders<Users>.Filter.Eq(x => x._id, ObjectId.Parse(id));
             var update = Builders<Users>.Update.Set(x => x.ApprovalStatus,status);
             var result = await _context.Users.UpdateOneAsync(filter, update);

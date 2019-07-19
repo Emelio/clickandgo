@@ -65,8 +65,9 @@ constructor(private http: HttpClient) { }
     );
   }
 
-  updateApprovalStatus(id,status){
-    return this.http.post('', status);
+  updateApprovalStatus(id,data){
+    
+    return this.http.post('http://localhost:5000/'+ 'api/admin/setApprovedStatus/' + id,{status: data});
   }
 
 }

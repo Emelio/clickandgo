@@ -14,6 +14,7 @@ export class ViewOwnersComponent implements OnInit {
   selectedDriverage: number;
   selectedVehicle: any = {};
   listOfCars: any = [];
+  
 
   constructor(private adminServ: AdminConnectionsService, ) { }
 
@@ -59,8 +60,10 @@ export class ViewOwnersComponent implements OnInit {
 
   updateApprovalStatus(status: any){
     if(confirm( 'Are you sure you want to  ' + this.usersData.firstName + ' status to ' + status + '?')){
-      
-      this.adminServ.updateApprovalStatus(this.usersData._id, status);
+      console.log('jer');
+      this.adminServ.updateApprovalStatus(this.usersData._id, status).subscribe();
+    }else{
+      window.location.reload();
     }
 
 

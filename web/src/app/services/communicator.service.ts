@@ -28,9 +28,9 @@ export class CommunicatorService {
   getSingleDriverData = this.baseUrl + 'admin/getSingleDriver/';
   updateDriverDetails = this.baseUrl + 'owner/updateDriver';
   verifyUserFromEmail = this.baseUrl + 'users/verify/';
-  resetpassword= this.baseUrl + 'users/resetpassword/';
-  forgetpassword =this.baseUrl + 'users/forgotpassword/'
-  deleteOwner =this.baseUrl +'admin/removeDriver/';
+  resetpassword = this.baseUrl + 'users/resetpassword/';
+  forgetpassword = this.baseUrl + 'users/forgotpassword/';
+  deleteOwner = this.baseUrl + 'admin/removeOwner/';
   readonly token = localStorage.getItem('token');
   readonly header = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
 
@@ -238,6 +238,11 @@ forgotpassword(data:any){
 }
 
 deleteUser(id){
-  return this.http.post(this.deleteOwner + id,null);
+  return this.http.get(this.deleteOwner + id, {headers: this.header}).pipe(
+    map((response: any) => {
+      console.log(response);
+      return response;
+    })
+  );
 }
 }

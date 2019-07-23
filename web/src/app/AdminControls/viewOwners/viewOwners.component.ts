@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminConnectionsService } from 'src/app/services/adminConnections.service';
+import { PlatformLocation } from '@angular/common'
 
 @Component({
   selector: 'app-viewOwners',
@@ -16,14 +17,20 @@ export class ViewOwnersComponent implements OnInit {
   listOfCars: any = [];
   
 
-  constructor(private adminServ: AdminConnectionsService, ) { }
+  constructor(private adminServ: AdminConnectionsService, location: PlatformLocation) {
+
+    location.onPopState(() => {
+      window.location.href = '/dash';
+    });
+   }
 
   ngOnInit() {
     this.getOwnerData();
   }
 
+
   getOwnerData() {
-    let id = localStorage.getItem('selectedOwner'); 
+    let id = localStorage.getItem('selectedOwner');
     this.adminServ.getOwnerOperator(id).subscribe(next => {
       console.log(next);
       this.usersData = next;

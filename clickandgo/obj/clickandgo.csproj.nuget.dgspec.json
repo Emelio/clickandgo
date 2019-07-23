@@ -1,28 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo.csproj": {}
+    "C:\\Users\\Emelio Campbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo\\clickandgo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo.csproj": {
+    "C:\\Users\\Emelio Campbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo\\clickandgo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo.csproj",
+        "projectUniqueName": "C:\\Users\\Emelio Campbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo\\clickandgo.csproj",
         "projectName": "clickandgo",
-        "projectPath": "C:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo.csproj",
-        "packagesPath": "C:\\Users\\scoll\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\clickandgo\\obj\\",
+        "projectPath": "C:\\Users\\Emelio Campbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo\\clickandgo.csproj",
+        "packagesPath": "C:\\Users\\Emelio Campbell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Emelio Campbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\scoll\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Emelio Campbell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

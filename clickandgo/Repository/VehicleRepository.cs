@@ -39,10 +39,10 @@ namespace clickandgo.Repository
             return vehicle;
         }
 
-        public async Task<dynamic> RemoveVehicle(string id)
+        public async Task<bool> RemoveVehicle(string id)
         {
-            var result = await _context.Vehicle.DeleteOneAsync(x => x._id == ObjectId.Parse(id));
-            return result;
+            var result = await _context.Vehicle.DeleteOneAsync(x => x.OwnerId == id);
+            return true;
         }
         public async Task<bool> RemoveOwnerVehicles(string ownerId)
         {

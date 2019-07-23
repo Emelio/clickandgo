@@ -97,11 +97,11 @@ namespace clickandgo.Controllers
         [HttpPost]
         public async Task<IActionResult> RemoveOwner(string id)
         {
-            var user =await  _userRepository.CheckUserById(id);
+            var user = await  _userRepository.CheckUserById(id);
 
             if(user != null)
             {
-                if( await _driverRepository.RemoveOwnerDrivers(user._id.ToString()) && await _vehicleRepository.RemoveVehicle(user._id.ToString()))
+                if( await _driverRepository.RemoveOwnerDrivers(user._id.ToString()) && await _vehicleRepository.RemoveOwnerVehicles(user._id.ToString()))
                 {
                     if( await _userRepository.DeleteUser(id))
                     {

@@ -18,11 +18,13 @@ export class DashComponent implements OnInit {
 
   ngOnInit() {
     this.getOwners();
+    
   }
 
   
 
   getOwners() {
+    
     this.communicate.getAllOwner().subscribe(next => {
       this.arrayOfOwners = next;
       // count drivers // get all drivers from database
@@ -34,15 +36,14 @@ export class DashComponent implements OnInit {
 
         console.log(userArray);
 
-        if (userArray != undefined) {
-        }
+        if (userArray != undefined) { }
         
       });
 
     });
   }
 
-  goToUser(id){
+  goToUser(id) {
     localStorage.setItem('selectedOwner', id);
     this.router.navigateByUrl('admin/viewOwners');
   }
@@ -53,12 +54,12 @@ export class DashComponent implements OnInit {
     });
   }
 
-  deleteOwner(id){
-    if(confirm('Are you sure you want to delete user?')){
-      this.communicate.deleteUser(id).subscribe(next =>{
-        if(next){
-          window.location.reload();
-        }else{
+  deleteOwner(id) {
+    if (confirm('Are you sure you want to delete user?')) {
+      this.communicate.deleteUser(id).subscribe(next => {
+        if (next) {
+          //window.location.reload();
+        } else {
           this.alertify.error(JSON.stringify(next));
         }
       });

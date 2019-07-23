@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CommunicatorService } from 'src/app/services/communicator.service';
 import { AlertifyService } from 'src/app/services/alertify.service';
 
+
 @Component({
   selector: 'app-owner',
   templateUrl: './owner.component.html',

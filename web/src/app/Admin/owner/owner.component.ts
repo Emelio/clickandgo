@@ -25,6 +25,7 @@ export class OwnerComponent implements OnInit {
   }
 
   createOwnerOperator() {
+    console.log(this.data);
     this.communicate.createOwnerOperator(this.data).subscribe(next => {
       console.log(next);
 

@@ -82,7 +82,7 @@ namespace clickandgo.Controllers
                 });
                 IMapper mapper = new Mapper(config);
                 Users dest = mapper.Map<RegisterDto, Users>(register);
-
+                
                 await _userRepository.CreateUser(dest, register.Password, "owner");
 
                 // login user

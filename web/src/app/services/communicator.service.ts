@@ -240,4 +240,8 @@ forgotpassword(data:any){
 deleteUser(id){
   return this.http.post(this.deleteOwner + id,null);
 }
+
+registerAdmin(data: any){
+  return this.http.post(this.secondBase + 'admin/registerAdmin' , data );
+}
 }

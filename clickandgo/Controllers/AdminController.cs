@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using AutoMapper;
 
 namespace clickandgo.Controllers
 {
@@ -38,6 +39,29 @@ namespace clickandgo.Controllers
             return Ok(users);
         }
 
+        [Route("api/admin/registerAdmin")]
+        [HttpPost]
+        public async Task<IActionResult> RegisterAdmin([FromBody] RegisterDto register){
+                
+            Users user = await _userRepository.CheckUser(register.Email);
+
+            if (user == null)
+            {
+                Users userData = new Users();
+
+                var config = new MapperConfiguration(cfg =>
+                {
+                    cfg.CreateMap<RegisterDto, Users>();
+                });
+                IMapper mapper = new Mapper(config);
+                Users dest = mapper.Map<RegisterDto, Users>(register);
+                
+                await _userRepository.CreateUser(dest, register.Password, "admin");
+                return Ok();
+
+            }
+            return BadRequest();
+        }
         [Route("api/admin/getAllDrivers/{id}")]
         [HttpGet]
         public async Task<IActionResult> GetAllDrivers(string id)

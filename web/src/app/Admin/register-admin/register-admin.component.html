@@ -1,0 +1,17 @@
+<div class="register-photo">
+  <div class="form-container" style="width: 341px;">
+      <form method="post"  (ngSubmit)='register()' #paymentForm="ngForm">
+          <h2 class="text-center logo" style="margin-bottom: -5px;"><strong>Click &amp; Go</strong></h2>
+          <h2 class="text-center"><strong>Register</strong> an admin.</h2>
+          <div class="form-group"><input class="form-control" type="email" name="email"  [(ngModel)]="data.Email" placeholder="Email" style="background-color: rgba(201,200,200,0.24);">
+            </div>
+            <div class="form-group"><input class="form-control" type="firstName" name="firstName"  [(ngModel)]="data.FirstName" placeholder="FirstName" style="background-color: rgba(201,200,200,0.24);">
+            </div>
+            <div class="form-group"><input class="form-control" type="lastName" name="lastName"  [(ngModel)]="data.LastName" placeholder="LastName" style="background-color: rgba(201,200,200,0.24);">
+            </div>
+          <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" [(ngModel)]="data.Password"></div>
+          <div class="form-group"><input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)" [(ngModel)]="data.Password1"></div>
+
+          <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Add Admin</button></div></form>
+  </div>
+</div>

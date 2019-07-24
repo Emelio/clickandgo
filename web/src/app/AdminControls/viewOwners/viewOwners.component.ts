@@ -37,7 +37,6 @@ export class ViewOwnersComponent implements OnInit {
     }).toPromise().then(next =>{
       
       this.usersData = next;
-      this.approvalStatus= next.approvalStatus;
       console.log(this.usersData);
     });
 

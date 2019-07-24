@@ -13,6 +13,7 @@ import { TermsComponent } from './terms/terms.component';
 import { VerificationComponent } from './verification/verification.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { RegisterAdminComponent } from './Admin/register-admin/register-admin.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'registerAdmin',
+    component: RegisterAdminComponent
   },
   {
     path: 'owner',

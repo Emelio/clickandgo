@@ -242,10 +242,10 @@ deleteUser(id) {
 }
 
 registerAdmin(data: any) {
-  return this.http.post(this.secondBase + 'admin/registerAdmin' , data );
+  return this.http.post(this.baseUrl + 'admin/registerAdmin' , data );
 }
 
 confirmCode(code: any) {
-  return this.http.post(this.secondBase + 'admin/confirmCode/' + code, null).toPromise();
+  return this.http.post(this.baseUrl + 'admin/confirmCode/' + code, null).toPromise();
 }
 }

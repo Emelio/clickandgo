@@ -26,6 +26,7 @@ export class RegisterAdminComponent implements OnInit {
           this.communicate.registerAdmin(this.data).subscribe(next => {
             if (next) {
               this.alertify.success('success');
+              window.location.href= '/dash';
            } else {
               this.alertify.error('User account already exists');
             }

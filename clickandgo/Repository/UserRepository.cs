@@ -174,6 +174,12 @@ namespace clickandgo.Repository
             };
         }
 
-        
+        public async Task<List<Users>> GetAdmins()
+        {
+            List<Users> user = await _context.Users.Find(x => x.Type == "admin").ToListAsync();
+            return user; 
+        }
+
+
     }
 }

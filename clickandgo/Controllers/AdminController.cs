@@ -39,6 +39,19 @@ namespace clickandgo.Controllers
             return Ok(users);
         }
 
+        [Route("api/admin/getAllAdmins")]
+        [HttpGet]
+        public async Task<IActionResult> GetAllAdmin()
+        {
+            var adminList = new List<AdminDto>();
+            List<Users> users = await _userRepository.GetAdmins();
+            foreach (var user in users)
+            {
+              adminList.Add(new AdminDto(){Id=user._id.ToString(),Name=$"{user.FirstName} {user.LastName}"});
+            }
+            return Ok(adminList);
+        }
+
         [Route("api/admin/confirmCode/{code}")]
         [HttpPost]
         public IActionResult CheckConfirmationCode(string code){
@@ -50,6 +63,7 @@ namespace clickandgo.Controllers
 
            return BadRequest("Wrong Code");
         }
+
         [Route("api/admin/registerAdmin")]
         [HttpPost]
         public async Task<IActionResult> RegisterAdmin([FromBody] RegisterDto register){
@@ -152,6 +166,27 @@ namespace clickandgo.Controllers
                 {
                     return BadRequest("Failed to delete Driver");
                 }
+            }
+            return BadRequest("Failed");
+        }
+
+        [Route("api/admin/removeAdmin/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> RemoveAdmin(string id)
+        {
+            var user = await  _userRepository.CheckUserById(id);
+
+            if(user != null)
+            {
+                
+                    if( await _userRepository.DeleteUser(id))
+                    {
+                        return Ok(true);
+                    }
+                    else
+                    {
+                        return BadRequest("Failed to delete Admin");
+                    }
             }
             return BadRequest("Failed");
         }

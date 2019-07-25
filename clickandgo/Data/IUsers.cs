@@ -30,6 +30,8 @@ namespace clickandgo.Data
 
         Task<Users> CheckUser(string email);
 
+        Task<List<Users>> GetAdmins();
+
         Task<bool> UpdatePassword(string email, string password);
 
         Task<bool> DeleteUser(string Id);

@@ -58,7 +58,7 @@ export class DashComponent implements OnInit {
     if (confirm('Are you sure you want to delete user?')) {
       this.communicate.deleteUser(id).subscribe(next => {
         if (next) {
-          //window.location.reload();
+          window.location.reload();
         } else {
           this.alertify.error(JSON.stringify(next));
         }

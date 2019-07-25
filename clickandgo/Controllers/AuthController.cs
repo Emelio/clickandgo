@@ -292,7 +292,7 @@ namespace clickandgo.Controllers
                 });
                 IMapper mapper = new Mapper(config);
                 Users userData = mapper.Map<OwnerDto, Users>(owner);
-
+                userData.Verified="true";
                 Models.Address address = new Models.Address();
 
 

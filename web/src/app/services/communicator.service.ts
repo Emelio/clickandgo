@@ -28,20 +28,20 @@ export class CommunicatorService {
   getSingleDriverData = this.baseUrl + 'admin/getSingleDriver/';
   updateDriverDetails = this.baseUrl + 'owner/updateDriver';
   verifyUserFromEmail = this.baseUrl + 'users/verify/';
-  resetpassword= this.baseUrl + 'users/resetpassword/';
-  forgetpassword =this.baseUrl + 'users/forgotpassword/'
-  deleteOwner =this.baseUrl +'admin/removeDriver/';
+  resetpassword = this.baseUrl + 'users/resetpassword/';
+  forgetpassword = this.baseUrl + 'users/forgotpassword/';
+  deleteOwner = this.baseUrl + 'admin/removeDriver/';
   readonly token = localStorage.getItem('token');
   readonly header = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
 
 
-constructor(private http:HttpClient) { }
+constructor(private http: HttpClient) { }
 
 getSingleDriver(id) {
   return this.http.get(this.getSingleDriverData + id, {headers: this.header}).pipe(
     map((response: any) => {
       if (response) {
-        
+
         return response;
       }
     })
@@ -49,10 +49,10 @@ getSingleDriver(id) {
 }
 
 verifyUser(code, email) {
-  return this.http.get(this.verifyUserFromEmail + code + "/" + email, {headers: this.header}).pipe(
+  return this.http.get(this.verifyUserFromEmail + code + '/' + email, {headers: this.header}).pipe(
     map((response: any) => {
       if (response) {
-        
+
         return response;
       }
     })
@@ -67,7 +67,7 @@ getSingleUser() {
       if (response) {
         console.log(response);
 
-        
+
         return response;
       }
     })
@@ -81,7 +81,7 @@ getAllOwner() {
         return response;
       }
     })
-  ); 
+  );
 }
 
 assignCarToDriverData(driverId, carId) {
@@ -136,7 +136,7 @@ register(data: any) {
 }
 
 login(data: any) {
-  
+
   return this.http.get(this.loginUrl + data.Email + '/' + data.Password).pipe(
     map((response: any) => {
       if (response) {
@@ -197,14 +197,14 @@ carList() {
       if (response) {
         console.log(response);
         return response;
-        
+
       }
     })
   );
 }
 
 updateCar(data: any) {
-  return this.http.post(this.updatecar, data,{headers: this.header}).pipe(
+  return this.http.post(this.updatecar, data, {headers: this.header}).pipe(
     map((response: any) => {
       if (response) {
         console.log(response);
@@ -229,19 +229,23 @@ updateDriver(data: any) {
   return this.http.post(this.updateDriverDetails, data, {headers: this.header});
 }
 
-resetPassword(data:any){
-  return this.http.post(this.resetpassword,data);
+resetPassword(data: any) {
+  return this.http.post(this.resetpassword, data);
 }
 
-forgotpassword(data:any){
-  return this.http.post(this.forgetpassword + data.email,null);
+forgotpassword(data: any) {
+  return this.http.post(this.forgetpassword + data.email, null);
 }
 
-deleteUser(id){
-  return this.http.post(this.deleteOwner + id,null);
+deleteUser(id) {
+  return this.http.post(this.deleteOwner + id, null);
 }
 
-registerAdmin(data: any){
+registerAdmin(data: any) {
   return this.http.post(this.secondBase + 'admin/registerAdmin' , data );
+}
+
+confirmCode(code: any) {
+  return this.http.post(this.secondBase + 'admin/confirmCode/' + code, null).toPromise();
 }
 }

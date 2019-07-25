@@ -39,6 +39,17 @@ namespace clickandgo.Controllers
             return Ok(users);
         }
 
+        [Route("api/admin/confirmCode/{code}")]
+        [HttpPost]
+        public IActionResult CheckConfirmationCode(string code){
+           var confirmCode= _config.GetSection("AdminCode").Value;
+
+           if(code==confirmCode){
+               return Ok(true);
+           }
+
+           return BadRequest("Wrong Code");
+        }
         [Route("api/admin/registerAdmin")]
         [HttpPost]
         public async Task<IActionResult> RegisterAdmin([FromBody] RegisterDto register){
@@ -57,7 +68,7 @@ namespace clickandgo.Controllers
                 Users dest = mapper.Map<RegisterDto, Users>(register);
                 
                 await _userRepository.CreateUser(dest, register.Password, "admin");
-                return Ok();
+                return Ok(true);
 
             }
             return BadRequest();

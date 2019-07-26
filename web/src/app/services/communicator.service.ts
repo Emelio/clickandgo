@@ -248,4 +248,13 @@ registerAdmin(data: any) {
 confirmCode(code: any) {
   return this.http.post(this.baseUrl + 'admin/confirmCode/' + code, null).toPromise();
 }
+
+getAdmins(){
+  return this.http.get(this.baseUrl + 'admin/getAllAdmins');
+}
+
+deleteAdmin(id){
+  return this.http.get(this.baseUrl + 'admin/removeAdmin/' + id, null);
+}
+
 }

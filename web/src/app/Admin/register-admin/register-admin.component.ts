@@ -12,16 +12,32 @@ import { Observable } from 'rxjs';
 export class RegisterAdminComponent implements OnInit {
 
   data: any = {};
-  code: any;
+  rcode: any;
+  dcode: any;
+  admins: any ={};
+  selected = 'admin';
   constructor(private communicate: CommunicatorService, private router: Router, private alertify: AlertifyService) { }
 
   ngOnInit() {
+    this.getAdmins();
   }
 
+  getAdmins(){
+    this.communicate.getAdmins().subscribe(response =>{
+      this.admins=response;
+    });
+  }
 
+  deleteAdmin(){
+    this.communicate.confirmCode(this.dcode).then(response =>{
+      if(response){
+        this.communicate.deleteAdmin('id');
+    }
+  });
+  }
   register(){
     if (this.data.Password == this.data.Password1) {
-      this.communicate.confirmCode(this.code).then(response =>{
+      this.communicate.confirmCode(this.rcode).then(response =>{
         if(response){
           this.communicate.registerAdmin(this.data).subscribe(next => {
             if (next) {

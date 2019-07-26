@@ -60,7 +60,7 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'registerAdmin',
+    path: 'manageAdmin',
     component: RegisterAdminComponent
   },
   {

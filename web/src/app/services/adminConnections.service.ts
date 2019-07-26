@@ -69,11 +69,4 @@ constructor(private http: HttpClient) { }
     return this.http.post(this.baseUrl+ 'admin/setApprovedStatus/' + id + '/'+ data, null);
   }
 
-  getAdmins(){
-    return this.http.get(this.baseUrl + 'admin/getAllAdmins');
-  }
-
-  deleteAdmin(id){
-    return this.http.get(this.baseUrl + 'admin/removeAdmin/' + id, null);
-  }
 }

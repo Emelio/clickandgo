@@ -1,3 +1,4 @@
+<app-nav></app-nav>
 <div class="register-photo">
   <div class="container">
       <div class="form-container d-inline pl-5 pr-5" style="width: 341px;">
@@ -17,12 +18,12 @@
               <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Add Admin</button></div></form>
       </div>
       <div class="form-container d-inline pl-5" style="width: 341px;">
-        <form method="post"  (ngSubmit)='register()' #paymentForm="ngForm">
+        <form method="post"  (ngSubmit)='deleteAdmin()' #paymentForm="ngForm">
             <h2 class="text-center logo" style="margin-bottom: -5px;"><strong>Click &amp; Go</strong></h2>
             <h2 class="text-center"><strong>Delete</strong> an admin.</h2>
             <mat-form-field>
-                <mat-label>Cars</mat-label>
-                <select [(value)]="selected" matNativeControl required>
+                <mat-label>Admins</mat-label>
+                <select  [(ngModel)]="selectedAdmin" [ngModelOptions]="{standalone: true}" matNativeControl required>
                   <option *ngFor="let admin of admins" [value]="admin.id">{{admin.name}}</option>
                 </select>
               </mat-form-field>

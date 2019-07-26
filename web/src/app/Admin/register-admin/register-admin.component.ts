@@ -14,8 +14,8 @@ export class RegisterAdminComponent implements OnInit {
   data: any = {};
   rcode: any;
   dcode: any;
-  admins: any ={};
-  selected = 'admin';
+  admins: any =[];
+  selectedAdmin: string;
   constructor(private communicate: CommunicatorService, private router: Router, private alertify: AlertifyService) { }
 
   ngOnInit() {
@@ -25,30 +25,44 @@ export class RegisterAdminComponent implements OnInit {
   getAdmins(){
     this.communicate.getAdmins().subscribe(response =>{
       this.admins=response;
+      this.selectedAdmin = this.admins[0].id;
     });
   }
 
   deleteAdmin(){
-    this.communicate.confirmCode(this.dcode).then(response =>{
-      if(response){
-        this.communicate.deleteAdmin('id');
-    }
-  });
-  }
-  register(){
-    if (this.data.Password == this.data.Password1) {
-      this.communicate.confirmCode(this.rcode).then(response =>{
+    if(confirm('Are you sure?')){
+      this.communicate.confirmCode(this.dcode).then(response =>{
         if(response){
-          this.communicate.registerAdmin(this.data).subscribe(next => {
-            if (next) {
+          this.communicate.deleteAdmin(this.selectedAdmin).subscribe(response =>{
+            if(response){
+              this.getAdmins();
+              this.dcode= '';
               this.alertify.success('success');
-              window.location.href= '/dash';
-           } else {
-              this.alertify.error('User account already exists');
             }
-     });
+          });
+          
       }
     });
+    }
+  }
+  register(){
+    if(confirm('Are you sure you want to add admin')){
+      if (this.data.Password == this.data.Password1) {
+        this.communicate.confirmCode(this.rcode).then(response =>{
+          if(response){
+            this.communicate.registerAdmin(this.data).subscribe(next => {
+              if (next) {
+                this.alertify.success('success');
+                this.data= {};
+                this.rcode= '';
+                this.getAdmins();
+             } else {
+                this.alertify.error('User account already exists');
+              }
+       });
+        }
+      });
+      }
     }
   }
 }

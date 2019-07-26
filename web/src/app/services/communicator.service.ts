@@ -254,7 +254,7 @@ getAdmins(){
 }
 
 deleteAdmin(id){
-  return this.http.get(this.baseUrl + 'admin/removeAdmin/' + id, null);
+  return this.http.post(this.baseUrl + 'admin/removeAdmin/' + id, null);
 }
 
 }

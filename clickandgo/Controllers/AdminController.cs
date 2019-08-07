@@ -142,31 +142,44 @@ namespace clickandgo.Controllers
             return Ok(cars);
         }
 
-        [Route("api/admin/removeDriver/{id}")]
-        [HttpPost]
+        [Route("api/admin/removeOwner/{id}")]
+        [HttpGet]
         public async Task<IActionResult> RemoveOwner(string id)
         {
             var user = await  _userRepository.CheckUserById(id);
 
-            if(user != null)
-            {
-                if( await _driverRepository.RemoveOwnerDrivers(user._id.ToString()) && await _vehicleRepository.RemoveOwnerVehicles(user._id.ToString()))
-                {
-                    if( await _userRepository.DeleteUser(id))
-                    {
-                        return Ok(true);
-                    }
-                    else
-                    {
-                        return BadRequest("Failed to delete Owner");
-                    }
+            // get all drivers and delete them 
 
+            if (user != null)
+            {
+                List<Vehicle> cars = await _vehicleRepository.GetVehicleDataAsync(user._id.ToString());
+                List<Driver> drivers = await _driverRepository.GetDriverList(user._id.ToString());
+
+
+                foreach (var item in cars)
+                {
+                    await _vehicleRepository.RemoveVehicle(item._id.ToString());
+                }
+
+                foreach (var item in drivers)
+                {
+                    await _driverRepository.RemoveOwnerDrivers(item._id.ToString()); 
+                }
+
+                if (await _userRepository.DeleteUser(id))
+                {
+                    return Ok(new { Updated = "updated"}) ;
                 }
                 else
                 {
-                    return BadRequest("Failed to delete Driver");
+                    return BadRequest("Failed to delete Owner");
                 }
             }
+
+            // get all cars and remove them 
+
+
+
             return BadRequest("Failed");
         }
 

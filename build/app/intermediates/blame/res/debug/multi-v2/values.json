@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Emelio Campbell\\Documents\\flutter\\clickandgo\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Emelio Campbell\\Documents\\flutter\\clickandgo\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "C:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\android\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

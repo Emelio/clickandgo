@@ -1,0 +1,45 @@
+Flutter crash report; please file at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run --machine --target lib\main.dart -d D1LGAS4880102610 --track-widget-creation --start-paused
+
+## exception
+
+_InternalLinkedHashMap<String, dynamic>: {code: 100, message: Feature is disabled, data: {request: {method: _reloadSources, params: {pause: false, rootLibUri: file:///data/user/0/com.clickandgoja.clickandgo/code_cache/clickandgoZHKGFY/clickandgo/lib/main.dart.incremental.dill, packagesUri: file:///data/user/0/com.clickandgoja.clickandgo/code_cache/clickandgoZHKGFY/clickandgo/.packages, isolateId: isolates/347064968}}, details: This isolate cannot reload sources right now.}}
+
+```
+null```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel stable, v1.7.8+hotfix.4, on Microsoft Windows [Version 10.0.17134.885], locale en-JM)
+    • Flutter version 1.7.8+hotfix.4 at C:\FlutterDev\flutter
+    • Framework revision 20e59316b8 (3 weeks ago), 2019-07-18 20:04:33 -0700
+    • Engine revision fee001c93f
+    • Dart version 2.4.0
+
+[✓] Android toolchain - develop for Android devices (Android SDK version 29.0.1)
+    • Android SDK at C:\Users\scoll\AppData\Local\Android\sdk
+    • Android NDK location not configured (optional; useful for native profiling support)
+    • Platform android-29, build-tools 29.0.1
+    • Java binary at: C:\Program Files\Android\Android Studio\jre\bin\java
+    • Java version OpenJDK Runtime Environment (build 1.8.0_152-release-1343-b01)
+    • All Android licenses accepted.
+
+[✓] Android Studio (version 3.4)
+    • Android Studio at C:\Program Files\Android\Android Studio
+    • Flutter plugin version 37.1.1
+    • Dart plugin version 183.6270
+    • Java version OpenJDK Runtime Environment (build 1.8.0_152-release-1343-b01)
+
+[✓] VS Code (version 1.36.1)
+    • VS Code at C:\Users\scoll\AppData\Local\Programs\Microsoft VS Code
+    • Flutter extension version 3.3.0
+
+[✓] Connected device (1 available)
+    • TA 1027 • D1LGAS4880102610 • android-arm64 • Android 9 (API 28)
+
+• No issues found!
+```

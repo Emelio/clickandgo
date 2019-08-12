@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using clickandgo.Data;
+using clickandgo.hub;
 using clickandgo.Models;
 using clickandgo.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -53,6 +54,10 @@ namespace clickandgo
                     ValidateAudience = false,
                 };
             });
+
+            
+            services.AddSignalR();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,7 +85,11 @@ namespace clickandgo
                     });
                 });
             }
-
+            
+            app.UseSignalR(routes =>
+    {
+        routes.MapHub<MessageHub>("/message");
+    });
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
             app.UseDefaultFiles();
@@ -94,6 +103,8 @@ namespace clickandgo
                 name: "default",
                 template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            
         }
     }
 }

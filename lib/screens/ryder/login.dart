@@ -31,7 +31,7 @@ class RyderLoginState extends State<RyderLogin> {
                         padding: EdgeInsets.symmetric(vertical: 10),
                       child: TextField(
                         decoration: InputDecoration(
-                        hintText: "Password",
+                        hintText: "Email",
                         hintStyle: TextStyle(color: Colors.white),
                         icon: Icon(Icons.mail),
                         enabledBorder: UnderlineInputBorder(
@@ -47,7 +47,7 @@ class RyderLoginState extends State<RyderLogin> {
                         padding: EdgeInsets.symmetric(vertical: 10),
                         child: TextField(
                             decoration: InputDecoration(
-                              hintText: "please enter email",
+                              hintText: "Password",
                               hintStyle: TextStyle(color: Colors.white),
                               icon: Icon(Icons.security),
                               enabledBorder: UnderlineInputBorder(

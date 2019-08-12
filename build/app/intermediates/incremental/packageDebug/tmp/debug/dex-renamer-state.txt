@@ -1,4 +1,4 @@
-#Fri Aug 09 09:38:54 PDT 2019
+#Mon Aug 12 10:09:53 PDT 2019
 base.0=C\:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex

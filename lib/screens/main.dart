@@ -27,7 +27,8 @@ class Main extends StatelessWidget {
                   child: Container(
                     margin : EdgeInsets.all(30),
 
-                    child: Text("Driver", style: TextStyle(color: Colors.white),),
+                    child: new Icon( Icons.drive_eta, color: Colors.white, size: 30)
+                    //Text("Driver", style: TextStyle(color: Colors.white),),
                   ),
                 ),
                 RaisedButton(
@@ -39,7 +40,8 @@ class Main extends StatelessWidget {
                   child: Container(
                     margin : EdgeInsets.all(30),
 
-                    child: Text("Ryder", style: TextStyle(color: Colors.white),),
+                    child: new Icon( Icons.people, color: Colors.white, size: 30,),
+                    //Text("Ryder", style: TextStyle(color: Colors.white),),
                   ),
                 ),
               ],

@@ -21,7 +21,9 @@ class Main extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 RaisedButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.pushNamed(context, 'login');
+                  },
                   color: Color(0xFF3b446c),
                   elevation: 4,
                   child: Container(

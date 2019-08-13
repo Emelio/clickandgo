@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HubService } from './services/hub.service';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,11 +10,8 @@ export class AppComponent implements OnInit {
 
   constructor(public signalRService: HubService) { }
  
-  async ngOnInit() {
-    await this.signalRService.startConnection();
-    this.signalRService.addTransferChartDataListener(); 
-    this.signalRService.sendmessage();  
-    
+   ngOnInit() {
+    this.signalRService.startConnection();
   }
 }
 

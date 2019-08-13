@@ -1,35 +1,42 @@
 import { Injectable } from '@angular/core';
-import * as signalR from '@aspnet/signalr';
+import {HubConnection, HubConnectionBuilder, LogLevel, HttpTransportType} from '@aspnet/signalr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HubService {
 
-  private hubConnection: signalR.HubConnection;
- 
+  private connection: HubConnection;
+
   public startConnection = () => {
-    this.hubConnection = new signalR.HubConnectionBuilder()
-                            .withUrl('https://localhost:5001/api/message')
-                            .build();
- 
-    this.hubConnection
+    this.connection = new HubConnectionBuilder()
+     .withUrl('http://localhost:5000/message')
+     .build();
+
+    this.connection
       .start()
-      .then(() => console.log('Connection started'))
-      .catch(err => console.log('Error while starting connection: ' + err))
-  }
- 
-  public addTransferChartDataListener = () => {
-    this.hubConnection.on('RecieveMessage', (data) => {
-      //this.data = data;
-      console.log(data);
-    });
+      .then(() => {
+        this.Reievemessage();
+        console.log('Hub connection started');
+        this.sendmessage();
+      })
+      .catch(err => {
+        console.log('Error while establishing connection, retrying...');
+      });
   }
 
-  public sendmessage = () =>{
-    this.hubConnection.invoke('SendMessage', 'collin', 'testmessage').catch( (err) =>{
-      return console.error(err.toString());
-  });
+  public sendmessage = () => {
+    this.connection.invoke('SendMessage', 'collin', 'testmessage').catch( (err) => {
+            return console.error(err.toString());
+        });
+  }
+
+  public Reievemessage = () => {
+    this.connection.on('ReceiveMessage', (data) => {
+               // this.data = data;
+               console.log(data);
+             });
+
   }
   constructor() { }
 }

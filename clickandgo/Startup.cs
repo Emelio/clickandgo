@@ -56,8 +56,17 @@ namespace clickandgo
             });
 
             
-            services.AddSignalR();
             
+
+            services.AddCors(options =>
+    {
+        options.AddPolicy("CorsPolicy",
+            builder => builder.WithOrigins(Configuration.GetSection("domainName").Value)
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
+    });
+          services.AddSignalR();  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -84,13 +93,17 @@ namespace clickandgo
                         }
                     });
                 });
+
+                
             }
             
-            app.UseSignalR(routes =>
+      
+            
+           app.UseCors("CorsPolicy");
+              app.UseSignalR(routes =>
     {
         routes.MapHub<MessageHub>("/message");
     });
-            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
             app.UseDefaultFiles();
             app.UseStaticFiles();
@@ -103,7 +116,7 @@ namespace clickandgo
                 name: "default",
                 template: "{controller=Home}/{action=Index}/{id?}");
             });
-
+                
             
         }
     }

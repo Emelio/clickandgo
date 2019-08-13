@@ -6,10 +6,12 @@ using AutoMapper;
 using clickandgo.Data;
 using clickandgo.dto;
 using clickandgo.Helper;
+using clickandgo.hub;
 using clickandgo.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Configuration;
 
 namespace clickandgo.Controllers
@@ -22,15 +24,25 @@ namespace clickandgo.Controllers
         private readonly IVehicle _vehicleRepository;
         private readonly IDriver _driverRepository;
         private readonly TokenHelper _tokenHelper = new TokenHelper();
-
-        public OwnerController(IUsers userRepository, IConfiguration config, IVehicle vehicleRepository, IDriver driverRepository)
+        private IHubContext<MessageHub> _hub;
+        public OwnerController(IUsers userRepository, IConfiguration config, IVehicle vehicleRepository, IDriver driverRepository,
+        IHubContext<MessageHub> hub)
         {
+            _hub=hub;
             _config = config;
             _userRepository = userRepository;
             _vehicleRepository = vehicleRepository;
             _driverRepository = driverRepository;
         }
 
+        [AllowAnonymous]
+        [Route("api/owner/sendmessage")]
+        [HttpPost]
+        public async Task<IActionResult> sendMessage([FromBody]string sendMessage){
+           await _hub.Clients.All.SendAsync("ReceiveMessage", sendMessage);
+
+           return Ok(sendMessage);
+        }
         [Route("api/owner/addCar")]
         [HttpPost]
         public async Task<IActionResult> createCar([FromBody]Vehicle vehicle)

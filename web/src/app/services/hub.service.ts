@@ -26,7 +26,7 @@ export class HubService {
   }
 
   public sendmessage = () => {
-    this.connection.invoke('SendMessage', 'collin', 'testmessage').catch( (err) => {
+    this.connection.invoke('SendMessage', 'hello world').catch( (err) => {
             return console.error(err.toString());
         });
   }

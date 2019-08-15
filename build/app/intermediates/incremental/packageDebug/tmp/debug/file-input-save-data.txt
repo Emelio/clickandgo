@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri Aug 09 09:39:03 PDT 2019
+#Thu Aug 15 14:34:51 CDT 2019
 4.path=flutter_assets/images/logo.png
 13.baseType=DIRECTORY
 8.set=ASSET
@@ -11,7 +11,8 @@
 8.path=flutter_assets/fonts/MaterialIcons-Regular.ttf
 12.path=lib/x86_64/libflutter.so
 3.base=C\:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
-14.path=flutter_assets/images/background.png
+14.path=flutter_assets/images/component.png
+15.set=ASSET
 4.set=ASSET
 5.base=C\:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\build\\app\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 7.base=C\:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
@@ -21,6 +22,7 @@
 1.baseType=DIRECTORY
 11.set=ASSET
 0.set=ASSET
+15.base=C\:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 14.baseType=DIRECTORY
 6.baseType=DIRECTORY
 7.set=DEX
@@ -28,6 +30,7 @@
 3.set=ASSET
 2.baseType=DIRECTORY
 10.baseType=DIRECTORY
+15.baseType=DIRECTORY
 1.path=flutter_assets/vm_snapshot_data
 7.baseType=DIRECTORY
 3.path=flutter_assets/images/background1.png
@@ -42,6 +45,7 @@
 13.path=flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
 11.baseType=DIRECTORY
 4.base=C\:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+15.path=flutter_assets/images/background.png
 3.baseType=DIRECTORY
 6.base=C\:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\build\\app\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 10.base=C\:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
@@ -52,7 +56,7 @@
 12.base=C\:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\build\\app\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 14.base=C\:\\Users\\scoll\\Documents\\GitHub\\clickandgo\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 9.set=ASSET
-count=15
+count=16
 12.baseType=DIRECTORY
 4.baseType=DIRECTORY
 5.set=NATIVE_RESOURCE

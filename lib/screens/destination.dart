@@ -19,13 +19,14 @@ class _DestinationState extends State<Destination> {
                         ),
                         decoration: new InputDecoration(
                           prefixIcon: new Icon(Icons.search,color: Colors.white),
-                          hintText: "Search...",
+                          hintText: "Destination Address Search",
                           hintStyle: new TextStyle(color: Colors.white)
                         ),
                       ) ,
         backgroundColor: Colors.black26,
         actions: <Widget>[
          Row(
+           mainAxisAlignment: MainAxisAlignment.start,
            children: <Widget>[
              new Icon(Icons.menu), 
                                    

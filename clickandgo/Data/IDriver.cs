@@ -15,6 +15,16 @@ namespace clickandgo.Data
 
         Task<dynamic> RemoveDriver(string id);
 
+        Task<Driver> GetDriverByTrn(string trn);
+
+        Task<bool> UpdatePassword(string email, string password);
+
+        Task<Driver> LoginDriver(string trn, string password);
+
+ 
+
+        Task<bool> updateDriverCode(int code, string trn);
+
         Task<dynamic> AssignCar(string carId, string driverId);
 
         Task<Driver> GetDriver(string id);

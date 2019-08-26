@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.2": {
-      "AutoMapper/8.1.1": {
+      "AutoMapper/9.0.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.5.0",
@@ -15,10 +15,10 @@
           "lib/netstandard2.0/AutoMapper.dll": {}
         }
       },
-      "AutoMapper.Extensions.Microsoft.DependencyInjection/6.1.1": {
+      "AutoMapper.Extensions.Microsoft.DependencyInjection/7.0.0": {
         "type": "package",
         "dependencies": {
-          "AutoMapper": "8.1.1",
+          "AutoMapper": "9.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0"
         },
         "compile": {
@@ -38,6 +38,22 @@
         },
         "runtime": {
           "lib/netstandard2.0/DnsClient.dll": {}
+        }
+      },
+      "MessagePack/1.7.3.4": {
+        "type": "package",
+        "dependencies": {
+          "System.Reflection.Emit": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.3.0",
+          "System.Runtime.Serialization.Primitives": "4.3.0",
+          "System.Threading.Tasks.Extensions": "4.3.0",
+          "System.ValueTuple": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/MessagePack.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MessagePack.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -735,6 +751,19 @@
         },
         "runtime": {
           "lib/netcoreapp2.2/Microsoft.AspNetCore.Http.Connections.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Http.Connections.Client/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Connections.Common": "1.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "2.1.0"
+        },
+        "compile": {
+          "lib/netcoreapp2.1/Microsoft.AspNetCore.Http.Connections.Client.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/Microsoft.AspNetCore.Http.Connections.Client.dll": {}
         }
       },
       "Microsoft.AspNetCore.Http.Connections.Common/1.1.0": {
@@ -1602,6 +1631,38 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll": {}
+        }
+      },
+      "Microsoft.Azure.SignalR/1.0.12": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Connections.Client": "1.0.0",
+          "Microsoft.AspNetCore.SignalR": "1.0.0",
+          "Microsoft.Azure.SignalR.Protocols": "1.0.12",
+          "System.IdentityModel.Tokens.Jwt": "5.2.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Azure.SignalR.Common.dll": {},
+          "lib/netstandard2.0/Microsoft.Azure.SignalR.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Azure.SignalR.Common.dll": {},
+          "lib/netstandard2.0/Microsoft.Azure.SignalR.dll": {}
+        }
+      },
+      "Microsoft.Azure.SignalR.Protocols/1.0.12": {
+        "type": "package",
+        "dependencies": {
+          "MessagePack": "1.7.3.4",
+          "Microsoft.Extensions.Primitives": "2.1.0",
+          "System.Buffers": "4.5.0",
+          "System.Memory": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Azure.SignalR.Protocols.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Azure.SignalR.Protocols.dll": {}
         }
       },
       "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
@@ -2893,7 +2954,7 @@
           }
         }
       },
-      "MongoDB.Bson/2.8.1": {
+      "MongoDB.Bson/2.9.1": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -2910,11 +2971,11 @@
           "lib/netstandard1.5/MongoDB.Bson.dll": {}
         }
       },
-      "MongoDB.Driver/2.8.1": {
+      "MongoDB.Driver/2.9.1": {
         "type": "package",
         "dependencies": {
-          "MongoDB.Bson": "2.8.1",
-          "MongoDB.Driver.Core": "2.8.1",
+          "MongoDB.Bson": "2.9.1",
+          "MongoDB.Driver.Core": "2.9.1",
           "NETStandard.Library": "1.6.1",
           "System.ComponentModel.TypeConverter": "4.1.0",
           "System.Linq.Queryable": "4.0.1"
@@ -2926,18 +2987,20 @@
           "lib/netstandard1.5/MongoDB.Driver.dll": {}
         }
       },
-      "MongoDB.Driver.Core/2.8.1": {
+      "MongoDB.Driver.Core/2.9.1": {
         "type": "package",
         "dependencies": {
           "DnsClient": "1.2.0",
-          "MongoDB.Bson": "2.8.1",
+          "MongoDB.Bson": "2.9.1",
           "NETStandard.Library": "1.6.1",
+          "SharpCompress": "0.23.0",
           "System.Collections.Specialized": "4.0.1",
           "System.Diagnostics.TextWriterTraceListener": "4.0.0",
           "System.Diagnostics.TraceSource": "4.0.0",
           "System.Net.NameResolution": "4.3.0",
           "System.Net.Security": "4.3.2",
-          "System.Security.SecureString": "4.0.0"
+          "System.Security.SecureString": "4.0.0",
+          "System.Threading.Thread": "4.3.0"
         },
         "compile": {
           "lib/netstandard1.5/MongoDB.Driver.Core.dll": {}
@@ -3234,6 +3297,18 @@
             "assetType": "native",
             "rid": "win-x86"
           }
+        }
+      },
+      "SharpCompress/0.23.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Encoding.CodePages": "4.5.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/SharpCompress.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SharpCompress.dll": {}
         }
       },
       "System.AppContext/4.3.0": {
@@ -4330,7 +4405,7 @@
           "ref/netstandard1.5/System.Runtime.dll": {}
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.1": {
+      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -4818,14 +4893,14 @@
           "ref/netstandard1.3/System.Text.Encoding.dll": {}
         }
       },
-      "System.Text.Encoding.CodePages/4.5.0": {
+      "System.Text.Encoding.CodePages/4.5.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.0.0",
-          "System.Runtime.CompilerServices.Unsafe": "4.5.0"
+          "Microsoft.NETCore.Platforms": "2.1.2",
+          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
         },
         "compile": {
-          "ref/netstandard2.0/_._": {}
+          "lib/netstandard2.0/System.Text.Encoding.CodePages.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/System.Text.Encoding.CodePages.dll": {}
@@ -4937,7 +5012,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Threading.Thread.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Threading.Thread.dll": {}
@@ -5111,14 +5186,14 @@
     }
   },
   "libraries": {
-    "AutoMapper/8.1.1": {
-      "sha512": "GKBliBukkLG0z/U0T4Jy+yEpr5bKDImQ9nEy/T8jqNulwNkWDjiEWa9TL4yCxIhleDbmVmw2xYSaJ3Eb2OcSUg==",
+    "AutoMapper/9.0.0": {
+      "sha512": "xCqvoxT4HIrNY/xlXG9W+BA/awdrhWvMTKTK/igkGSRbhOhpl3Q8O8Gxlhzjc9JsYqE7sS6AxgyuUUvZ6R5/Bw==",
       "type": "package",
-      "path": "automapper/8.1.1",
+      "path": "automapper/9.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "automapper.8.1.1.nupkg.sha512",
+        "automapper.9.0.0.nupkg.sha512",
         "automapper.nuspec",
         "lib/net461/AutoMapper.dll",
         "lib/net461/AutoMapper.pdb",
@@ -5128,14 +5203,14 @@
         "lib/netstandard2.0/AutoMapper.xml"
       ]
     },
-    "AutoMapper.Extensions.Microsoft.DependencyInjection/6.1.1": {
-      "sha512": "MPMgL6JGEH2Egmgh3+tw2UVX05ph8As7YtYWzt2ZDCc0STHGG5EsV3UMWH/g4aHaN1q20Bbc0PTMy3I0PwgBGQ==",
+    "AutoMapper.Extensions.Microsoft.DependencyInjection/7.0.0": {
+      "sha512": "szI4yeRIM7GWe9JyekW0dKYehPB0t6M+I55fPeCebN6PhS7zQZa0eG3bgOnOx+eP3caSNoE7KEJs2rk7MLsh8w==",
       "type": "package",
-      "path": "automapper.extensions.microsoft.dependencyinjection/6.1.1",
+      "path": "automapper.extensions.microsoft.dependencyinjection/7.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "automapper.extensions.microsoft.dependencyinjection.6.1.1.nupkg.sha512",
+        "automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
         "automapper.extensions.microsoft.dependencyinjection.nuspec",
         "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll",
         "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.pdb"
@@ -5158,6 +5233,25 @@
         "lib/netstandard1.3/DnsClient.xml",
         "lib/netstandard2.0/DnsClient.dll",
         "lib/netstandard2.0/DnsClient.xml"
+      ]
+    },
+    "MessagePack/1.7.3.4": {
+      "sha512": "QSKZVq6BmNaz/B4n0bAM/moQnc4E6XZ7uXRbJcEXxUzZufJiDYDE6awYqDtNz6acupYoPt2QupGV4rpyPCRRtg==",
+      "type": "package",
+      "path": "messagepack/1.7.3.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/MessagePack.dll",
+        "lib/net45/MessagePack.xml",
+        "lib/net47/MessagePack.dll",
+        "lib/net47/MessagePack.xml",
+        "lib/netstandard1.6/MessagePack.dll",
+        "lib/netstandard1.6/MessagePack.xml",
+        "lib/netstandard2.0/MessagePack.dll",
+        "lib/netstandard2.0/MessagePack.xml",
+        "messagepack.1.7.3.4.nupkg.sha512",
+        "messagepack.nuspec"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -5661,6 +5755,21 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Connections.xml",
         "microsoft.aspnetcore.http.connections.1.1.0.nupkg.sha512",
         "microsoft.aspnetcore.http.connections.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Http.Connections.Client/1.0.0": {
+      "sha512": "JWSI+jLDKPm9p+ptQNTAmSSxeS8tpG7Q3SHL9kp8FK+uR7L31wUE8pNgjt2s9kb4EXoOCCAUhaELpDW+CnSpDg==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http.connections.client/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp2.1/Microsoft.AspNetCore.Http.Connections.Client.dll",
+        "lib/netcoreapp2.1/Microsoft.AspNetCore.Http.Connections.Client.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Connections.Client.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Connections.Client.xml",
+        "microsoft.aspnetcore.http.connections.client.1.0.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.connections.client.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Http.Connections.Common/1.1.0": {
@@ -6456,6 +6565,34 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.xml",
         "microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
         "microsoft.aspnetcore.webutilities.nuspec"
+      ]
+    },
+    "Microsoft.Azure.SignalR/1.0.12": {
+      "sha512": "QZrOEwYzoegLH839p3r3HrlpC4tKrUC75Ft5TWfrf0M0cVW8FVJX8AR3l5G5hz32hOZW/mRbq3mwv3poTlvy9g==",
+      "type": "package",
+      "path": "microsoft.azure.signalr/1.0.12",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Azure.SignalR.Common.dll",
+        "lib/netstandard2.0/Microsoft.Azure.SignalR.Common.xml",
+        "lib/netstandard2.0/Microsoft.Azure.SignalR.dll",
+        "lib/netstandard2.0/Microsoft.Azure.SignalR.xml",
+        "microsoft.azure.signalr.1.0.12.nupkg.sha512",
+        "microsoft.azure.signalr.nuspec"
+      ]
+    },
+    "Microsoft.Azure.SignalR.Protocols/1.0.12": {
+      "sha512": "iilCqwEkavXXd+guex1R5eItRV2VmUblLsoR9U44IdnAeNz6ILVUrcGdYJNJgSfBl0Z6Wwe/8wuRsipmyzNiFw==",
+      "type": "package",
+      "path": "microsoft.azure.signalr.protocols/1.0.12",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Azure.SignalR.Protocols.dll",
+        "lib/netstandard2.0/Microsoft.Azure.SignalR.Protocols.xml",
+        "microsoft.azure.signalr.protocols.1.0.12.nupkg.sha512",
+        "microsoft.azure.signalr.protocols.nuspec"
       ]
     },
     "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
@@ -8383,10 +8520,10 @@
         "version.txt"
       ]
     },
-    "MongoDB.Bson/2.8.1": {
-      "sha512": "1VV78IbSRKGuqUAVX/qdXKsv1D1BJQutlBhOTHJ8eJPlXQ+5Y2jImiRy825+oHkKeqlc0Qu8NHA9BSqE/btCfA==",
+    "MongoDB.Bson/2.9.1": {
+      "sha512": "rNktW0kVLMqu7ypT3R15z/alN5FYrHeZOoDnRbup0uwbx/wsvYfMT6+wpGlp25CGqjG9dA3dqweogVeGhU8WEA==",
       "type": "package",
-      "path": "mongodb.bson/2.8.1",
+      "path": "mongodb.bson/2.9.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -8395,14 +8532,14 @@
         "lib/net452/MongoDB.Bson.xml",
         "lib/netstandard1.5/MongoDB.Bson.dll",
         "lib/netstandard1.5/MongoDB.Bson.xml",
-        "mongodb.bson.2.8.1.nupkg.sha512",
+        "mongodb.bson.2.9.1.nupkg.sha512",
         "mongodb.bson.nuspec"
       ]
     },
-    "MongoDB.Driver/2.8.1": {
-      "sha512": "bmSL+w5P7k30AK9KKSOqzki845iHi+ul5ifp/mF977DjrBKn5ybmSuMoMjzyDzfXIH15cbPn19HnpAH8tnstUw==",
+    "MongoDB.Driver/2.9.1": {
+      "sha512": "iDJVTDgi4QZnLJ01Gpiv9UVSO7a+2/dD7DTC33YpKvBpQdeWX4la6z0UfApgP4dAZ1ctdsUmT3zHHh1v8KH+2g==",
       "type": "package",
-      "path": "mongodb.driver/2.8.1",
+      "path": "mongodb.driver/2.9.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -8411,14 +8548,14 @@
         "lib/net452/MongoDB.Driver.xml",
         "lib/netstandard1.5/MongoDB.Driver.dll",
         "lib/netstandard1.5/MongoDB.Driver.xml",
-        "mongodb.driver.2.8.1.nupkg.sha512",
+        "mongodb.driver.2.9.1.nupkg.sha512",
         "mongodb.driver.nuspec"
       ]
     },
-    "MongoDB.Driver.Core/2.8.1": {
-      "sha512": "uyVhvAtURsS5jN3O8LexaAe6zNd8luDYjWZmuhI8tG+TMEsWTPlpWThgPZsX3gyib3Z/a8XSj/dTTATfv4RcuA==",
+    "MongoDB.Driver.Core/2.9.1": {
+      "sha512": "ns0rmDypEsUvRW7M/PW5wqdKoTJjeXKiGSwx0IJM1Rv2XJE6aqTRoI81sINqpABwcNhI6ZbXnkUuNAlwtYPITg==",
       "type": "package",
-      "path": "mongodb.driver.core/2.8.1",
+      "path": "mongodb.driver.core/2.9.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -8427,7 +8564,7 @@
         "lib/net452/MongoDB.Driver.Core.xml",
         "lib/netstandard1.5/MongoDB.Driver.Core.dll",
         "lib/netstandard1.5/MongoDB.Driver.Core.xml",
-        "mongodb.driver.core.2.8.1.nupkg.sha512",
+        "mongodb.driver.core.2.9.1.nupkg.sha512",
         "mongodb.driver.core.nuspec"
       ]
     },
@@ -8714,7 +8851,7 @@
       ]
     },
     "runtime.native.System.IO.Compression/4.3.0": {
-      "sha512": "b+V9JC/Ii3sR659flBeaBJww111425tgjcDS1k+hqV4sGh9FALRDBvJnDtQ895gAzpPTUOFDHdqaZ2Et7BpZMg==",
+      "sha512": "INBPonS5QPEgn7naufQFXJEp3zX6L4bwHgJ/ZH78aBTpeNfQMtf7C6VrAFhlq2xxWBveIOWyFzQjJ8XzHMhdOQ==",
       "type": "package",
       "path": "runtime.native.system.io.compression/4.3.0",
       "files": [
@@ -8742,7 +8879,7 @@
       ]
     },
     "runtime.native.System.Net.Security/4.3.0": {
-      "sha512": "M2nN92ePS8BgQ2oi6Jj3PlTUzadYSIWLdZrHY1n1ZcW9o4wAQQ6W+aQ2lfq1ysZQfVCgDwY58alUdowrzezztg==",
+      "sha512": "ARfgeRYF2AnYIcqEvy9VE0agN/3zexMMPtcegq1THpOMS63rIGMi706vCo6pbv9Xzw4qhdX1Gu1zyLZHj2WtLA==",
       "type": "package",
       "path": "runtime.native.system.net.security/4.3.0",
       "files": [
@@ -8810,11 +8947,12 @@
       ]
     },
     "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple/4.3.0": {
-      "sha512": "Kh9W4agE0r/hK8AX1LvyQI2NrKHBL8pO0gRoDTdDb0LL6Ta1Z2OtFx3lOaAE0ZpCUc/dt9Wzs3rA7a3IsKdOVA==",
+      "sha512": "kVXCuMTrTlxq4XOOMAysuNwsXWpYeboGddNGpIgNSZmv1b6r/s/DPk0fYMB7Q5Qo4bY68o48jt4T4y5BVecbCQ==",
       "type": "package",
       "path": "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.apple/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.apple.4.3.0.nupkg.sha512",
@@ -8935,6 +9073,22 @@
         "runtimes/win-x86/native/sni.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "SharpCompress/0.23.0": {
+      "sha512": "HBbT47JHvNrsZX2dTBzUBOSzBt+EmIRGLIBkbxcP6Jef7DB4eFWQX5iHWV3Nj7hABFPCjISrZ8s0z72nF2zFHQ==",
+      "type": "package",
+      "path": "sharpcompress/0.23.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/SharpCompress.dll",
+        "lib/net45/SharpCompress.dll",
+        "lib/netstandard1.0/SharpCompress.dll",
+        "lib/netstandard1.3/SharpCompress.dll",
+        "lib/netstandard2.0/SharpCompress.dll",
+        "sharpcompress.0.23.0.nupkg.sha512",
+        "sharpcompress.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -9217,7 +9371,7 @@
       ]
     },
     "System.Collections.Specialized/4.3.0": {
-      "sha512": "NoPBj0ykejqAWW4p4gGtrrL+3c84ZLSvGnHgq422ew1Rj4WKj1FA8/BCybqC111EtgcqUl6ZJNFYYS22HLgbjA==",
+      "sha512": "Epx8PoVZR0iuOnJJDzp7pWvdfMMOAvpUo95pC4ScH2mJuXkKA2Y4aR3cG9qt2klHgSons1WFh4kcGW7cSXvrxg==",
       "type": "package",
       "path": "system.collections.specialized/4.3.0",
       "files": [
@@ -11925,10 +12079,10 @@
         "system.runtime.nuspec"
       ]
     },
-    "System.Runtime.CompilerServices.Unsafe/4.5.1": {
-      "sha512": "Zh8t8oqolRaFa9vmOZfdQm/qKejdqz0J9kr7o2Fu0vPeoH3BL1EOXipKWwkWtLT1JPzjByrF19fGuFlNbmPpiw==",
+    "System.Runtime.CompilerServices.Unsafe/4.5.2": {
+      "sha512": "wprSFgext8cwqymChhrBLu62LMg/1u92bU+VOwyfBimSPVFXtsNqEWC92Pf9ofzJFlk4IHmJA75EDJn1b2goAQ==",
       "type": "package",
-      "path": "system.runtime.compilerservices.unsafe/4.5.1",
+      "path": "system.runtime.compilerservices.unsafe/4.5.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -11944,7 +12098,7 @@
         "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
         "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
         "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
         "system.runtime.compilerservices.unsafe.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -12278,7 +12432,7 @@
       ]
     },
     "System.Runtime.Serialization.Primitives/4.3.0": {
-      "sha512": "2Z5t70a2SwMsfQDp9KOclaZNyQhfIga2gppq9lIUDM1A4ohTshn4JqT7ir8bvIhXgorWKYDAr6rPzEbi/nTGKg==",
+      "sha512": "Wz+0KOukJGAlXjtKr+5Xpuxf8+c8739RI1C+A2BoQZT+wMCCoMDDdO8/4IRHfaVINqL78GO8dW8G2lW/e45Mcw==",
       "type": "package",
       "path": "system.runtime.serialization.primitives/4.3.0",
       "files": [
@@ -12606,7 +12760,7 @@
       ]
     },
     "System.Security.Cryptography.Csp/4.3.0": {
-      "sha512": "yO2k5o+Z+DiFRBvvB9vdRRAGHi6bm02M9OWXfCqQ8K0UxD3Woc3svQheZfb7PoTEFs0kGacO0IzzMWsb6Mkeow==",
+      "sha512": "X4s/FCkEUnRGnwR3aSfVIkldBmtURMhmexALNTwpjklzxWU7yjMk7GHLKOZTNkgnWnE0q7+BCf9N2LVRWxewaA==",
       "type": "package",
       "path": "system.security.cryptography.csp/4.3.0",
       "files": [
@@ -13061,10 +13215,10 @@
         "system.text.encoding.nuspec"
       ]
     },
-    "System.Text.Encoding.CodePages/4.5.0": {
-      "sha512": "S0wEUiKcLvRlkFUXca8uio1UQ5bYQzYgOmOKtCqaBQC3GR9AJjh43otcM32IGsAyvadFTaAMw9Irm6dS4Evfng==",
+    "System.Text.Encoding.CodePages/4.5.1": {
+      "sha512": "4J2JQXbftjPMppIHJ7IC+VXQ9XfEagN92vZZNoG12i+zReYlim5dMoXFC1Zzg7tsnKDM7JPo5bYfFK4Jheq44w==",
       "type": "package",
-      "path": "system.text.encoding.codepages/4.5.0",
+      "path": "system.text.encoding.codepages/4.5.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -13082,19 +13236,6 @@
         "lib/xamarinwatchos10/_._",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
-        "ref/netstandard1.3/System.Text.Encoding.CodePages.dll",
-        "ref/netstandard1.3/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard1.3/de/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard1.3/es/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard1.3/fr/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard1.3/it/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard1.3/ja/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard1.3/ko/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard1.3/ru/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard1.3/zh-hans/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard1.3/zh-hant/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard2.0/System.Text.Encoding.CodePages.dll",
-        "ref/netstandard2.0/System.Text.Encoding.CodePages.xml",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
@@ -13103,7 +13244,7 @@
         "runtimes/win/lib/netcoreapp2.0/System.Text.Encoding.CodePages.dll",
         "runtimes/win/lib/netstandard1.3/System.Text.Encoding.CodePages.dll",
         "runtimes/win/lib/netstandard2.0/System.Text.Encoding.CodePages.dll",
-        "system.text.encoding.codepages.4.5.0.nupkg.sha512",
+        "system.text.encoding.codepages.4.5.1.nupkg.sha512",
         "system.text.encoding.codepages.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -13808,7 +13949,7 @@
       ]
     },
     "System.Xml.XmlSerializer/4.3.0": {
-      "sha512": "MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
+      "sha512": "VShQJhOxgD/5M2Z1IWm1vMaSqlbjo1zdFf8H7Ahte6bTvSUhUko/gDpAVVhGgGgTDeue4QyNg1fu1Zz2GKSEuQ==",
       "type": "package",
       "path": "system.xml.xmlserializer/4.3.0",
       "files": [
@@ -13957,13 +14098,14 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
-      "AutoMapper >= 8.1.1",
-      "AutoMapper.Extensions.Microsoft.DependencyInjection >= 6.1.1",
+      "AutoMapper >= 9.0.0",
+      "AutoMapper.Extensions.Microsoft.DependencyInjection >= 7.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
+      "Microsoft.Azure.SignalR >= 1.0.12",
       "Microsoft.NETCore.App >= 2.2.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.3",
-      "MongoDB.Driver >= 2.8.1"
+      "MongoDB.Driver >= 2.9.1"
     ]
   },
   "packageFolders": {
@@ -14009,11 +14151,11 @@
         "dependencies": {
           "AutoMapper": {
             "target": "Package",
-            "version": "[8.1.1, )"
+            "version": "[9.0.0, )"
           },
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
-            "version": "[6.1.1, )"
+            "version": "[7.0.0, )"
           },
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
@@ -14025,6 +14167,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[2.2.0, )"
+          },
+          "Microsoft.Azure.SignalR": {
+            "target": "Package",
+            "version": "[1.0.12, )"
           },
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
@@ -14038,7 +14184,7 @@
           },
           "MongoDB.Driver": {
             "target": "Package",
-            "version": "[2.8.1, )"
+            "version": "[2.9.1, )"
           }
         },
         "imports": [

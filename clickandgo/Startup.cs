@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using clickandgo.Data;
+using clickandgo.hubs;
 using clickandgo.Models;
 using clickandgo.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -53,6 +54,9 @@ namespace clickandgo
                     ValidateAudience = false,
                 };
             });
+
+            services.AddSignalR()
+                    .AddAzureSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -93,6 +97,10 @@ namespace clickandgo
                 routes.MapRoute(
                 name: "default",
                 template: "{controller=Home}/{action=Index}/{id?}");
+            });
+            app.UseAzureSignalR(routes =>
+            {
+                routes.MapHub<AlertDriver>("/chat");
             });
         }
     }

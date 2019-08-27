@@ -20,14 +20,14 @@
       max-width: 900px;
       width: 341px;
       margin: 0 auto;
-      box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+      box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
       margin-top: 66px;
     }
     
     .register-photo form {
       display: table-cell;
       width: 400px;
-      background-color: rgba(255,255,255,0.69);
+      background-color: rgba(255,255,255,0.79);
       padding: 40px 60px;
       color: #505e6c;
     }
@@ -97,9 +97,10 @@
     }
     
     .register-photo {
-      height: 770px;
+      height: 100%;
       background-image: url("../../../assets/images/background.jpg");
       background-position: top;
+      background-attachment: fixed;
       background-size: 100%;
     }
     
@@ -119,9 +120,14 @@
     
     @media  (min-height: 850px) {
       .register-photo {
-          height: 950px;
+          height: 100%;
           background-image: url("../../../assets/images/background.jpg");
           background-position: top;
+          background-attachment: fixed;
           background-size: cover;
         }
+    }
+
+    .mat-form-field {
+      margin-left: 24px; width: 150px
     }

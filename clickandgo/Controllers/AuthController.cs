@@ -25,12 +25,14 @@ namespace clickandgo.Controllers
     {
         private readonly IConfiguration _config;
         private readonly IUsers _userRepository;
+        private readonly IDriver _driverRepository;
         private readonly TokenHelper _tokenHelper = new TokenHelper();
 
-        public AuthController(IUsers userRepository, IConfiguration config)
+        public AuthController(IUsers userRepository, IConfiguration config, IDriver driver)
         {
             _config = config;
-            _userRepository = userRepository; 
+            _userRepository = userRepository;
+            _driverRepository = driver;
         }
 
         [AllowAnonymous]
@@ -61,6 +63,263 @@ namespace clickandgo.Controllers
             }
 
             
+        }
+
+        [AllowAnonymous]
+        [Route("api/users/validateMobile/{code}/{trn}")]
+        [HttpGet]
+        public async Task<IActionResult> validateMobile(string code, string trn)
+        {
+            Driver user = await _driverRepository.GetDriverByTrn(trn);
+
+            if (user == null)
+                return NotFound();
+
+            if (user.Code == code)
+            {
+                return Ok("success");
+            }
+            else
+            {
+                return Ok("fail");
+            }
+
+        }
+
+        [AllowAnonymous]
+        [Route("api/users/loginRiderMobile/{user}/{password}")]
+        [HttpGet]
+        public async Task<IActionResult> loginRider(string user, string password)
+        {
+            Users userData = new Users();
+
+            userData = await _userRepository.LoginUser(user, password);
+
+            if (userData == null)
+                return NotFound();
+
+            if (userData.Verified == null)
+            {
+                return Ok(new { status = "codeError" });
+            }
+            else
+            {
+                var claims = new[]
+                {
+                new Claim(ClaimTypes.NameIdentifier, userData._id.ToString()),
+                new Claim(ClaimTypes.Name, userData.FirstName)
+
+            };
+
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
+
+                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(claims),
+                    Expires = DateTime.Now.AddDays(1),
+                    SigningCredentials = creds
+                };
+
+                var tokenHandler = new JwtSecurityTokenHandler();
+
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+
+                return Ok(new
+                {
+                    token = tokenHandler.WriteToken(token),
+                    type = userData.Type
+                });
+            }
+
+
+            
+
+           //Users user = await _userRepository.LoginUser(user, password);
+   
+        }
+
+        [AllowAnonymous]
+        [Route("api/users/loginMobile/{trn}/{password}")]
+        [HttpGet]
+        public async Task<IActionResult> loginMobile(string trn, string password)
+        {
+            Driver user = await _driverRepository.LoginDriver(trn, password);
+
+
+            if (user != null)
+            {
+
+
+
+                var claims = new[]
+                {
+                new Claim(ClaimTypes.NameIdentifier, user._id.ToString()),
+                new Claim(ClaimTypes.Name, user.FirstName)
+
+            };
+
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
+
+                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(claims),
+                    Expires = DateTime.Now.AddDays(1),
+                    SigningCredentials = creds
+                };
+
+                var tokenHandler = new JwtSecurityTokenHandler();
+
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+
+                return Ok(new
+                {
+                    token = tokenHandler.WriteToken(token),
+                    type = user.status
+                });
+            }
+            return Ok();
+        }
+
+        [AllowAnonymous]
+        [Route("api/users/registerRiderMobile")]
+        [HttpPost]
+        public async Task<IActionResult> RegisterRiderMobile([FromBody] Users user)
+        {
+
+            string password = user.Password;
+
+            Random random = new Random();
+            int number = random.Next(1000, 9999);
+
+            // send email
+            try
+            {
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("mail.clickandgoja.com");
+
+                mail.From = new MailAddress("admin@clickandgoja.com");
+                mail.To.Add(user.Email);
+                mail.Subject = "New Account";
+                mail.IsBodyHtml = true;
+                mail.Body = "Use this code to verify your account<b>" + number + "</b>";
+
+                SmtpServer.Port = 25;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("admin@clickandgoja.com", "clickandgoja");
+                SmtpServer.EnableSsl = false;
+
+                SmtpServer.Send(mail);
+
+
+                mail.From = new MailAddress("admin@clickandgoja.com");
+                mail.To.Add("ecampbell@mysticlightsstudios.com");
+                mail.Subject = "New Account";
+                mail.IsBodyHtml = true;
+                mail.Body = "Please click on this link to activate account" + number;
+
+                SmtpServer.Port = 25;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("admin@clickandgoja.com", "clickandgoja");
+                SmtpServer.EnableSsl = false;
+
+                SmtpServer.Send(mail);
+
+                user.Password = null;
+                user.VerificationCode = number.ToString();
+
+                await _userRepository.CreateUser(user, password, "rider");
+                return Ok(new { user = "created" });
+
+
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { status = ex.ToString() });
+            }
+
+            
+        }
+               
+        [AllowAnonymous]
+        [Route("api/users/registerMobile/{trn}/{email}/{password}")]
+        [HttpGet]
+        public async Task<IActionResult> registerMobile(string trn, string email, string password)
+        {
+            // check if user exists 
+            Driver user = await _driverRepository.GetDriverByTrn(trn);
+
+            if (user == null)
+                return NotFound();
+
+            Random random = new Random();
+            int number = random.Next(1000, 9999);
+
+            // send email
+            try
+            {
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("mail.clickandgoja.com");
+
+                mail.From = new MailAddress("admin@clickandgoja.com");
+                mail.To.Add(email);
+                mail.Subject = "New Account";
+                mail.IsBodyHtml = true;
+                mail.Body = "Use this code to verify your account<b>"+ number + "</b>";
+
+                SmtpServer.Port = 25;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("admin@clickandgoja.com", "clickandgoja");
+                SmtpServer.EnableSsl = false;
+
+                SmtpServer.Send(mail);
+
+
+                mail.From = new MailAddress("admin@clickandgoja.com");
+                mail.To.Add("ecampbell@mysticlightsstudios.com");
+                mail.Subject = "New Account";
+                mail.IsBodyHtml = true;
+                mail.Body = "Please click on this link to activate account" + number;
+
+                SmtpServer.Port = 25;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("admin@clickandgoja.com", "clickandgoja");
+                SmtpServer.EnableSsl = false;
+
+                SmtpServer.Send(mail);
+
+                await _driverRepository.updateDriverCode(number, trn);
+                await _driverRepository.UpdatePassword(trn, password);
+
+                return Ok(new { status = "success"});
+                
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { status = ex.ToString() });
+            }
+
+        }
+
+        [AllowAnonymous]
+        [Route("api/users/GetCode/{code}/{email}")]
+        [HttpGet]
+        public async Task<IActionResult> GetCode(string code, string email)
+        {
+            Users user = await _userRepository.CheckUser(email); 
+
+            if (user == null)
+                return NotFound();
+
+
+            if (user.VerificationCode != code)
+                return BadRequest();
+
+            user.Verified = "true";
+
+            await _userRepository.UpdateUserMainAsync("rider", user);
+
+
+            return Ok(new { status = "updated"});
         }
 
         [AllowAnonymous]

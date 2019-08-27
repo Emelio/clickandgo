@@ -125,3 +125,7 @@
           background-size: cover;
         }
     }
+
+    .mat-form-field {
+      margin-left: 15px; width: 168px;
+    }

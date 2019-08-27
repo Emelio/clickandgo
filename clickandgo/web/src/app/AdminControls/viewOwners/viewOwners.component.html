@@ -1,0 +1,181 @@
+<app-nav></app-nav>
+<section>
+  <div class='container' style='flex: 1'>
+    <div class="card" style='margin: 25px 0;'>
+      <div class="card-header">
+        Personal Data
+      </div>
+      <div class="card-body">
+        <table>
+          <tr>
+            <td>Name: </td>
+            <td>{{usersData.firstName | titlecase}} {{usersData.middleName | titlecase}} {{usersData.lastName | titlecase}}</td>
+          </tr>
+          <tr>
+            <td>TRN: </td>
+            <td>{{usersData.trn}}</td>
+          </tr>
+          <tr>
+            <td>Gender: </td>
+            <td>{{usersData.gender | titlecase}}</td>
+          </tr>
+          <tr>
+            <td>Police Record <br> Number: </td>
+            <td>{{usersData.policeRecordNumber}}</td>
+          </tr>
+          <tr>
+            <td>
+              Approval Status:
+            </td>
+            <td>
+              <div class="form-check">
+                <input class="form-check-input" checked="userData.approvalStatus==='approved'" (click)="updateApprovalStatus('approved')" type="radio" name="approvalStatus" id="approved" value="Approved" >
+                <label class="form-check-label" for="approved">
+                  Approved
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" checked="userData.approvalStatus==='unapproved'"  (click)="updateApprovalStatus('unapproved')" type="radio" name="approvalStatus" id="unapproved" value="Unapproved">
+                <label class="form-check-label" for="unapproved">
+                  Unapproved
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" checked="userData.approvalStatus==='hold'" (click)="updateApprovalStatus('hold')" type="radio" name="approvalStatus" id="hold" value="hold">
+                <label class="form-check-label" for="hold">
+                  Hold
+                </label>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-10">
+        <div class="list-group" id="list-tab" role="tablist">
+          <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Drivers</a>
+          <a *ngFor="let driver of drivers" class="list-group-item list-group-item-action " style='cursor:pointer' id='{{driver._id}}' (click)='showUsers(driver._id)' data-toggle="list" role="tab" >{{driver.firstName}} {{driver.middleName}} {{driver.lastName}}</a>
+            
+        </div>
+      </div>
+      
+    </div>
+    
+  </div>
+  <div class='container' style='flex: 2'>
+    <div class="card">
+      <div class="card-header">
+        Selected Driver
+      </div>
+      <div class="card-body">
+          
+          <table>
+            <tr>
+              <td>Full Name:</td>
+              <td>{{selectedDriver.firstName | titlecase}} {{selectedDriver.middleName | titlecase}} {{selectedDriver.lastName | titlecase}}</td>
+            </tr>
+            <tr>
+              <td>Trn:</td>
+              <td>{{selectedDriver.trn}} </td>
+            </tr>
+            <tr>
+              <td>Gender:</td>
+              <td>{{selectedDriver.gender | titlecase}} </td>
+            </tr>
+            <tr>
+              <td>Age:</td>
+              <td>{{selectedDriverage}} </td>
+            </tr>
+            <tr>
+              <td>PPV:</td>
+              <td>{{selectedDriver.ppv | uppercase}}</td>
+            </tr>
+            <tr>
+              <td>Police Record Issue:</td>
+              <td>{{selectedDriver.timePoliceRecordIssue | date}}</td>
+            </tr>
+
+            <tr>
+              <td>License Issue:</td>
+              <td>{{selectedDriver.dateIssued | date }}</td>
+            </tr>
+
+            <tr>
+              <td>License Expire:</td>
+              <td>{{selectedDriver.dateExpired | date}}</td>
+            </tr>
+
+            <tr>
+              <td>Collectorate:</td>
+              <td>{{selectedDriver.collectorate | titlecase}}</td>
+            </tr>
+
+            <tr>
+              <td>Class:</td>
+              <td>{{selectedDriver.class | titlecase}}</td>
+            </tr>
+          </table>
+
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Make</th>
+                <th scope="col">Model</th>
+                <th scope="col">Year</th>
+                <th scope="col">Color</th>
+                <th scope="col">Body Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style='color:black'>{{selectedVehicle.make | titlecase}}</td>
+                <td style='color:black'>{{selectedVehicle.model | titlecase}}</td>
+                <td style='color:black'>{{selectedVehicle.year | titlecase}}</td>
+                <td style='color:black'>{{selectedVehicle.color | titlecase}}</td>
+                <td style='color:black'>{{selectedVehicle.bodyType | titlecase}}</td>
+              </tr>
+              
+            </tbody>
+          </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        List of owned Vehicles
+      </div>
+
+      <div>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Make</th>
+              <th scope="col">Model</th>
+              <th scope="col">Year</th>
+              <th scope="col">Color</th>
+              <th scope="col">Body Type</th>
+              <th scope='col'>Plate Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let car of listOfCars">
+                <td style='color:black'>{{car.make | titlecase}}</td>
+                <td style='color:black'>{{car.model | titlecase}}</td>
+                <td style='color:black'>{{car.year | titlecase}}</td>
+                <td style='color:black'>{{car.color | titlecase}}</td>
+                <td style='color:black'>{{car.bodyType | titlecase}}</td>
+                <td style='color:black' >{{car.plateNumber | titlecase}}</td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>
+

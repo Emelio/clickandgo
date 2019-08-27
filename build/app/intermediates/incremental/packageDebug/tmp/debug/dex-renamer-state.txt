@@ -1,4 +1,0 @@
-#Thu Aug 01 09:42:07 EDT 2019
-base.0=C\:\\Users\\Emelio Campbell\\Documents\\flutter\\clickandgo\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
-path.0=classes.dex
-renamed.0=classes.dex

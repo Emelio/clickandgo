@@ -129,7 +129,8 @@ namespace clickandgo.Controllers
                 return Ok(new
                 {
                     token = tokenHandler.WriteToken(token),
-                    type = userData.Type
+                    type = userData.Type, 
+                    user = userData
                 });
             }
 

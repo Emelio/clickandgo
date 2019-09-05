@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Emelio Campbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo\\clickandgo.csproj": {}
+    "C:\\Users\\Emelio Campbell\\Documents\\source\\clickandgo\\clickandgo\\clickandgo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Emelio Campbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo\\clickandgo.csproj": {
+    "C:\\Users\\Emelio Campbell\\Documents\\source\\clickandgo\\clickandgo\\clickandgo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Emelio Campbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo\\clickandgo.csproj",
+        "projectUniqueName": "C:\\Users\\Emelio Campbell\\Documents\\source\\clickandgo\\clickandgo\\clickandgo.csproj",
         "projectName": "clickandgo",
-        "projectPath": "C:\\Users\\Emelio Campbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo\\clickandgo.csproj",
+        "projectPath": "C:\\Users\\Emelio Campbell\\Documents\\source\\clickandgo\\clickandgo\\clickandgo.csproj",
         "packagesPath": "C:\\Users\\Emelio Campbell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Emelio Campbell\\Documents\\GitHub\\clickandgo\\clickandgo\\clickandgo\\obj\\",
+        "outputPath": "C:\\Users\\Emelio Campbell\\Documents\\source\\clickandgo\\clickandgo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -40,45 +40,6 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "dependencies": {
-            "AutoMapper": {
-              "target": "Package",
-              "version": "[9.0.0, )"
-            },
-            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
-              "target": "Package",
-              "version": "[7.0.0, )"
-            },
-            "Microsoft.AspNetCore.App": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.2.0, )",
-              "autoReferenced": true
-            },
-            "Microsoft.AspNetCore.Razor.Design": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.2.0, )"
-            },
-            "Microsoft.Azure.SignalR": {
-              "target": "Package",
-              "version": "[1.0.12, )"
-            },
-            "Microsoft.NETCore.App": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.2.0, )",
-              "autoReferenced": true
-            },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
-              "target": "Package",
-              "version": "[2.2.3, )"
-            },
-            "MongoDB.Driver": {
-              "target": "Package",
-              "version": "[2.9.1, )"
-            }
-          },
           "imports": [
             "net461"
           ],

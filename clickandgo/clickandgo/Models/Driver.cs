@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -49,8 +48,6 @@ namespace clickandgo.Models
         public string TimePoliceRecordIssue { get; set; }
 
         public string InformationAccurate { get; set; }
-
-        public string Code { get; set; }
 
         public string Terms { get; set; }
 

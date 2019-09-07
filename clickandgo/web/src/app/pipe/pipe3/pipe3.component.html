@@ -5,19 +5,9 @@
             <h2 class="text-center" style="width: 549px;"><strong>Register Your Driver</strong></h2>
             <h2 class="text-center" style="width: 549px;font-size: 11px;margin-bottom: -1px;margin-top: -23px;"><strong>Driver Information Must Match Driver's License</strong></h2>
             <div class="form-group">
-                <mat-form-field appearance="outline" >
-                    <mat-label>First Name</mat-label>
-                    <input matInput type="text" name="firstname" [(ngModel)]="driver.FirstName" placeholder="First Name" >
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Middle Name</mat-label>
-                    <input matInput type="text" name="middlename" [(ngModel)]="driver.MiddleName" placeholder="Middle Name" >
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Last Name</mat-label>
-                    <input matInput type="text" name="lastname" [(ngModel)]="driver.LastName" placeholder="Last Name" >
-                </mat-form-field>
-              
+              <input class="form-control d-inline-flex" type="email" name="firstname" [(ngModel)]="driver.FirstName" placeholder="First Name" style="background-color: rgba(201,200,200,0.24);width: 150px;">
+              <input class="form-control d-inline-flex" type="email" name="middlename" [(ngModel)]="driver.MiddleName" placeholder="Middle Name" style="width: 150px;margin-left: 44px;">
+              <input class="form-control d-inline-flex" type="email" name="lastname" [(ngModel)]="driver.LastName" placeholder="Last Name" style="width: 150px;margin-left: 44px;">
               
               <mat-form-field style="width: 150px;margin-left: 0px;">
                   <input matInput [matDatepicker]="picker2" [(ngModel)]="driver.DateIssued" name='dateIssued' placeholder="Date Issued">
@@ -35,62 +25,30 @@
                 <option selected="true" [value]="undefined">Gender</option>
                 <option *ngFor="let gender of genders" [value]="gender.value">{{gender.title}}</option>
             </select>
-            <mat-form-field appearance="outline">
-                <mat-label>Class</mat-label>
-                <input matInput type="email" name="class" [(ngModel)]="driver.Class" >
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <mat-label>TRN</mat-label>
-                <input matInput type="email" name="trn" [(ngModel)]="driver.Trn"  >
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Collectorate</mat-label>
-                <input matInput type="email" name="policerecord" [(ngModel)]="driver.Collectorate" >
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Street Address</mat-label>
-                <input matInput type="email" name="streetAddress" [(ngModel)]="driver.Address.street">
-            </mat-form-field>  
               
-            <mat-form-field appearance="outline">
-                <mat-label>District</mat-label> 
-                <input matInput type="email" name="street" [(ngModel)]="driver.Address.district" >
-            </mat-form-field>    
-              
-            <mat-form-field appearance="outline">
-                <mat-label>City / Town</mat-label> 
-                <input matInput type="text" name="city" [(ngModel)]="driver.Address.city" >
-            </mat-form-field> 
-            
-            <mat-form-field appearance="outline">
-                <mat-label>Parish</mat-label> 
-                <input matInput type="text" name="parish" [(ngModel)]="driver.Address.parish"  >
-            </mat-form-field> 
-              
-            <mat-form-field appearance="outline">
-                <mat-label>Country</mat-label> 
-                <input matInput type="text" name="country" [(ngModel)]="driver.Address.country" >
-              
-            </mat-form-field>
-
-              <mat-form-field style="margin-left: 18px; width: 160px">
+              <input class="form-control d-inline-flex" type="email" name="class" [(ngModel)]="driver.Class" placeholder="Class" style="width: 150px;margin-left: 0px;">
+              <input class="form-control d-inline-flex" type="email" name="trn" [(ngModel)]="driver.Trn" placeholder="TRN" style="width: 150px;margin-left: 44px;">
+              <input class="form-control d-inline-flex" type="email" name="policerecord" [(ngModel)]="driver.Collectorate" placeholder="Collectorate" style="width: 150px;margin-left: 44px;">
+              <input class="form-control d-inline-flex" type="email" name="streetAddress" [(ngModel)]="driver.Address.street" placeholder="Street Address" style="width: 150px;margin-left: 0px;">
+              <input class="form-control d-inline-flex" type="email" name="street" [(ngModel)]="driver.Address.district" placeholder="District" style="width: 150px;margin-left: 44px;">
+              <input class="form-control d-inline-flex" type="text" name="city" [(ngModel)]="driver.Address.city" placeholder="City/Town" style="width: 150px;margin-left: 44px;">
+              <input class="form-control d-inline-flex" type="text" name="parish" [(ngModel)]="driver.Address.parish" placeholder="Parish" style="width: 150px;margin-left: 0px;">
+              <input class="form-control d-inline-flex" type="text" name="country" [(ngModel)]="driver.Address.country" placeholder="Country" style="width: 150px;margin-left: 44px;padding-left: 0px;">
+              <mat-form-field style="margin-left: 24px; width: 160px">
                   <input matInput [matDatepicker]="picker1" [(ngModel)]="driver.DOB" name='dob' placeholder="Date of Birth">
                   <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                   <mat-datepicker #picker1></mat-datepicker>
               </mat-form-field>
-
-              <mat-form-field appearance="outline" style='width:400px'>
-                  <mat-label>License to Drive</mat-label> 
-                  <input matInput type="email" name="age" [(ngModel)]="driver.LicenseToDrive" >      
-                
-              </mat-form-field>
-                          
-              <p style="margin-bottom: -1px;margin-top: 17px;">N.B. Drivers licences must be at least 3 years old and 
-              all all drivers are required to apply for a police record before account is approved</p>
+              <input class="form-control d-inline-flex" type="email" name="age" [(ngModel)]="driver.LicenseToDrive" placeholder="License to Drive" style="width: 300px;margin-left: 0px;">
               
+              <p style="margin-bottom: -1px;margin-top: 17px;">Please confirm if you've had PPV on your lisence for 3 years or more, if no, you must enter the below information to be added to insurance.</p>
+              
+              <div class="form-check d-inline-flex">
+                <input class="form-check-input" type="radio" name='recordDate' id="formCheck-1"  [(ngModel)]="driver.PPV" value='yes'><label class="form-check-label" for="formCheck-1"  >Yes</label></div>
+              <div class="form-check d-inline-flex" style="margin-left: 14px;">
+                <input class="form-check-input" type="radio" name='recordDate' id="formCheck-2"  [(ngModel)]="driver.PPV" value='no'><label class="form-check-label" for="formCheck-2">No</label></div>
+                <input class="form-control d-inline-flex" type="email" name="timePoliceRecordIssue" [(ngModel)]="driver.TimePoliceRecordIssue" placeholder="Issue Date" style="width: 150px;margin-left: 44px;">
+                <input class="form-control d-inline-flex" type="email" name="age" placeholder="Police Record No." [(ngModel)]="driver.PoliceRecordNumber" style="width: 150px;margin-left: 44px;padding-left: 5px;">
               <div class="form-check" style="margin-top: 15px;">
                 <input class="form-check-input" type="checkbox" id="formCheck-2" name='informationAccurate' [(ngModel)]="driver.InformationAccurate" value='true'><label class="form-check-label"  for="formCheck-2">The above information is true and accurate to the totality of my knowledge</label></div>
               <div class="form-check">

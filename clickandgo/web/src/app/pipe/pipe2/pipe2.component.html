@@ -5,63 +5,27 @@
             <h2 class="text-center" style="width: 549px;"><strong>Register Your Motor Vehicle</strong></h2>
             <p  class="text-center">Please register your motor vehicle</p>
             <div class="form-group">
-            <mat-form-field  appearance="outline">
-                    <mat-label>Type of Vehicle</mat-label>
-                    <input matInput type="email" name="Vehicle"  [(ngModel)]="data.VehicleType" style="">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                    <mat-label>Make</mat-label>
-                    <input matInput type="email" name="Make" placeholder="Make" [(ngModel)]="data.Make">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                    <mat-label>Model</mat-label>
-                    <input matInput type="email" name="Model" [(ngModel)]="data.Model" >
-            </mat-form-field>  
-            <mat-form-field appearance="outline">
-                    <mat-label>Year</mat-label>
-                    <input matInput type="email" name="Year" placeholder="Year" [(ngModel)]="data.Year" >
-            </mat-form-field> 
-            <mat-form-field appearance="outline">
-                    <mat-label>Color</mat-label>
-                    <input matInput type="email" name="district" placeholder="Color" [(ngModel)]="data.Color" >
-            </mat-form-field>  
-            <mat-form-field appearance="outline">
-                    <mat-label>Body Type</mat-label>
-                    <input matInput type="email" name="Body" placeholder="Body Type" [(ngModel)]="data.BodyType" >
-            </mat-form-field>    
-            <mat-form-field appearance="outline">
-                    <mat-label>Engine Number</mat-label>
-                    <input matInput type="email" name="country" placeholder="Engine Number" [(ngModel)]="data.EngineNumber" >
-            </mat-form-field> 
-            <mat-form-field appearance="outline">
-                    <mat-label>Chassis Number</mat-label>
-                    <input matInput type="email" name="trn" placeholder="Chassis Number" [(ngModel)]="data.ChassisNumber" >
-            </mat-form-field> 
-            <mat-form-field appearance="outline">
-                    <mat-label>Plate No.</mat-label>
-                    <input matInput type="email" name="Plate" placeholder="Plate No." [(ngModel)]="data.PlateNumber">
-            </mat-form-field>  
+              <input class="form-control d-inline-flex" type="email" name="Vehicle" placeholder="Type of Vehicle" [(ngModel)]="data.VehicleType" style="background-color: rgba(201,200,200,0.24);width: 150px;">
+              <input class="form-control d-inline-flex" type="email" name="Make" placeholder="Make" [(ngModel)]="data.Make" style="width: 150px;margin-left: 20px;">
+              <input class="form-control d-inline-flex" type="email" name="Year" placeholder="Year" [(ngModel)]="data.Year" style="width: 150px;margin-left: 20px;">
+              <input class="form-control d-inline-flex" type="email" name="Model" placeholder="Model" [(ngModel)]="data.Model" style="width: 150px;margin-left: 20px;">
+              <input class="form-control d-inline-flex" type="email" name="district" placeholder="Color" [(ngModel)]="data.Color" style="width: 150px;margin-left: 20px;">
+              <input class="form-control d-inline-flex" type="email" name="Body" placeholder="Body Type" [(ngModel)]="data.BodyType" style="width: 150px;margin-left: 20px;">
+              <input class="form-control d-inline-flex" type="email" name="country" placeholder="Engine Number" [(ngModel)]="data.EngineNumber" style="width: 150px;margin-left: 20px;">
+              <input class="form-control d-inline-flex" type="email" name="trn" placeholder="Chassis Number" [(ngModel)]="data.ChassisNumber" style="width: 150px;margin-left: 20px;">
+              <input class="form-control d-inline-flex" type="email" name="Plate" placeholder="Registration Plate No." [(ngModel)]="data.PlateNumber" style="width: 150px;margin-left: 20px;">
               
-              
-              
-              
-              
-              <h4>Vehicle License Registration Info</h4>
-              <hr>
-              <mat-form-field style="margin-left: 24px; width: 200px">
+              <mat-form-field style="margin-left: 24px; width: 160px">
                   <input matInput [matDatepicker]="picker1" [(ngModel)]="data.RegIssue" name='RegIssue' placeholder="Registration Issue Date">
                   <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                   <mat-datepicker #picker1></mat-datepicker>
               </mat-form-field>
               
-              <mat-form-field style="margin-left: 24px; width: 200px">
+              <mat-form-field style="margin-left: 24px; width: 120px">
                   <input matInput [matDatepicker]="picker2" [(ngModel)]="data.RegExpire" name='RegExpiry' placeholder="Registration Expire Date">
                   <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                   <mat-datepicker #picker2></mat-datepicker>
               </mat-form-field>
-
-              <h4>Vehicle Fitness Info</h4>
-              <hr>
 
               <mat-form-field style="margin-left: 24px; width: 160px">
                   <input matInput [matDatepicker]="picker3" [(ngModel)]="data.FitIssue" name='FitIssue' placeholder="Fitness Issue Date">
@@ -75,28 +39,18 @@
                   <mat-datepicker #picker4></mat-datepicker>
               </mat-form-field>
 
-              <h4>Insurance Info</h4>
-              <hr>
-        
-            <mat-form-field appearance="outline" style="width: 200px;">
-                    <mat-label>Name of Insurance</mat-label>
-                    <input matInput type="email" name="InsuranceName" [(ngModel)]="data.InsuranceName">
-            </mat-form-field>
-            
-            <mat-form-field appearance="outline"  style="width: 200px;">
-                    <mat-label>Insurance Policy Number</mat-label>  
-                    <input matInput type="email" name="PolicyNumber"  [(ngModel)]="data.PolicyNumber" >
-            </mat-form-field>
-
               
+            
+              <input class="form-control d-inline-flex" type="email" name="InsuranceName" placeholder="Name of Insurance" [(ngModel)]="data.InsuranceName" style="width: 150px;margin-left: 20px;padding-left: 0px;">
+              <input class="form-control d-inline-flex" type="email" name="PolicyNumber" placeholder="Insurance Policy Number" [(ngModel)]="data.PolicyNumber" style="width: 150px;margin-left: 20px;">
 
-              <mat-form-field style="margin-left: 24px; width: 200px">
+              <mat-form-field style="margin-left: 24px; width: 160px">
                   <input matInput [matDatepicker]="picker5" [(ngModel)]="data.PolicyIssueDate"  name='FitExpiry' placeholder="Insurance Policy Issue Date">
                   <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
                   <mat-datepicker #picker5></mat-datepicker>
               </mat-form-field>
 
-              <mat-form-field style="margin-left: 24px; width: 200px">
+              <mat-form-field style="margin-left: 24px; width: 160px">
                   <input matInput [matDatepicker]="picker6" [(ngModel)]="data.PolicyExpiryDate"  name='FitExpiry' [(ngModel)]="data.PolicyExpiryDate" placeholder="Insurance Policy Expiry Date">
                   <mat-datepicker-toggle matSuffix [for]="picker6"></mat-datepicker-toggle>
                   <mat-datepicker #picker6></mat-datepicker>

@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,9 +12,6 @@ namespace clickandgo.Models
         public string LastName { get; set; }
 
         public string FirstName { get; set; }
-
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string Password { get; set; }
 
         public byte[] PasswordHash { get; set; }
 

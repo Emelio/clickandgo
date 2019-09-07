@@ -31,18 +31,6 @@ namespace clickandgo.Repository
             return user; 
         }
 
-        public async Task<Users> CheckUserByUsername(string userD)
-        {
-            Users user = await _context.Users.Find(x => x.Stage == userD).FirstOrDefaultAsync();
-            return user;
-        }
-
-        public async Task<Users> CheckUserByCode(string code)
-        {
-            Users user = await _context.Users.Find(x => x.VerificationCode == code).FirstOrDefaultAsync();
-            return user;
-        }
-
         public async Task<dynamic> SetVerificationCode(string code, string email)
         {
             var filter = Builders<Users>.Filter.Eq(x => x.Email, email);
@@ -122,25 +110,8 @@ namespace clickandgo.Repository
                 }
                 else
                 {
-
+                    
                     return user;
-                }
-            }
-            else
-            {
-                user = await _context.Users.Find(x => x.Stage == email).FirstOrDefaultAsync();
-
-                if (user != null)
-                {
-                    if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
-                    {
-                        return null;
-                    }
-                    else
-                    {
-
-                        return user;
-                    }
                 }
             }
 

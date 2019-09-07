@@ -55,52 +55,6 @@ namespace clickandgo.Repository
             return true;
         }
 
-        public async Task<Driver> GetDriverByTrn(string trn)
-        {
-            Driver driver = await _context.Driver.Find(x => x.Trn == trn).FirstOrDefaultAsync();
-            return driver;
-        }
-
-        public async Task<bool> updateDriverCode(int code, string trn)
-        {
-            var filter = Builders<Driver>.Filter.Eq("Trn", trn);
-            var update = Builders<Driver>.Update.Set("Code", code);
-            var result = await _context.Driver.UpdateOneAsync(filter, update);
-            return result.IsAcknowledged;
-        }
-
-        public async Task<Driver> LoginDriver(string trn, string password)
-        {
-            Driver user = await _context.Driver.Find(x => x.Trn == trn).FirstOrDefaultAsync();
-
-            if (user != null)
-            {
-                if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
-                {
-                    return null;
-                }
-                else
-                {
-
-                    return user;
-                }
-            }
-
-            return null;
-        }
-
-        public async Task<bool> UpdatePassword(string trn, string password)
-        {
-            byte[] passwordHash, passwordSalt;
-            CreatePasswordHash(password, out passwordHash, out passwordSalt);
-
-            var filter = Builders<Driver>.Filter.Eq(x => x.Trn, trn);
-            var update = Builders<Driver>.Update.Set(x => x.PasswordSalt, passwordSalt).Set(x => x.PasswordHash, passwordHash);
-            var result = await _context.Driver.UpdateOneAsync(filter, update);
-
-            return result.IsAcknowledged;
-        }
-
         public async Task<List<Driver>> GetDriverList(string id)
         {
             List<Driver> drivers = await _context.Driver.Find(x => x.PrimaryId == id).ToListAsync();
@@ -124,33 +78,6 @@ namespace clickandgo.Repository
             var result = await _context.Driver.DeleteManyAsync(x => x.PrimaryId == primaryId);
 
             return result.IsAcknowledged;
-        }
-
-        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
-        {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512())
-            {
-
-                passwordSalt = hmac.Key;
-                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-            };
-
-        }
-
-        private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
-        {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
-            {
-
-                var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-
-                for (int i = 0; i < computedHash.Length; i++)
-                {
-                    if (computedHash[i] != passwordHash[i]) return false;
-                }
-
-                return true;
-            };
         }
     }
 }

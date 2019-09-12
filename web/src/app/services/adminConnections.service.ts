@@ -66,8 +66,7 @@ constructor(private http: HttpClient) { }
   }
 
   updateApprovalStatus(id,data){
-    
-    return this.http.post('http://localhost:5000/'+ 'api/admin/setApprovedStatus/' + id,{status: data});
+    return this.http.post(this.baseUrl+ 'admin/setApprovedStatus/' + id + '/'+ data, null);
   }
 
 }

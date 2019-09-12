@@ -16,6 +16,7 @@ export class ViewOwnersComponent implements OnInit {
   selectedVehicle: any = {};
   listOfCars: any = [];
   
+  
 
   constructor(private adminServ: AdminConnectionsService, location: PlatformLocation) {
 
@@ -31,9 +32,12 @@ export class ViewOwnersComponent implements OnInit {
 
   getOwnerData() {
     let id = localStorage.getItem('selectedOwner');
-    this.adminServ.getOwnerOperator(id).subscribe(next => {
-      console.log(next);
+    this.adminServ.getOwnerOperator(id).pipe(response =>{
+      return response;
+    }).toPromise().then(next =>{
+      
       this.usersData = next;
+      console.log(this.usersData);
     });
 
     this.adminServ.getAllDrivers(id).subscribe(next => {
@@ -67,8 +71,9 @@ export class ViewOwnersComponent implements OnInit {
 
   updateApprovalStatus(status: any){
     if(confirm( 'Are you sure you want to  ' + this.usersData.firstName + ' status to ' + status + '?')){
-      console.log('jer');
-      this.adminServ.updateApprovalStatus(this.usersData._id, status).subscribe();
+      this.adminServ.updateApprovalStatus(this.usersData._id, status).subscribe(()=>{
+        this.usersData.approvalStatus= status;
+      });
     }else{
       window.location.reload();
     }

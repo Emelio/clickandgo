@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using AutoMapper;
 
 namespace clickandgo.Controllers
 {
@@ -38,6 +39,54 @@ namespace clickandgo.Controllers
             return Ok(users);
         }
 
+        [Route("api/admin/getAllAdmins")]
+        [HttpGet]
+        public async Task<IActionResult> GetAllAdmin()
+        {
+            var adminList = new List<AdminDto>();
+            List<Users> users = await _userRepository.GetAdmins();
+            foreach (var user in users)
+            {
+              adminList.Add(new AdminDto(){Id=user._id.ToString(),Name=$"{user.FirstName} {user.LastName}"});
+            }
+            return Ok(adminList);
+        }
+
+        [Route("api/admin/confirmCode/{code}")]
+        [HttpPost]
+        public IActionResult CheckConfirmationCode(string code){
+           var confirmCode= _config.GetSection("AdminCode").Value;
+
+           if(code==confirmCode){
+               return Ok(true);
+           }
+
+           return BadRequest("Wrong Code");
+        }
+
+        [Route("api/admin/registerAdmin")]
+        [HttpPost]
+        public async Task<IActionResult> RegisterAdmin([FromBody] RegisterDto register){
+                
+            Users user = await _userRepository.CheckUser(register.Email);
+
+            if (user == null)
+            {
+                Users userData = new Users();
+
+                var config = new MapperConfiguration(cfg =>
+                {
+                    cfg.CreateMap<RegisterDto, Users>();
+                });
+                IMapper mapper = new Mapper(config);
+                Users dest = mapper.Map<RegisterDto, Users>(register);
+                
+                await _userRepository.CreateUser(dest, register.Password, "admin");
+                return Ok(true);
+
+            }
+            return BadRequest();
+        }
         [Route("api/admin/getAllDrivers/{id}")]
         [HttpGet]
         public async Task<IActionResult> GetAllDrivers(string id)
@@ -47,13 +96,13 @@ namespace clickandgo.Controllers
         }
 
         //[AllowAnonymous]
-        [Route("api/admin/setApprovedStatus/{id}")]
+        [Route("api/admin/setApprovedStatus/{id}/{status}")]
         [HttpPost]
-        public async Task<IActionResult> ChangeApprovalStatus([FromBody]ApprovalStatusDto status, string id)
+        public async Task<IActionResult> ChangeApprovalStatus(string id, string status)
         {
              Users user = await _userRepository.CheckUserById(id);
              if(user !=null){
-                 if(await _userRepository.UpdateApprovalStatus(id,status.Status)){
+                 if(await _userRepository.UpdateApprovalStatus(id,status)){
                      return Ok();
                  }else{
                      return BadRequest("failed to update status");
@@ -131,6 +180,27 @@ namespace clickandgo.Controllers
 
 
 
+            return BadRequest("Failed");
+        }
+
+        [Route("api/admin/removeAdmin/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> RemoveAdmin(string id)
+        {
+            var user = await  _userRepository.CheckUserById(id);
+
+            if(user != null)
+            {
+                
+                    if( await _userRepository.DeleteUser(id))
+                    {
+                        return Ok(true);
+                    }
+                    else
+                    {
+                        return BadRequest("Failed to delete Admin");
+                    }
+            }
             return BadRequest("Failed");
         }
     }

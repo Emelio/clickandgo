@@ -342,7 +342,7 @@ namespace clickandgo.Controllers
                 });
                 IMapper mapper = new Mapper(config);
                 Users dest = mapper.Map<RegisterDto, Users>(register);
-
+                
                 await _userRepository.CreateUser(dest, register.Password, "owner");
 
                 // login user
@@ -552,7 +552,8 @@ namespace clickandgo.Controllers
                 });
                 IMapper mapper = new Mapper(config);
                 Users userData = mapper.Map<OwnerDto, Users>(owner);
-
+                userData.Verified="true";
+                userData.Stage="second";
                 Models.Address address = new Models.Address();
 
 

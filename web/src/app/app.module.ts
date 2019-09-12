@@ -21,6 +21,7 @@ import { TermsComponent } from './terms/terms.component';
 import { VerificationComponent } from './verification/verification.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { RegisterAdminComponent } from './Admin/register-admin/register-admin.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
       ViewOwnersComponent,
       VerificationComponent,
       ResetPasswordComponent,
-      ForgotPasswordComponent
+      ForgotPasswordComponent,
+      RegisterAdminComponent
    ],
    imports: [
       BrowserModule,

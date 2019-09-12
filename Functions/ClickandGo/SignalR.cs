@@ -5,14 +5,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+using Microsoft.Azure.Documents.Client;
 
 namespace ClickandGo
 {
-    public static class Function1
+    public class SignalR
     {
+        
         [FunctionName("negotiate")]
         public static SignalRConnectionInfo GetSignalRInfo(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequest req,
@@ -26,6 +26,11 @@ namespace ClickandGo
             [HttpTrigger(AuthorizationLevel.Anonymous, "post")] object message,
             [SignalR(HubName = "chat")] IAsyncCollector<SignalRMessage> signalRMessages)
         {
+            var endpoint = "";
+            var authKey = "";
+
+            var client = new DocumentClient(new Uri(endpoint), authKey); 
+
             return signalRMessages.AddAsync(
                 new SignalRMessage
                 {
@@ -34,5 +39,8 @@ namespace ClickandGo
                 
                 });
         }
+
+
+
     }
 }

@@ -1,0 +1,17 @@
+{
+  "generatedBy": "Microsoft.NET.Sdk.Functions-1.0.28",
+  "configurationSource": "attributes",
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "methods": [
+        "post"
+      ],
+      "authLevel": "anonymous",
+      "name": "message"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "../bin/ClickandGo.dll",
+  "entryPoint": "ClickandGo.Function1.SendMessage"
+}

@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "AzureSignalRConnectionString": "Endpoint=https://clickngoservice.service.signalr.net;AccessKey=dmV/Q2emVmnF0/kpNRxnHmHjZsq7cPcrzOvOviZmL0I=;Version=1.0;",
+    "CORSCredentials": "",
+    "CORS": ""
+  }
+}

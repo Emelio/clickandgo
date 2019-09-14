@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ClickandGo.Models
 {
-    class Carrier
+    public class Carrier
     {
         public string id { get; set; }
 
@@ -15,6 +15,10 @@ namespace ClickandGo.Models
         public Cords Origin { get; set; }
 
         public Cords Destination { get; set; }
+
+        public string Distance { get; set; }
+
+        public string Duration { get; set; }
 
         public double Fair { get; set; }
     }

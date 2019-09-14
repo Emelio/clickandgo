@@ -7,37 +7,66 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.WebJobs.Extensions.SignalRService;
 using Microsoft.Azure.Documents.Client;
+using ClickandGo.Repository;
+using ClickandGo.Models;
+using Newtonsoft.Json;
 
 namespace ClickandGo
 {
     public class SignalR
     {
-        
-        [FunctionName("negotiate")]
-        public static SignalRConnectionInfo GetSignalRInfo(
+
+        [FunctionName("negotiateDriver")]
+        public static SignalRConnectionInfo GetSignalRInfoDriver(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequest req,
-            [SignalRConnectionInfo(HubName = "chat")] SignalRConnectionInfo connectionInfo)
+            [SignalRConnectionInfo(HubName = "driver")] SignalRConnectionInfo connectionInfo)
+        {
+            return connectionInfo; 
+        }
+
+        [FunctionName("negotiateRider")]
+        public static SignalRConnectionInfo GetSignalRInfoRider(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequest req,
+            [SignalRConnectionInfo(HubName = "rider")] SignalRConnectionInfo connectionInfo)
         {
             return connectionInfo;
         }
 
-        [FunctionName("messages")]
-        public static Task SendMessage(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post")] object message,
-            [SignalR(HubName = "chat")] IAsyncCollector<SignalRMessage> signalRMessages)
+        [FunctionName("messageDriver")]
+        public static async Task<IActionResult> SendMessageRider(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post")] string message,
+            [SignalR(HubName = "driver")] IAsyncCollector<SignalRMessage> signalRMessages)
         {
-            var endpoint = "";
-            var authKey = "";
 
-            var client = new DocumentClient(new Uri(endpoint), authKey); 
 
-            return signalRMessages.AddAsync(
-                new SignalRMessage
-                {
-                    Target = "newMessage",
-                    Arguments = new[] { message }
-                
-                });
+            try
+            {
+                Carrier carrier = new Carrier();
+                JsonConvert.DeserializeObject(message);
+                carrier = JsonConvert.DeserializeObject<Carrier>(message);            
+
+
+                DocumentDBRepository<Carrier> b = new DocumentDBRepository<Carrier>("clickandgo", "Carrier");
+
+                return new OkObjectResult(carrier);
+
+                await b.CreateItemAsync(carrier);
+
+                await signalRMessages.AddAsync(
+                    new SignalRMessage
+                    {
+                        Target = "trip",
+                        Arguments = new[] { message }
+
+                    });                
+            }
+            catch (Exception e)
+            {
+                return new OkObjectResult(e); 
+               
+            }
+
+            return new OkObjectResult("success");
         }
 
 

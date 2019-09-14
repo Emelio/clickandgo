@@ -9,20 +9,24 @@ using System.Threading.Tasks;
 
 namespace ClickandGo.Repository
 {
-    class DocumentDBRepository<T> : IDocumentDBRepository<T> where T : class
+    class DocumentDBRepository<T> where T : class
     {
 
         private readonly string Endpoint = "https://clickandgo.documents.azure.com:443/";
         private readonly string Key = "ttWonXEms5zRkhb6E7hHFdS6umrWFtQpTp6Ap4LpUtP26dDaJ88AuVCkfdl2CcCb4rnbuHUpVhArj8UPVrR16w==";
-        private readonly string DatabaseId = "ToDoList";
-        private readonly string CollectionId = "Items";
+        private readonly string DatabaseId ;
+        private readonly string CollectionId ;
         private DocumentClient client;
 
-        public DocumentDBRepository()
+        public DocumentDBRepository(string database, string collection)
         {
-            this.client = new DocumentClient(new Uri(Endpoint), Key);
+            DatabaseId = database;
+            CollectionId = collection;
+
+            client = new DocumentClient(new Uri(Endpoint), Key);
             CreateDatabaseIfNotExistsAsync().Wait();
             CreateCollectionIfNotExistsAsync().Wait();
+            
         }
 
         public async Task<T> GetItemAsync(string id)
